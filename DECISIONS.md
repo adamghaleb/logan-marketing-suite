@@ -8,6 +8,10 @@ When making a decision worth logging, add an entry with the date, what was decid
 
 ## 2026-04-29
 
+**v2 design migration: multi-font + dark default + Lavigo.** Wired all 6 local fonts (Milkyway, Talina, Mochi Boom, Mochi Boom Extrude, Fredoka, Fredoka Dingbats) plus 3 Google fonts via `next/font` with `--font-*` variables. Dark mode is the new default. Renamed the canonical palette to `--lavigo-*` (driven by `--lavigo-h: 292`); kept `--lovego-*` as aliases so existing inner.css selectors keep working until they're migrated. Mid-headers (.section-title, .card h3, .practice-title, .mouse-title) now use `var(--header)` (Fredoka One); only the hero h1 keeps `var(--display)` (Milkyway). `.h1 .accent` is no longer italic. Display font is swappable via `data-display` on `<body>` (milkyway | talina | mochi | mochi-extrude).
+
+## 2026-04-29
+
 **Scaffold port: Milkyway swaps in for Gloock as `--display`.** Per the design handoff direction, the local Milkyway-DEMO.ttf becomes the display face exposed via `next/font/local`. Helvetica Neue is exposed as `--amp` through a system-font stack (set inline on `<body>`) so the ampersand glyph works on macOS without a bundled file and degrades gracefully elsewhere. Tailwind v4 wired via `@tailwindcss/postcss`; `globals.css` keeps the design CSS verbatim and just adds `@import "tailwindcss";` at the top plus a small `.amp` utility.
 
 ## 2026-04-29
