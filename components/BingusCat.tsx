@@ -4,7 +4,7 @@
 
 import styles from "./BingusCat.module.css";
 
-export type BingusCatState = "idle" | "talking";
+export type BingusCatState = "idle" | "talking" | "petting";
 
 interface BingusCatProps {
   readonly state?: BingusCatState;
@@ -15,6 +15,7 @@ export function BingusCat({
   state = "idle",
   title = "Bingus, your cat",
 }: BingusCatProps) {
+  const isPetting = state === "petting";
   return (
     <svg
       className={styles.cat}
@@ -85,32 +86,69 @@ export function BingusCat({
         />
       </g>
 
-      {/* Pupils + catchlights */}
-      <circle cx="42" cy="43" r="2" fill="oklch(0.22 0.04 285)" />
-      <circle cx="58" cy="43" r="2" fill="oklch(0.22 0.04 285)" />
-      <circle cx="42.6" cy="42.4" r="0.7" fill="white" />
-      <circle cx="58.6" cy="42.4" r="0.7" fill="white" />
+      {/* Open-eye pupils + catchlights (hidden when petting) */}
+      {!isPetting && (
+        <>
+          <circle cx="42" cy="43" r="2" fill="oklch(0.22 0.04 285)" />
+          <circle cx="58" cy="43" r="2" fill="oklch(0.22 0.04 285)" />
+          <circle cx="42.6" cy="42.4" r="0.7" fill="white" />
+          <circle cx="58.6" cy="42.4" r="0.7" fill="white" />
+        </>
+      )}
+
+      {/* Happy closed-eye arcs while being pet */}
+      {isPetting && (
+        <g className={styles.happyEyes}>
+          <path
+            d="M 38 43 Q 42 39 46 43"
+            fill="none"
+            stroke="oklch(0.22 0.04 285)"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+          />
+          <path
+            d="M 54 43 Q 58 39 62 43"
+            fill="none"
+            stroke="oklch(0.22 0.04 285)"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+          />
+        </g>
+      )}
 
       {/* Nose */}
       <path d="M 48 49 L 52 49 L 50 52 Z" fill="oklch(0.62 0.13 45)" />
 
-      {/* Mouth halves — flap when talking */}
-      <path
-        className={styles.mouthLeft}
-        d="M 50 52 Q 47 56 44 54"
-        fill="none"
-        stroke="oklch(0.28 0.13 282)"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-      />
-      <path
-        className={styles.mouthRight}
-        d="M 50 52 Q 53 56 56 54"
-        fill="none"
-        stroke="oklch(0.28 0.13 282)"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-      />
+      {/* Mouth — talking flap when not petting, soft smile when petting */}
+      {!isPetting && (
+        <>
+          <path
+            className={styles.mouthLeft}
+            d="M 50 52 Q 47 56 44 54"
+            fill="none"
+            stroke="oklch(0.28 0.13 282)"
+            strokeWidth="1.4"
+            strokeLinecap="round"
+          />
+          <path
+            className={styles.mouthRight}
+            d="M 50 52 Q 53 56 56 54"
+            fill="none"
+            stroke="oklch(0.28 0.13 282)"
+            strokeWidth="1.4"
+            strokeLinecap="round"
+          />
+        </>
+      )}
+      {isPetting && (
+        <path
+          d="M 44 53 Q 50 59 56 53"
+          fill="none"
+          stroke="oklch(0.28 0.13 282)"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+        />
+      )}
 
       {/* Whiskers */}
       <line

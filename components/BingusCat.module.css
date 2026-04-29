@@ -133,3 +133,33 @@
 .glasses {
   animation: shimmer 4.6s ease-in-out infinite;
 }
+
+/* Petting state — Bingus is being pet: small happy bounce + faster tail wag */
+@keyframes petBounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-2px) rotate(-1.5deg);
+  }
+  75% {
+    transform: translateY(-1px) rotate(1.5deg);
+  }
+}
+
+.cat[data-state="petting"] {
+  animation: petBounce 0.6s ease-in-out infinite;
+}
+
+.cat[data-state="petting"] .tail {
+  animation-duration: 0.7s;
+}
+
+.cat[data-state="petting"] .body {
+  animation-duration: 1.4s;
+}
+
+.happyEyes {
+  animation: petBounce 0.9s ease-in-out infinite;
+}
