@@ -10,6 +10,8 @@ When making a decision worth logging, add an entry with the date, what was decid
 
 **Bingus chat model: `claude-haiku-4-5-20251001`.** Haiku is fast + cheap, the right fit for a chat sidekick that needs to feel snappy and not burn tokens. Configured in `app/api/bingus/chat/route.ts` (closes #15).
 
+**Serve `/install.sh` as a static `public/` asset (Option A).** Copied `scripts/install-mily-skills.sh` to `public/install.sh` and removed the `/install.sh → /scripts/install-mily-skills.sh` rewrite from `vercel.json`. `scripts/` isn't a public dir under Next.js, so the original rewrite would 404 in production. Static `public/` is the simplest path: zero rewrites, plain-text `Content-Type` set in `vercel.json`, curl-pipe-bash works on the production domain. The script in `scripts/` stays the source of truth for local use; `public/install.sh` is its deployed copy.
+
 ## 2026-04-29
 
 **v2 design migration: multi-font + dark default + Lavigo.** Wired all 6 local fonts (Milkyway, Talina, Mochi Boom, Mochi Boom Extrude, Fredoka, Fredoka Dingbats) plus 3 Google fonts via `next/font` with `--font-*` variables. Dark mode is the new default. Renamed the canonical palette to `--lavigo-*` (driven by `--lavigo-h: 292`); kept `--lovego-*` as aliases so existing inner.css selectors keep working until they're migrated. Mid-headers (.section-title, .card h3, .practice-title, .mouse-title) now use `var(--header)` (Fredoka One); only the hero h1 keeps `var(--display)` (Milkyway). `.h1 .accent` is no longer italic. Display font is swappable via `data-display` on `<body>` (milkyway | talina | mochi | mochi-extrude).
