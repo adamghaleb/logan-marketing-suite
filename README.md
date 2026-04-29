@@ -1,48 +1,66 @@
-# The Mily Suite
+# the Mily Suite
 
-> Built by Adam, for Mily. Bingus lives here.
+A nine-skill toolkit for Mily, built around how Logan Marketing actually ships boutique-inn websites with WordPress + Elementor.
 
-A personal web suite Mily uses as her home base for her junior designer role at Logan Marketing. It includes:
+## What's inside
 
-- **Bingus** — her goofy nerdy cat assistant who lives in a chat bubble
-- **Skills** — 9 custom Claude Code skills installable from this repo
-- **Logan Playbook** — searchable component patterns for hospitality sites
-- **Tutorials** — plain-English Elementor + Claude Code walkthroughs
-- **Page Builder Console** — 3-tab tool (Recipe / Copy+SEO / QA)
-- **Mock pages** — swappable Elementor template previews
-- **Staging Sandbox** — safe automation walkthrough
-- **MCP server** — direct Claude → Elementor connection (Phase 3)
+The home page surfaces nine Claude Code skills, each tuned to one part of the Logan workflow:
+
+- **Build a page** — Section-by-section build plan from a brief. Hero, intro, content blocks, CTA, QA at the end. Tailored to Logan's inside template.
+- **Pick the right section** — A short Q&A that names the exact Logan component for the chunk of copy in front of you. Walks you out of blank-page paralysis.
+- **Write copy + SEO meta** — Hospitality voice for Logan clients — innkeepers, breakfast, the dog. Plus meta titles, descriptions, alt text, FAQ ideas.
+- **Read a Figma file** — Turns a lead designer's Figma file into Elementor steps. What to ask, what to figure out, what not to redesign.
+- **Fix something broken** — Calm symptom → diagnosis → fix walkthroughs for the Elementor problems you'll actually hit. Ordered by frequency.
+- **Check my work** — Pre-handoff audit. Headings, alt text, links, mobile layout, brand consistency, page meta. Pass / fail with notes.
+- **Make an Elementor template** — Generates a valid Elementor `.json` template you can import. Modern flexbox containers. Always import to staging first.
+- **Work on staging** — Safe REST/CLI ops on a staging WordPress site. Drafts only, never auto-publishes, refuses to touch production.
+- **Write a handoff** — Short, structured PM handoff message. What was built, deviations, missing inputs, open questions. No defensive language.
+
+## Live site
+
+https://logan-marketing-suite.vercel.app
+
+## Install the Claude skills
+
+```bash
+curl -fsSL https://logan-marketing-suite.vercel.app/install.sh | bash
+```
+
+The installer drops all nine skills into `~/.claude/skills/` so Claude Code picks the right one automatically when you describe what you're doing.
+
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+The dev server runs on port 3000 — open http://localhost:3000.
 
 ## Stack
 
-| Layer    | Technology                      |
-| -------- | ------------------------------- |
-| Language | TypeScript                      |
-| Frontend | Next.js 15                      |
-| Styling  | Tailwind v4 + shadcn/ui         |
-| Content  | MDX                             |
-| AI       | Anthropic API (Claude Opus 4.6) |
-| Deploy   | Vercel                          |
+- Next.js 15 (App Router, React 19)
+- Tailwind v4 via `@tailwindcss/postcss`
+- MDX through `@next/mdx` for skill pages and content
+- TypeScript end to end
+- shadcn-style components, hand-rolled in `components/`
+- Anthropic Claude `haiku-4-5` powers the Bingus chat sidekick
 
-## Getting started
+## Project structure
 
-This repo is in pre-scaffold state. The Next.js app gets built once Claude Design returns the visual system. All foundational content (skills, playbook, tutorials, character bible) is being written in parallel.
+```
+app/         Next.js routes — home, /skills/<slug>, /api/bingus/chat
+components/  UI building blocks and page sections (Hero, Cards, UrlBar, Bingus, ...)
+content/     MDX content — skill wrappers, overview, playbook entries
+lib/         Constants, skill-content map, design tweaks, shared types
+public/      Static assets — fonts, install.sh, images
+scripts/     Source of truth for installer and local dev scripts
+```
 
-See `tasks/todo.md` for current state.
+## Architecture decisions
 
-## Documents
+See [`DECISIONS.md`](./DECISIONS.md) for the running log of architectural and design choices, newest entries on top.
 
-| File                                              | Purpose                                              |
-| ------------------------------------------------- | ---------------------------------------------------- |
-| `BINGUS.md`                                       | Bingus character bible — voice, modes, sample lines  |
-| `tasks/todo.md`                                   | Implementation plan and phase tracking               |
-| `DECISIONS.md`                                    | Architectural decision log                           |
-| `ROADMAP.md`                                      | High-level project roadmap                           |
-| `ROUNDTABLE.md`                                   | Thinking framework for architecture decisions        |
-| `CLAUDE.md`                                       | Project rules and stack preferences                  |
-| `SPEC_LOGAN_TOOLKIT.md`                           | Original toolkit spec (content source)               |
-| `elementor-logan-marketing-ai-workflow-report.md` | Research report — the spine of the four-layer system |
+## License
 
-## Status
-
-**Current version:** V1 — Phase 0 in progress (foundation content)
+MIT

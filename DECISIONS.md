@@ -8,6 +8,12 @@ When making a decision worth logging, add an entry with the date, what was decid
 
 ## 2026-04-29
 
+**Drop the fake `mily.computer` domain; tagline-only URL bar.** The site lives at `logan-marketing-suite.vercel.app` for now — no custom domain purchased. Removed `SITE_DOMAIN` from `lib/constants.ts`, rewrote `components/sections/UrlBar.tsx` to render only "the Logan Marketing Suite, by Adam", and updated `MILY_PAGE_TITLE` to "the Mily Suite — for Mily, by Adam". The install one-liner now points at `logan-marketing-suite.vercel.app/install.sh` (served from `public/install.sh`).
+
+**Sharper, specific card copy. No emojis anywhere on the site.** Mily is an experienced designer who has used Claude — the original "Build a page" / "Check my work" / "Work on staging" copy was too generic and faintly condescending. Rewrote all 9 skill cards with concrete titles ("Component picker", "Figma → Elementor", "Pre-handoff QA pass", "Staging WordPress ops", etc.) and meta tags that name the actual artifact each skill produces. Dropped `SkillCard.icon` entirely — no emoji glyphs in cards, headers, footers, or content MDX. Decoration uses typographic dingbats (`·`, `→`, `—`) only.
+
+## 2026-04-29
+
 **Bingus chat model: `claude-haiku-4-5-20251001`.** Haiku is fast + cheap, the right fit for a chat sidekick that needs to feel snappy and not burn tokens. Configured in `app/api/bingus/chat/route.ts` (closes #15).
 
 **Serve `/install.sh` as a static `public/` asset (Option A).** Copied `scripts/install-mily-skills.sh` to `public/install.sh` and removed the `/install.sh → /scripts/install-mily-skills.sh` rewrite from `vercel.json`. `scripts/` isn't a public dir under Next.js, so the original rewrite would 404 in production. Static `public/` is the simplest path: zero rewrites, plain-text `Content-Type` set in `vercel.json`, curl-pipe-bash works on the production domain. The script in `scripts/` stays the source of truth for local use; `public/install.sh` is its deployed copy.
