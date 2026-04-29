@@ -1,6 +1,6 @@
-# Project Name
+# Logan Marketing Suite
 
-> One-line description of what this is.
+> A personal landing page hub with marketing playbooks, MCP server tools, custom cloud skills, and installation guides to help prep for and excel at Logan Marketing.
 
 ## What It Does
 
@@ -8,15 +8,12 @@
 
 ## Stack
 
-<!-- Fill in or reference CLAUDE.md for defaults -->
-
 | Layer | Technology |
 |-------|-----------|
-| Language | TypeScript |
+| Language | |
 | Frontend | |
 | Backend | |
 | Database | |
-| Hosting | |
 
 ## Getting Started
 
@@ -26,20 +23,9 @@ npm install
 
 # Set up environment
 cp .env.example .env
-# Fill in your keys in .env
 
 # Run development server
 npm run dev
-```
-
-## Project Structure
-
-```
-├── CLAUDE.md          # AI assistant instructions
-├── ROUNDTABLE.md      # Thinking framework
-├── DECISIONS.md       # Architecture decision log
-├── ROADMAP.md         # Version plan
-└── src/               # Source code
 ```
 
 ## Status
