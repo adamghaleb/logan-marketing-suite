@@ -1,0 +1,69 @@
+---
+title: "Newsletter signup"
+slug: "newsletter-signup"
+order: 10
+---
+
+## What it is
+
+A single field — email address — and a button that says "Subscribe" or "Send me a note now and then." Often paired with a one-line description of what the newsletter actually is. Lives near the bottom of the home page, sometimes again in the footer.
+
+## When to reach for it
+
+On the home page, once. Sometimes also tucked in the footer (smaller). Skip it on every other page — repeating it three times across a single browse session is annoying.
+
+## What makes it Logan
+
+- One field. Just email. No "first name," no "what's your favorite season," no checkbox marketing matrix.
+- A real description. Not "Subscribe to our newsletter." Try "We send a short note every six weeks or so — what's blooming, what we're cooking, who's playing the front porch on Saturday."
+- The button copy is human. "Send me notes" or "Yes, please" beats "Subscribe."
+- Quiet styling. Field with a clean border, no shadow. Button in the brand color, not a "free trial" red.
+- Honest cadence. If they email twice a year, the description should say so. If they email weekly, the description should say so. Surprises are unsubscribes.
+
+## What to watch for
+
+- The form needs to actually go somewhere. Mailchimp, Constant Contact, ConvertKit, or whatever the inn uses. Get the API key or list ID from the lead designer or PM — don't make up a connection.
+- A success state is required. Plain text "Thanks — check your inbox to confirm." beats a redirect to a "Thank You!" page.
+- Confirmation email (double opt-in) is best practice for hospitality lists. The mail provider usually sets this up.
+- GDPR/CAN-SPAM: there must be an unsubscribe link in every email the system sends. The mail provider handles this — verify it's enabled.
+- Don't auto-pop a newsletter modal on first visit. Let the guest see the inn before you ask for their email.
+
+<details>
+<summary>How to actually build it in Elementor</summary>
+
+Use Elementor's **Form widget** (Pro). Build it in two parts: the form itself and the surrounding container with the headline and description.
+
+Outer container: Flexbox, **Direction: Column**, **Align Items: Center**, **Padding: 80px** top/bottom, **Width: Boxed** (~640px max).
+
+Inside, top to bottom:
+
+1. **Heading widget** — H2, "Stay in touch" or similar. Global Font.
+2. **Text Editor widget** — the honest description (1–2 sentences).
+3. **Form widget**:
+   - **Form Fields**: only one field, type Email, label "Email," placeholder "you@example.com." Required.
+   - **Submit Button**: text "Send me notes" or whatever Logan-feeling label.
+   - **Form Layout: Inline** if you want the field and button on one row; **Stacked** if you want the field above the button.
+   - **Actions After Submit**: pick the right integration (MailChimp, ActiveCampaign, ConvertKit, etc.). Authenticate via the integration's API key — get this from the lead designer.
+   - **Email Action** (optional): also send a notification to the inn's address so they know someone subscribed.
+
+For the success message:
+
+- In the form widget, **Additional Options → Messages → Success Message**: "Thanks — check your inbox to confirm."
+- **Redirect After Submit**: leave off. Inline success message reads better.
+
+Style the field:
+
+- **Field Style**: light border, no shadow, ample padding (16px vertical).
+- Match the field's typography to the body Global Font.
+
+Style the button:
+
+- Brand color from Global Colors.
+- Same border-radius as the field.
+- Hover: slight darken, no bounce or lift.
+
+Add a small **Text Editor widget** below the form with the privacy note: "We won't share your email. Unsubscribe anytime."
+
+Common mistakes: making the form 4 fields (kills conversion), using a generic "Subscribe" button label, not connecting to the actual mailing list (the form just sits there sending nowhere), no success state, popping the form as a modal before the guest has even seen the home page.
+
+</details>

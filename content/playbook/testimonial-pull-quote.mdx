@@ -1,0 +1,64 @@
+---
+title: "Testimonial pull-quote"
+slug: "testimonial-pull-quote"
+order: 5
+---
+
+## What it is
+
+A single review, set big and quiet, with a slow fade between two or three quotes. Centered on the page. The guest's name and where they're from underneath. No star rating graphics, no "TripAdvisor" logo plastered next to it.
+
+## When to reach for it
+
+Once per home page, near the bottom — after rooms and amenities, before the footer. Sometimes once on a long room page if there's a real review specific to that room. Don't sprinkle multiple testimonials across one page.
+
+## What makes it Logan
+
+- One quote at a time. The fade is slow — six to eight seconds per quote. Auto-advance, no clickable dots.
+- Quotes are real and specific. "We had pancakes for three days and didn't want to leave." beats "Wonderful experience!"
+- Set in the serif at a generous size, with hanging quotation marks.
+- Attribution is small and quiet underneath. Name, then town. "— Jenna, Brooklyn." No titles, no surnames unless the review is from a publication.
+- No "5 stars" graphic. The words carry it.
+
+## What to watch for
+
+- Make sure the quotes are actually from real guests. Ask the client for a list of reviews you can pull from. Never invent testimonials.
+- Length matters. Three sentences max. If a review is wonderful but long, ask the client which line is the line, and pull just that.
+- Slow fade means slow. Six seconds minimum. If it cycles in two seconds, it reads frantic and the quote can't land.
+- Don't auto-advance on touch devices while a guest is reading. Pause when the user taps, or just let it be a static block on mobile.
+- The block must be screen-reader friendly. Each quote needs a `blockquote` and a `cite`.
+
+<details>
+<summary>How to actually build it in Elementor</summary>
+
+Elementor's built-in Testimonial Carousel widget (Pro) works for this if you tame its defaults heavily. Otherwise, build with the Slides widget or a custom rotation.
+
+Recommended: **Testimonial Carousel widget** with these settings:
+
+1. **Slides per View: 1**. **Slides to Scroll: 1**.
+2. **Autoplay: On**, **Autoplay Speed: 7000** (7 seconds).
+3. **Pause on Hover: Yes**, **Pause on Interaction: Yes**.
+4. **Effect: Fade** (not Slide).
+5. **Speed: 1500** (1.5-second fade transition).
+6. **Navigation: Hide arrows. Hide dots.** (Both off — quietness is the point.)
+7. **Image: None or hidden**. The Logan version is text-only.
+8. **Skin: Default**. Then style heavily under the Style tab.
+
+Style the quote:
+
+- **Content typography**: serif Global Font, ~32px desktop / 22px mobile, line-height 1.4.
+- **Content alignment**: Center.
+- **Add hanging quotation marks** with custom CSS or a quote-mark icon above the text.
+
+Style the attribution:
+
+- **Name typography**: smaller, body Global Font.
+- **Title field**: use this for "city, state" (e.g., "Brooklyn, NY"). Style smaller and lighter.
+
+Wrap the whole carousel in a Flexbox Container with generous padding (96px top and bottom on desktop) and a max-width of ~720px so the quote doesn't sprawl across the full page.
+
+For accessibility: confirm the rendered HTML uses `<blockquote>` and `<cite>` (Elementor's testimonial widget does this by default — check in DevTools).
+
+Common mistakes: leaving the star ratings on (turn them off in the widget settings), too-fast autoplay, showing arrows or dots, putting a guest's photo next to the quote (Logan keeps the quote clean), pulling testimonials that are too long.
+
+</details>

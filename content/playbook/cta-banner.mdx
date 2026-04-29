@@ -1,0 +1,60 @@
+---
+title: "CTA banner"
+slug: "cta-banner"
+order: 12
+---
+
+## What it is
+
+A wide, calm strip near the bottom of the page with one short line of copy and one button. "Plan your weekend." "Reserve a room." That's it. A single ask, given a whole row to itself, before the footer takes over.
+
+## When to reach for it
+
+Once near the bottom of the home page, after the gallery and testimonials, before the footer. Sometimes once on a "things to do" page where the next natural step is to book a stay. Skip it where there's already a booking widget on screen — two CTAs competing dilute both.
+
+## What makes it Logan
+
+- One button. Always. The Logan version of this pattern is never "Book Now / Call / Email" — that's a corporate footer. One ask.
+- The line of copy is short and sensory. "An empty porch is waiting." "Bring the dog. Bring nobody." "Plan a slow weekend."
+- The button label matches the action. "Check availability" if it goes to the booking widget. "Get in touch" if it goes to a contact form. "Plan your trip" if it goes to a "things to do" page.
+- Background is a calm tone — usually a deep brand color or a textured photo at low opacity. Never a screaming color.
+- No urgency tactics. No "Only 3 rooms left!" No "Limited summer rates!" That's not the brand.
+
+## What to watch for
+
+- One CTA per page. If the home page already has a sticky booking widget, this banner should send the guest somewhere else (an experience page, a story, a contact form), not duplicate the booking ask.
+- Button must look like a button. Solid fill, clear shape, large enough to tap on mobile (minimum 44x44px).
+- Test the destination. The number-one CTA banner mistake is shipping the link to a placeholder or the wrong page.
+- If the banner sits over a photo, the contrast must hold. Don't drop a black gradient over the whole image — pick a different photo.
+- On mobile, the headline and button should both be comfortable single-tap targets, with enough breathing room between them.
+
+<details>
+<summary>How to actually build it in Elementor</summary>
+
+Build with a Flexbox Container, **Width: Full**, **Min height: 320px** (240px mobile), **Direction: Column**, **Justify Content: Center**, **Align Items: Center**, **Padding: 80px** top/bottom desktop, 56px mobile.
+
+For the background:
+
+- Solid brand color (use Global Colors), OR
+- Background image with a slight darken filter via Elementor's background overlay (10–20% opacity max — don't black it out).
+
+Inside the container, vertically:
+
+1. **Heading widget** — H2 (the page already has one H1; this is a section heading). Global Font. Color: brand cream / off-white if background is dark; brand dark if background is light. Center-aligned. Max-width ~580px so it doesn't sprawl.
+2. **Spacer or Container Gap**: 24px below the heading.
+3. **Button widget** — label, link, and that's it. **Size: Medium** or **Large**. Global button style (Logan likely has the button styled in **Site Settings → Buttons**, so don't override).
+
+For the button:
+
+- Set **Link → URL** to the destination. Confirm it's a real, live URL.
+- **Open in same tab** unless the destination is an external booking engine on a different domain (then new tab).
+- **Hover state**: slight darken or lighten of the brand color. No bounce, no scale, no shadow lift.
+- Tap target: confirm padding is at least 16px vertical / 24px horizontal so the button is comfortably 44px+ tall.
+
+Save the banner as a **Saved Template** (`cta-banner-[client-slug]`) so you can reuse it across pages with a different headline + button label.
+
+Mobile: confirm the heading wraps cleanly (use `<br>` if the line break needs to happen at a specific spot to preserve rhythm — set in the heading widget's text field).
+
+Common mistakes: two buttons on the banner (cluttered), the button label "Click Here" or "Submit" (lifeless — match the action), button linking to a placeholder URL, headline too long (this banner is a haiku, not a paragraph), urgency-tactic language ("Book now before they're gone!" — Logan doesn't sell that way).
+
+</details>

@@ -1,0 +1,76 @@
+---
+title: "Slow-fade gallery"
+slug: "slow-fade-gallery"
+order: 6
+---
+
+## What it is
+
+Five to seven photos, full-width, fading from one to the next over five or six seconds each. No arrows, no thumbnails, no "1 of 7" counter. It auto-advances and then loops. The rare Logan flourish — used once, late on a page, where it can breathe.
+
+## When to reach for it
+
+Once per home page if at all. Sometimes on a "things to do" or "the property" page where you want to show the place across seasons. Never on a rooms grid (that's a static grid, not a gallery). Never on a contact or policy page.
+
+## What makes it Logan
+
+- Slow. Five to six seconds per image, with a one-second cross-fade.
+- No UI on top. No arrows, no dots, no counter, no caption pinned to the corner.
+- Photos that share a feeling — same photographer, same season, same time of day if possible. A summer shot followed by a winter shot reads jarring.
+- Full-width, often full-bleed. The image goes edge to edge of the screen.
+- Sometimes there's a single line of context just above or below the gallery ("A quiet October at Cedar & Stone") — set small, not over the photos.
+
+## What to watch for
+
+- Five photos minimum. Three feels skimpy. Eight is too many — they won't all get seen.
+- File size. A full-bleed gallery with seven 5MB photos will tank performance. Each image should be under 250KB at the dimensions it's being served.
+- Don't put text over the photos. Let the photos work.
+- Honor `prefers-reduced-motion` — auto-advance should pause for users who've requested less motion.
+- Make sure each image has alt text. Even in a gallery, screen readers need the description.
+
+<details>
+<summary>How to actually build it in Elementor</summary>
+
+Use the **Image Carousel widget** (free) or **Media Carousel** (Pro) — both work. Prefer Image Carousel for simplicity.
+
+Settings:
+
+1. **Slides to Show: 1** on desktop, tablet, and mobile.
+2. **Image Size: Large** (1024px) or **Full** if the images are pre-optimized to a max width.
+3. **Navigation: None**. (Both arrows and dots off.)
+4. **Pagination: None**.
+5. **Autoplay: Yes**.
+6. **Autoplay Speed: 6000** (6 seconds per image).
+7. **Pause on Hover: Yes**.
+8. **Pause on Interaction: Yes**.
+9. **Infinite Loop: Yes**.
+10. **Effect: Fade** (not Slide).
+11. **Animation Speed: 1200** (1.2-second cross-fade).
+12. **Lazy Load: Yes**.
+
+Image preparation:
+
+- Resize each photo to 2000px wide max before upload.
+- Compress with TinyPNG, Squoosh, or the ShortPixel plugin to ~80% JPEG quality.
+- Target file size: 200–300KB per image.
+- Filename should be descriptive: `cedar-stone-porch-october.jpg`, not `IMG_4827.jpg`.
+- Alt text must be filled in via the WordPress Media Library — Elementor pulls it from there.
+
+Wrap the carousel in a Flexbox Container, **Width: Full**, **Padding: 0** so the images go edge to edge.
+
+For reduced-motion users, add a small bit of custom CSS:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  .slow-fade-gallery .swiper-wrapper {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+```
+
+Add the CSS class `slow-fade-gallery` under Advanced → CSS Classes.
+
+Common mistakes: leaving arrows or dots visible, autoplay speed too fast (3 seconds reads frantic), oversized image files (kills mobile performance), missing alt text, mixing photos from wildly different shoots.
+
+</details>

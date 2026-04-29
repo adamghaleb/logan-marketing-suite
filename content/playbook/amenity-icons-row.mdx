@@ -1,0 +1,56 @@
+---
+title: "Amenity icons row"
+slug: "amenity-icons-row"
+order: 7
+---
+
+## What it is
+
+A horizontal row of small line icons with a one-word label under each — "Wi-Fi," "Breakfast," "Fireplace," "Dog-friendly." Six or seven icons across, evenly spaced, set in a calm strip. The shorthand answer to "what does this place include?"
+
+## When to reach for it
+
+Once per home page or rooms page, in the middle third — after the hero and welcome card, before the gallery or testimonials. Also useful on individual room pages to show which amenities are specific to that suite.
+
+## What makes it Logan
+
+- Line icons, not filled. Same stroke weight across every icon.
+- Single-word labels when possible. "Wi-Fi" not "Complimentary high-speed internet."
+- Six or seven icons max. Eight starts to feel like a list, not a row.
+- Generous space between each icon — a whole grid column of breathing room. Not crammed.
+- Icons match the brand's color, not random rainbow icon-set defaults.
+- No "stars" or "ratings" or "amenity badges from a third-party site."
+
+## What to watch for
+
+- Custom-drawn icons read better than icon-pack icons. If the lead designer has a custom set, use it. If not, pick one icon family (Feather, Lucide, Phosphor) and use only that family — never mix.
+- Make sure the icon's stroke weight is consistent. Two pixel-thick icons next to one pixel-thick icons looks broken.
+- Labels should be in sentence case. "Free parking" not "FREE PARKING."
+- On mobile, drop to two or three icons per row, not a single column. A vertical list of icons looks like a feature checklist, not a row.
+- Don't use the amenity row to flex about things every inn has (running water, bedsheets, electricity). Keep it to things that are actually selling points or things a guest might worry about (dog-friendly, ADA-accessible, breakfast included).
+
+<details>
+<summary>How to actually build it in Elementor</summary>
+
+Use a **Grid Container** with **Columns: 6** (or 7) on desktop, **3** on tablet, **2** on mobile. **Gap: 24px** between cells.
+
+Each cell is a Flexbox Container, **Direction: Column**, **Align Items: Center**, **Gap: 12px**.
+
+Inside each cell:
+
+1. **Icon widget** — pick from Elementor's icon library or upload a custom SVG. **Size: 32px**. **Color: Global brand secondary** (or whatever Logan uses for muted UI). Same color across all icons in the row.
+2. **Heading widget** — **HTML Tag: span** (don't break heading hierarchy with H4s for amenity labels). **Typography: small body**, ~14px. Center-aligned.
+
+Alternative: **Icon Box widget**. Don't recommend it because it forces a specific layout you'll spend more time fighting than building from scratch.
+
+For custom icons:
+
+- Upload SVG to WordPress Media Library (you may need to enable SVG upload via a plugin — ask the lead before installing).
+- Use **Image widget** instead of Icon widget. Set **Width: 32px**.
+- Make sure the SVG is single-color and uses `currentColor` or a fill that matches Logan's brand.
+
+Save the row as a **Saved Template** (`amenity-row-[client-slug]`) so you can drop it into other pages without rebuilding.
+
+Common mistakes: mixing icon families (Lucide + Font Awesome looks chaotic), using filled icons next to line icons, dropping a different color on each icon (rainbow vibes), using H4 for the labels (breaks heading hierarchy), trying to fit too many — if the client gave you 12 amenities, pick the 6 most distinct.
+
+</details>

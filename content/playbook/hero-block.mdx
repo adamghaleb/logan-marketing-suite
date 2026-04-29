@@ -1,0 +1,49 @@
+---
+title: "Hero block"
+slug: "hero-block"
+order: 1
+---
+
+## What it is
+
+The first thing a guest sees. A wide photo of the place — porch light, an open door, a kitchen mid-morning — with a single soft headline floating over it. No carousel, no slogans, no overlay textures. The picture does most of the work.
+
+## When to reach for it
+
+On the home page, almost always. Sometimes on a "rooms" landing or a "stay" page where one image carries the room's whole feeling. Skip it on utility pages (contact, policies, FAQ) — those want a slim header instead.
+
+## What makes it Logan
+
+- Real photo. Not a stock plate of pancakes.
+- One line of copy. Specific, not aspirational. "Six rooms, a long porch, breakfast at eight." not "An unforgettable escape."
+- Headline set in the serif, with a little air around it. The image breathes.
+- No scroll cue arrow. Trust the guest to scroll.
+- Color of the headline picks up something already in the photo — never a brand red dropped on top of a blue sky.
+
+## What to watch for
+
+- The focal point of the image must survive a phone crop. Test the mobile view before you call it done.
+- Contrast. If the headline lands on a busy patch of leaves or a window reflection, move it or darken that area of the image, not with a black gradient bar.
+- Don't park the headline right over the innkeeper's face. It feels rude.
+- Hero text should never be an image of text. It needs to be real text for SEO and screen readers.
+- If the photo is dark, lift the headline color rather than dropping a black scrim over the whole image.
+
+<details>
+<summary>How to actually build it in Elementor</summary>
+
+Use a single Flexbox Container as the outer wrapper. Set width to **Full Width**, height to **Min height: 90vh** (drop to 70vh on tablet, 80vh on mobile so the picture still feels like the whole frame).
+
+Inside that container:
+
+1. Set **Background Type → Classic → Image**. Pick the image from the media library at full size; let Elementor's image-size dropdown serve the responsive crops.
+2. Background **Position: Center Center**, **Size: Cover**, **Attachment: Scroll** (never Fixed — parallax breaks on iOS Safari and reads dated).
+3. Add a Heading widget inside. **HTML Tag: H1** (only one H1 per page — confirm no other H1 exists in the header template).
+4. Use a Global Font for the heading; do not local-override the font family.
+5. Color: pick from Global Colors. If contrast against the photo fails WCAG AA, that's a sign to change the photo or pick a different crop, not to add a dark overlay.
+6. Set **Justify Content: Flex End** and **Align Items: Flex Start** to anchor the headline lower-left, which is Logan's usual placement. Add 6–8% padding on the bottom and left so it's not jammed against the edge.
+7. Mobile: stack to **Direction: Column**, reduce headline size by ~30%, increase line height slightly. Check that the focal point of the image is still visible after the crop.
+8. SEO: set the image's WordPress alt text to the property + scene ("Cedar & Stone Inn front porch at dusk"), not "hero image".
+
+Common mistakes: nesting another container inside just to add padding (don't — pad the outer one), using the legacy Section widget (Logan is on Containers), forgetting the H1 tag and shipping a hero with H2 by accident.
+
+</details>

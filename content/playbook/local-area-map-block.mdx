@@ -1,0 +1,63 @@
+---
+title: "Local-area map block"
+slug: "local-area-map-block"
+order: 8
+---
+
+## What it is
+
+A small illustrated map showing where the inn sits relative to a few nearby places — a town square, a winery, a hiking trail, a beach. Hand-drawn or topographic style. Not a Google Maps embed. Sometimes paired with a short list of "what's nearby" alongside it.
+
+## When to reach for it
+
+On the home page near the bottom, on the "things to do" page as the centerpiece, and on the contact page where guests need to find the inn. Skip it where space is tight (a sidebar, a sticky bar) — this block needs room to breathe.
+
+## What makes it Logan
+
+- Custom illustration. Not Google Maps. Not Mapbox with a custom style. A real drawing or a topographic-style SVG.
+- Three to six points marked, no more. Each labeled with a small serif name.
+- The inn is the largest mark on the map — it's always the center of the world.
+- Soft palette — never bright Google-pin red.
+- A short list beside it ("Dawes Creek Trail — 12 minutes," "Fenwick Cellars — 18 minutes") in clean type, not buried in a paragraph.
+- Almost always paired with a small "Get directions" link that opens Google Maps in a new tab. The pretty map is for atmosphere; the link is for actually getting there.
+
+## What to watch for
+
+- An illustrated map is a real cost — usually $400–$1500 from an illustrator. If the client doesn't have budget, fall back to a Google Maps embed styled with a custom map style (still in Logan's palette, never the default Google blue/green/red).
+- Mark distances in minutes by car, not miles. Guests think in time, not distance.
+- Don't list 15 things. Pick the 4–6 that the inn's audience actually cares about. A wine country inn lists wineries, not the gas station.
+- The map needs alt text describing what it shows ("Illustrated map of Cedar Valley showing Cedar & Stone Inn and six nearby attractions"). Screen readers can't read a drawing.
+
+<details>
+<summary>How to actually build it in Elementor</summary>
+
+Use a Flexbox Container, **Direction: Row** desktop / **Column** mobile, **Gap: 48px**.
+
+Two children:
+
+**1. Map image (left, ~60% width on desktop):**
+
+- **Image widget**.
+- Upload the illustration as SVG (preferred — scales cleanly) or a 2000px-wide PNG with transparent background.
+- Filename: `[client-slug]-area-map.svg`.
+- Alt text: descriptive of what the map shows.
+- Wrap in a container with light brand-tinted background if the illustration has transparent areas.
+
+**2. List of nearby (right, ~40% width):**
+
+- **Heading widget**, "Nearby." H3 tag. Global Font.
+- **Text Editor widget** with a manual list of 4–6 places. Each line: place name (in serif), distance and a one-line description.
+- Or use **Icon List widget** with no icons (set "Icon: None") for cleaner spacing — but watch the bullet styling.
+- Below the list: **Button widget**, label "Get directions," linking to Google Maps with the inn's address pre-filled (`https://maps.google.com/?q=[address]`). Open in new tab.
+
+If the client has no illustration budget:
+
+1. Use Elementor's **Google Maps widget**.
+2. Style the map using a custom Google Maps style JSON (Snazzy Maps has free options) tinted to the brand palette.
+3. Reduce points of interest to "Off" so it's not cluttered with bus stops and gas stations.
+4. Set zoom level so the inn and 2–3 nearby places fit in frame.
+5. Hide the default Google UI as much as possible.
+
+Common mistakes: using a default Google Maps embed (looks generic), too many marked points (clutter), no alt text (accessibility miss), forgetting the "Get directions" link (guests still need to actually navigate there).
+
+</details>

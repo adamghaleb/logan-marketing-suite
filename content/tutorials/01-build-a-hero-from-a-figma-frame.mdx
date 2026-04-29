@@ -1,0 +1,72 @@
+---
+title: "Build a hero from a Figma frame"
+slug: "01-build-a-hero-from-a-figma-frame"
+order: 1
+estimatedMinutes: 35
+---
+
+## What you're doing
+
+The lead designer hands you a Figma file with the home page design. Your job: rebuild the hero section in Elementor on the WordPress site. This is the most common task you'll do in your first week — pretty much every site starts with a hero, and the moves you learn here apply to every other section.
+
+## Before you start
+
+You'll need:
+
+- The Figma file open and inspectable (hover over a layer and you can see its dimensions, color, font, spacing)
+- Access to the WordPress site (Elementor → Edit with Elementor)
+- The hero photo, already uploaded to the WordPress Media Library by the lead or asset team. If it's not there yet, ask before continuing — don't upload someone else's working file.
+- Maybe 30 minutes. First time it might take you 45. That's fine.
+
+## The plain-English steps
+
+1. **Read the Figma frame slowly first.** Don't open Elementor yet. Look at the hero. What's the headline? What font is it? How big is it? What color? Where does it sit on the photo (lower-left, centered, top-right)? What's the photo doing — full-bleed or framed? Does it have a button? A scroll cue? Write the answers down on paper or in a Notion note. You're going to refer to these as you build.
+
+2. **Match the structure first, the polish second.** In Elementor, drop in a Container, set it to full-width, give it the photo as a background image. Get the headline in there as a Heading widget. Don't worry about exact spacing or color matching yet — get the bones right.
+
+3. **Pick the matching Global Font and Global Color.** Don't local-override the font or color. If the heading in Figma is "Cormorant Garamond, 64px, brand-cream-1," find the matching Global Font (probably labeled "Display" or "Serif Display") and the matching Global Color. If the value isn't in Globals — stop and ask the lead. Don't add it yourself.
+
+4. **Now match the layout.** Use Elementor's Justify Content and Align Items controls to push the headline into the right corner of the container. Add padding to give it breathing room. Compare to the Figma frame side by side on a second monitor (or split screen) — your eye is the QA tool here.
+
+5. **Switch to tablet view, then mobile view.** Figma probably has frames at desktop and mobile (and maybe tablet). Match the Elementor responsive setup to whatever Figma shows. Headline gets smaller on mobile. Padding shrinks. The image's focal point still has to work.
+
+6. **Save. Preview in a new tab. Open it on your phone.** The Elementor preview lies sometimes — a real device tells the truth.
+
+## Common gotchas
+
+- **Font renders different in Figma than the browser.** Figma has its own font rendering. The browser's is slightly different. The headline might look 5% different. That's normal. Don't chase pixel-perfect; chase "feels the same."
+- **The image's focal point is fine on desktop but the person's face gets cropped out on mobile.** Use Background Image → Position to nudge the focal point. "Center Top" or "30% 60%" with custom values can save a crop.
+- **You added a black overlay because contrast was bad.** Try a different photo first, or ask the lead to pick a different crop. Black-overlay-on-photo is a Logan anti-pattern.
+- **You used a Section instead of a Container.** Logan is on Containers. If you opened Elementor and the page already uses Sections (legacy 2022-and-earlier sites), keep building with Sections to match. New sites: Containers only.
+
+## When you're done
+
+The hero matches the Figma frame in spirit and structure. The headline is in the right spot, the font and color are from Globals, the photo's focal point survives a mobile crop. Save, preview, open on your phone. If all three pass, mark the task complete and move on.
+
+<details>
+<summary>Literal Elementor clicks (the long version)</summary>
+
+1. **WordPress Admin → Pages → [Home page] → Edit with Elementor.**
+2. The Elementor editor opens. Top of the page, click the **+** to add a new Container. Pick the single-column layout (one big box).
+3. Click on the new container to select it. In the left sidebar:
+   - **Layout tab**: Width: Full Width. Min Height: 90vh.
+   - **Style tab → Background**: Type: Classic. Image: click the image picker, select the hero photo from Media Library.
+   - **Background → Position: Center Center. Size: Cover. Attachment: Scroll** (NOT Fixed).
+4. Drag a **Heading widget** from the right panel into the container.
+5. Click the heading. In the left sidebar:
+   - **Content tab**: Title field — type the headline from Figma exactly. Set HTML Tag to **H1**.
+   - **Style tab → Typography**: click the pencil icon next to Typography. Choose **Global → Display** (or whatever Logan named the serif Global Font).
+   - **Style tab → Text Color**: click the pencil icon. Choose **Global → [matching color]**.
+6. Click back on the container (not the heading). Layout tab → Items:
+   - **Justify Content: Flex End** (pushes child to the bottom).
+   - **Align Items: Flex Start** (pushes child to the left).
+   - Together: bottom-left corner.
+   - Add **Padding**: 0 top, 5% right, 8% bottom, 8% left (adjust to match Figma).
+7. Switch to **tablet view** (responsive icons at the bottom of the editor). Reduce the heading size by ~20%. Reduce container padding to 6% bottom/left.
+8. Switch to **mobile view**. Reduce heading size another ~20%. Background-position may need a tweak — check that the photo's subject is still visible.
+9. **Update** (top right).
+10. **Preview** (eye icon). Open on a real phone.
+
+If anything looks off, scroll back up to the plain-English steps. The fix is usually one of those.
+
+</details>

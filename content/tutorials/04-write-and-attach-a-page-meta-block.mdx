@@ -1,0 +1,112 @@
+---
+title: "Write and attach a page meta block"
+slug: "04-write-and-attach-a-page-meta-block"
+order: 4
+estimatedMinutes: 15
+---
+
+## What you're doing
+
+Every page on the site needs a meta title and a meta description. These are the lines Google shows in search results — they're not decoration, they're the page's pitch in search. They're also what gets shared when someone posts the URL in iMessage or Slack. Writing good ones takes ten minutes; ignoring them is one of the most common junior misses.
+
+## Before you start
+
+You'll need:
+
+- The page open in WordPress (Pages → [page] → Edit, not Elementor — meta lives in the SEO plugin's panel below the editor)
+- Whichever SEO plugin Logan uses on this site. Usually **Yoast** or **Rank Math**. Both work the same way.
+- The page's purpose clear in your head. What is this page actually for? Who's going to land on it? What action do you want them to take?
+- 10–15 minutes per page
+
+## The plain-English steps
+
+1. **Open the page in the WordPress editor (not Elementor).** The Elementor editor doesn't show the SEO plugin panel — you need the regular WP page editor for this. Pages → click the page title → that opens the WP editor with a "Edit with Elementor" button at the top, but stay in the WP editor.
+
+2. **Scroll down past the editor.** Below the main content area, you'll see the Yoast or Rank Math panel (a box with snippets, a focus keyword field, and a content score).
+
+3. **Write the meta title.** This is the blue link in Google search results. The pattern Logan uses for hospitality is:
+
+   `[Property name] | [Type + Location]`
+
+   For example: "Cedar & Stone Inn | Bed & Breakfast in the Hudson Valley." 50–60 characters max — Google cuts off after 60.
+
+   For interior pages: `[Page topic] — [Property name]`. For example: "Things to do in Cedar Valley — Cedar & Stone Inn."
+
+4. **Write the meta description.** This is the snippet under the link in search results. 140–160 characters. The pattern:
+   - Sentence 1: what the page or property is.
+   - Sentence 2: a specific detail or value prop (sensory, place-specific).
+   - Sentence 3 (if room): a soft CTA.
+
+   Avoid: "Welcome to our website! Learn more about our services." That's a wasted line. Use the space.
+
+5. **Set the focus keyword (Yoast/Rank Math).** Pick the term you want this page to rank for. For the home page: "[location] bed and breakfast" or "[location] inn." For a rooms page: "rooms at [property]." For "things to do": "[location] things to do." Don't keyword-stuff — pick one keyword per page.
+
+6. **Check the SEO plugin's snippet preview.** It'll show how the title and description will look in Google's result list. If a word is cut off, trim. If the description sits awkwardly, rewrite.
+
+7. **Update the page.** Switch to the front-end and view-source the meta tags to confirm they're rendering (or use a browser extension like SEO META in 1 CLICK).
+
+## Common gotchas
+
+- **You wrote the meta in Elementor's "Page Settings" panel by mistake.** Some Logan sites use Elementor's built-in SEO field; others use Yoast/Rank Math. Find out which is being used (ask the lead or check Yoast's panel — if it's there and populated on other pages, that's where Logan keeps meta).
+- **Same meta description on every page.** Lazy and bad for SEO. Each page gets its own.
+- **Meta title is just the property name.** Wasted opportunity. Always include type + location for the home page; topic + property for interior pages.
+- **You wrote the description in branding-speak.** "Discover the magic of unforgettable luxury at our award-winning property." Empty calories. Replace with one specific concrete detail: "Six rooms, a 1903 farmhouse, and Tuesday-morning blueberry scones."
+- **Forgot to set Open Graph/social meta.** Yoast and Rank Math both have a "Social" tab where you can set the image and description for Facebook/iMessage shares. Use the hero image, write a one-line description.
+
+## When you're done
+
+The page has a meta title under 60 characters, a meta description in the 140–160 range, a focus keyword, and a social-share image set. View the page on Google's results (search for the property name), and the snippet should match what you wrote.
+
+<details>
+<summary>Yoast vs. Rank Math — where the fields actually are</summary>
+
+**Yoast SEO panel:**
+
+- Below the WordPress editor, in a box titled "Yoast SEO."
+- **Snippet Preview**: shows how it'll appear in search.
+- **Focus keyphrase**: enter your target keyword here.
+- **SEO title**: meta title field. Yoast shows a length indicator — green is good, red is too long.
+- **Slug**: URL slug. Usually fine as auto-generated; clean up if it's ugly.
+- **Meta description**: meta description field. Length indicator below.
+- **Social tab** (sub-tab inside the Yoast panel): Facebook and Twitter cards, custom image and description.
+- **Advanced tab**: noindex/nofollow, canonical URL — leave alone unless the lead specifies.
+
+**Rank Math panel:**
+
+- Below the WordPress editor, in a box titled "Rank Math SEO."
+- **Edit Snippet button** opens the snippet preview with title/description fields.
+- **Focus Keyword**: enter your target keyword.
+- **Title**: meta title. Length and character indicators.
+- **Permalink**: slug.
+- **Description**: meta description.
+- **Social tab**: Open Graph image and description.
+- **Advanced tab**: same as Yoast — leave alone unless directed.
+
+**Patterns Logan uses:**
+
+| Page type       | Meta title pattern                   | Description pattern                                               |
+| --------------- | ------------------------------------ | ----------------------------------------------------------------- |
+| Home            | `[Property] \| [Type] in [Location]` | What it is + a sensory detail + soft CTA                          |
+| Rooms (landing) | `Rooms — [Property]`                 | "Six suites at [Property], from [feature] to [feature]. [CTA]."   |
+| Single room     | `[Room name] — [Property]`           | The room's distinguishing feature + sleeps N + CTA                |
+| Things to do    | `Things to do near [Property]`       | "[N] things within [walking distance / drive] of [Property]: ..." |
+| About           | `About — [Property]`                 | Brief origin + innkeeper voice                                    |
+| Contact         | `Contact [Property]`                 | Phone, address summary, CTA to book                               |
+
+**Length quick reference:**
+
+- Meta title: aim 50–60 characters. Google's display limit is roughly 580 pixels, which works out to ~60 characters of mixed-case text.
+- Meta description: aim 140–160 characters. Google often shows around 155.
+
+**Social image:**
+
+- Use the page's hero photo or a representative image at 1200x630px (Open Graph standard).
+- File size under 1MB.
+- Alt text for accessibility (Yoast/Rank Math uses the WordPress media library alt text).
+
+**When NOT to fill meta yourself:**
+
+- The home page, the rooms landing, or the about page — these are usually the lead designer's call. Confirm before writing them on your own.
+- Interior pages (things to do, individual rooms, blog posts) — you can write these yourself; flag any uncertainty in your handoff to the PM.
+
+</details>

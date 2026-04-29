@@ -1,0 +1,62 @@
+---
+title: "Booking widget strip"
+slug: "booking-widget-strip"
+order: 4
+---
+
+## What it is
+
+A thin horizontal bar with three fields — arrival, departure, "Check availability." It sits below the hero on first load, then sticks to the top of the screen as the guest scrolls. Quiet, but always there when they're ready to book.
+
+## When to reach for it
+
+On the home page and the rooms page, every time. Skip it on contact, blog posts, and policy pages — it's distracting where booking isn't the next action.
+
+## What makes it Logan
+
+- Three fields, no more. Arrival, departure, button. Adults/children/promo-code dropdowns get hidden behind a small "more options" link if needed.
+- Button text is "Check availability," not "Book now." It's a softer ask and accurate to what the booking engine does on the next page.
+- Background is a flat color from the brand palette — usually a warm off-white or a deep brand color, never a gradient.
+- The strip is calm. No pulsing, no "limited time" badge, no countdown.
+- Sticky behavior is gentle: 8–12px tall when stuck, slightly taller when at rest. The transition is a fade, not a slide.
+
+## What to watch for
+
+- Most inns use ResNexus or a similar booking engine. The widget is usually an embed code or an iframe — not three native HTML inputs. Get the embed from the lead designer or PM, don't try to wire up your own.
+- Sticky on mobile can cover the keyboard or the address bar awkwardly. Test on a real phone, not just the editor's responsive view.
+- Don't make the strip sticky on the room single page if the booking engine itself is already on the page. Two booking widgets on screen at once is confusing.
+- Make sure the strip is keyboard-accessible. Tab order matters.
+- If the booking engine is down or not yet wired up, replace the button with a phone-call link to the inn directly. Never ship a "Book" button that goes nowhere.
+
+<details>
+<summary>How to actually build it in Elementor</summary>
+
+The strip itself is a Flexbox Container, **Direction: Row**, **Justify Content: Center**, **Align Items: Center**, **Gap: 16px**. **Width: Full**, **Height: ~72px** at rest, ~56px when stuck.
+
+The booking engine embed (ResNexus, ThinkReservations, Cloudbeds — whichever the client uses) drops in via a **HTML widget** or a **Shortcode widget**, depending on what the engine provides. Don't try to recreate the form natively.
+
+For the sticky behavior:
+
+1. Select the container.
+2. **Advanced tab → Motion Effects → Sticky: Top**.
+3. **Sticky On: Desktop, Tablet, Mobile** (verify mobile actually works on a phone before shipping).
+4. **Effects offset: 0**.
+5. To shrink-on-stick: under Motion Effects, look for "Sticky Hide" or use a small bit of custom CSS that listens for `.elementor-sticky--effects` (Elementor adds this class when the section is stuck) and reduces padding.
+
+Custom CSS (only if shrink-on-stick is in the design — confirm with lead first):
+
+```css
+.booking-strip.elementor-sticky--effects {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  transition: padding 0.25s ease;
+}
+```
+
+Add the CSS class `booking-strip` under Advanced → CSS Classes on the container.
+
+For mobile: at smaller widths, consider hiding the strip and replacing it with a single floating "Check availability" pill that opens the booking engine in a popup or a new screen. Confirm with lead before adding that pattern.
+
+Common mistakes: building the form natively instead of using the booking engine's embed (rates and inventory won't sync), making the strip too tall when stuck (it crowds the page), forgetting to test on a real phone, leaving the strip on pages where booking isn't the action.
+
+</details>

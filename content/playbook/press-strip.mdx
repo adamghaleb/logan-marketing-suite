@@ -1,0 +1,63 @@
+---
+title: "Press strip"
+slug: "press-strip"
+order: 9
+---
+
+## What it is
+
+A thin horizontal row of publication logos — "as seen in." Conde Nast, Travel + Leisure, the local food magazine, a respected blog. Four or five logos, evenly spaced, in muted gray. The "you can trust this place" reassurance, kept quiet.
+
+## When to reach for it
+
+On the home page if the client has real press coverage worth naming. Sometimes once on an About page. Skip it if the client only has one or two mentions — three is the floor for this pattern. Skip it entirely if the press is weak (a self-promoted listicle doesn't count).
+
+## What makes it Logan
+
+- Real press only. If the inn was mentioned once in a regional paper four years ago, don't pad the strip with stretches.
+- Logos in a single muted gray, not their original colors. The strip should read as a quiet credential, not a logo wall.
+- Even spacing. Same height across every logo, even if the original logos vary in proportion.
+- A small label above: "As seen in" or "In the press." Set small, not in caps.
+- Three to six logos. More than six and the eye stops registering them.
+
+## What to watch for
+
+- Get permission. Some publications require attribution language and don't want their logo treated as an endorsement. The PM usually handles this — if you're putting up a logo and not sure, ask.
+- Don't recolor logos in a way that distorts them. Some brands have strict logo guidelines. The safe move is "logo turned to a single gray" — that's been an industry convention for press strips for a long time and rarely raises issues.
+- SVG logos scale cleanly. Don't accept a 200px PNG and hope it'll look fine at 120px.
+- On mobile, the strip should reduce to 2–3 logos per row, not become a tiny illegible line.
+- If a logo's proportions are very wide (a long publication name), give it more horizontal space than the square logos. Don't force them all into equal-width slots.
+
+<details>
+<summary>How to actually build it in Elementor</summary>
+
+Use a Flexbox Container, **Direction: Row**, **Justify Content: Space Between** (or Space Around), **Align Items: Center**, **Gap: 32px**, **Width: Boxed** (~1000px max).
+
+Above it, a small **Heading widget**, **HTML Tag: span** (don't use H tag — this isn't a content heading), text "As seen in." Center-aligned. Subtle color from Global Colors. Small size (~12–14px), letter-spacing slightly increased for the label feel.
+
+For the logos:
+
+- Each logo is an **Image widget** in its own container cell, or directly inside the row container.
+- Upload SVGs to the Media Library where possible. PNG fallbacks need to be 2x retina (so a logo displaying at 120px is uploaded at 240px).
+- **Image Size: Custom**. Set max-height (not width) so wide and square logos all sit at the same vertical size — typically 36–48px tall.
+- For uniform muted-gray treatment, apply a CSS filter to the row container:
+
+```css
+.press-strip img {
+  filter: grayscale(1) opacity(0.55);
+  transition: filter 0.3s ease;
+}
+.press-strip img:hover {
+  filter: grayscale(1) opacity(1);
+}
+```
+
+Add the CSS class `press-strip` under Advanced → CSS Classes on the row container. The hover lift on opacity is optional — confirm with the lead designer; some Logan sites skip it for total quietness.
+
+Mobile: switch container to **Flex Wrap: Wrap**, reduce logos per row to 2–3 by adjusting flex-basis on each cell.
+
+Make the logos clickable if the press piece is online and you want to drive trust further. Each logo links to the article in a new tab. Add `rel="noopener"` for security.
+
+Common mistakes: leaving logos in their original colors (chaotic), inconsistent logo heights (uneven row), padding the strip with weak press (looks worse than no strip), using a generic logo grid widget that gives you no control over spacing.
+
+</details>

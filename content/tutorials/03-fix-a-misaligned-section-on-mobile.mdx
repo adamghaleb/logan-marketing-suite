@@ -1,0 +1,98 @@
+---
+title: "Fix a misaligned section on mobile"
+slug: "03-fix-a-misaligned-section-on-mobile"
+order: 3
+estimatedMinutes: 20
+---
+
+## What you're doing
+
+You've built a section. It looks great on desktop. You switch to mobile view in the editor and something is off — the image is half-cropped, text is overlapping, padding looks weird, or the columns didn't stack the way you expected. This happens to everyone. The fix is almost always one of four things, and once you know them you can debug a misaligned mobile section in two minutes.
+
+## Before you start
+
+You'll need:
+
+- The page open in Elementor with the misaligned section in view
+- A real phone within reach (mobile editor view is close, but a phone is the truth)
+- Maybe 15 minutes for the first time you debug this; quicker after
+
+## The plain-English steps
+
+1. **Switch the editor to mobile view first.** Look at exactly what's wrong. Is the image too big? Is text crammed against the edge? Are columns side-by-side when they should be stacked?
+
+2. **Identify which of the four common problems it is:**
+   - **Container direction**: probably needs to switch from row to column on mobile.
+   - **Padding/margin**: probably set on desktop and inherited too aggressively on mobile.
+   - **Image size or alignment**: probably set too large or with a fixed width that's wider than the phone.
+   - **A property that was set at the wrong breakpoint**: the most sneaky one.
+
+3. **For container direction**: select the container, switch to mobile view in the editor, change Direction from Row to Column. Done. Properties set on a smaller breakpoint override larger ones, so this only affects mobile.
+
+4. **For padding/margin**: select the offending element in mobile view. Look at the padding/margin values — Elementor shows a small "responsive" indicator (a tablet/phone icon) next to any value that's been overridden for that breakpoint. If the desktop value is 80px and you need 24px on mobile, set 24px while in mobile view. Same for margin.
+
+5. **For image size**: select the image. In mobile view, set Width to a percentage (100%) instead of a fixed pixel value. Or change Image Size to a smaller image (`medium` instead of `large`).
+
+6. **For "set at the wrong breakpoint"**: this is when a value you set in tablet view is overriding mobile. Switch to tablet view, look at what's set there. Tablet values inherit DOWN to mobile unless mobile has its own override. Reset tablet by right-clicking the property → Reset, OR set the desired value explicitly on mobile to override.
+
+7. **Save, preview on a real phone.** Mobile editor lies sometimes. The phone is the test.
+
+## Common gotchas
+
+- **Mobile shows fine in the editor but breaks on real phone.** Almost always a browser cache. Hard refresh (Cmd+Shift+R) or open in incognito. Also clear Elementor's CSS cache: **Elementor → Tools → Regenerate CSS**.
+- **The change you made on mobile broke the desktop view.** You probably edited while in desktop view by accident. Properties set at desktop apply to all breakpoints unless overridden. Edit at the right breakpoint.
+- **Padding indicator dots stay green even after I "reset."** The reset is per-property — each padding side (top, right, bottom, left) is its own property. Right-click the specific side → Reset.
+- **Section looks fine in editor but the published site is different.** Browser cache, plugin cache, hosting cache. Try incognito. Then escalate to the lead if the issue persists.
+- **You can't tell what's overriding what.** Use the **Navigator** (top-left of editor) to see the structure. Click each container and check its responsive overrides.
+
+## When you're done
+
+The section looks right at all three breakpoints (desktop, tablet, mobile), and a real phone confirms it. No black overlays added. No widgets hidden to "make it work" (that's a smell — fix the layout, don't hide the problem).
+
+<details>
+<summary>The breakpoint inheritance rule (the thing nobody explains)</summary>
+
+Elementor's responsive system works like CSS media queries: properties cascade DOWN from larger breakpoints to smaller ones, unless overridden.
+
+**Order of inheritance:**
+
+1. Desktop (default — the base values)
+2. Tablet (inherits from desktop, overrides where set)
+3. Mobile (inherits from tablet — which inherits from desktop — overrides where set)
+
+**The trap**: if you set padding on tablet, mobile inherits that tablet value (not the desktop value). So if you want mobile padding to differ, you must explicitly set it on mobile.
+
+**The other trap**: in older Logan sites or sites with extra breakpoints enabled (Mobile Extra, Tablet Extra, etc.), the cascade includes those middle breakpoints. Same rule applies — values cascade down.
+
+**How to check what's set where:**
+
+1. Select the element.
+2. Click the responsive icon next to a property (the little device icon).
+3. A dropdown shows desktop / tablet / mobile values.
+4. The active breakpoint shows which value is "winning" for the current view.
+
+**The reset trick:**
+
+- Right-click any property → **Reset** clears the override at the current breakpoint, and the value falls back to the next-larger breakpoint's value.
+- This is the cleanest way to undo a wrong override without losing the desktop styling.
+
+**The "I'm completely lost" recovery:**
+
+1. Open the **History panel** (Cmd+Shift+H or click the clock icon).
+2. Walk back through your changes until the layout was last correct.
+3. Click that history step to revert.
+4. Save.
+
+You won't lose anyone else's work — Elementor's history is per-page and per-session.
+
+**Cache flowchart when "it works in editor but not on phone":**
+
+1. Hard refresh on phone (close tab, reopen).
+2. Try incognito on phone.
+3. **Elementor → Tools → Regenerate CSS**.
+4. **Elementor → Tools → Regenerate Files & Data**.
+5. If the site has a caching plugin (WP Rocket, W3 Total Cache), purge that cache.
+6. If the host has its own cache (Kinsta, WP Engine, Cloudways), purge that.
+7. Still broken? Tell the lead — could be a plugin conflict.
+
+</details>

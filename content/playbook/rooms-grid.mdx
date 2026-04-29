@@ -1,0 +1,54 @@
+---
+title: "Rooms grid"
+slug: "rooms-grid"
+order: 3
+---
+
+## What it is
+
+Three room cards across, photo-first, with the room's name in serif and two lines of plain prose underneath. Sometimes a rate in mono-spaced type at the corner. The whole grid is the rooms page, basically — you click a card to read more about that room.
+
+## When to reach for it
+
+On the rooms landing page, always. On the home page if there are six or fewer rooms total — show them all. If there are more than six, show three on the home page with a quiet "see all rooms" link below.
+
+## What makes it Logan
+
+- Photo is the loudest thing. Type sits underneath in a calm row.
+- Each card links the whole tile, not just a "Book Now" button. The card itself is the link.
+- Room names are descriptive when possible. "The Garden Room" beats "Room 3."
+- Two lines of body. Specific. "A four-poster bed, the deepest tub in the inn, and a window that gets the morning light." beats "Spacious and elegant accommodations."
+- No "Book Now" button on the card. A small "View room" link, or no link at all if the whole tile is clickable.
+- Rates in monospaced type at the corner are a Logan flourish — it reads like a price list at a bakery, not a hotel chain.
+
+## What to watch for
+
+- Photos must share a feeling. If one is sun-drenched and golden and the next is cold-blue and overcast, the grid feels uneven. Ask the lead designer or photographer for a re-edit if they're far apart.
+- Crop ratios must match across all cards. Don't mix landscape and portrait.
+- Two lines of body really means two lines on desktop. If your copy is too long, it'll wrap to four and break the grid rhythm.
+- Mobile: cards stack to one column. Don't try to keep two-up on phone — the photos shrink too much.
+- Make sure each card actually links to a real room page, not a placeholder.
+
+<details>
+<summary>How to actually build it in Elementor</summary>
+
+Use a **Grid Container** (not Flexbox) for cleaner column control. **Columns: 3** on desktop, **2** on tablet, **1** on mobile. **Gap: 32px** desktop, 24px mobile.
+
+Each card is a Flexbox Container, **Direction: Column**, set as a **link wrapper** (Containers can be `<a>` tags — set Link → URL on the container itself, not the inner button).
+
+Inside each card, top to bottom:
+
+1. **Image widget**. Same crop ratio across every card (4:5 or 3:4 works well). Use a Global image size — typically `medium_large`. Alt text: "[room name] at [property name]".
+2. **Heading widget**. **HTML Tag: H3** (the rooms page H1 is the page title; H2 might be the section label like "Our rooms"; rooms themselves are H3). Global Font for headings.
+3. **Text Editor widget**. 2 lines of body copy. Global Font, body size.
+4. Optional: **Heading widget** with the rate. **HTML Tag: span** (custom HTML attribute — don't use a heading tag for a price). Use the mono Global Font slot if Logan has one set up.
+
+Set the container's **hover state**: a small image scale (1.02) and slightly darker background, no big shadow lift. Logan style is calm; cards should not bounce.
+
+Build one card fully, then **Save as Template** (Templates → My Templates), and re-insert for the rest. Edit copy and image per card. This keeps spacing identical across all of them.
+
+For the link: set on the **outer card container**, URL pointing to the room's single page. Open in same tab.
+
+Common mistakes: using Image Box widget (it traps you into one of Elementor's preset layouts — build the card from scratch with separate widgets); inconsistent image ratios; "Book Now" buttons inside each card (Logan style is the quiet link); forgetting H3 and using H2 inside cards (breaks heading hierarchy).
+
+</details>

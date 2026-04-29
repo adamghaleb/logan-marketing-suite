@@ -1,0 +1,84 @@
+---
+title: "Create a reusable room card template"
+slug: "02-create-a-reusable-room-card-template"
+order: 2
+estimatedMinutes: 25
+---
+
+## What you're doing
+
+The rooms page has six rooms. Each room is its own card — photo, name, two lines of copy. You could build six near-identical blocks by hand, but you'd spend an hour and probably end up with slightly inconsistent spacing across cards. Instead, you build one card, save it as a template, and drop that template six times. Every card is identical in structure, only the content changes.
+
+This is one of the highest-leverage habits you'll build. Anything that repeats — room cards, blog cards, amenity rows, CTA banners — gets templated once and reused.
+
+## Before you start
+
+You'll need:
+
+- The Figma frame for the rooms page (or the room card design)
+- One room's photo, name, and copy (you can use the first room as your reference)
+- 20–25 minutes for the first template; subsequent uses take 1–2 minutes per card
+
+## The plain-English steps
+
+1. **Build one card from scratch first.** Don't try to template before you know what the card actually is. Drop in a Container, set it to a column-direction layout, drop in the image, drop in the heading, drop in the body text. Match the Figma design. Get spacing right.
+
+2. **Use Globals for everything stylable.** Image size: pick a standard size. Heading font and color: pull from Globals. Body font and color: pull from Globals. If you've followed this rule, the card will automatically inherit any future style changes (when the lead tweaks Global Heading color, every card updates).
+
+3. **Confirm the card is fully self-contained.** It shouldn't depend on a parent container's padding or width. The card should look right on its own — drop it on a blank page mentally and see if it still works.
+
+4. **Save it as a template.** Right-click the card's container → Save as Template → Name it `room-card-[client-slug]`. Now it lives in your **Templates → My Templates** library.
+
+5. **Insert the template five more times.** On the rooms page, drop the template into the rooms grid container five more times. Edit each one's photo, name, and copy. Spacing stays identical because the structure is identical.
+
+6. **Test.** Preview the page. Are all six cards the same height? (They should be, since they all use the same image ratio and 2 lines of body copy.) Check mobile — does it stack to one column? Each card should look identical except for content.
+
+## Common gotchas
+
+- **You templated a card that included the page's section heading.** Don't include the "Our rooms" H2 in the template — that's a one-time thing, not a per-card thing. The template is just one card.
+- **You local-overrode a color on the first card before saving the template.** Now every inserted instance has the wrong color baked in. Fix: edit the card on the page (which updates that instance), or update the template itself by re-saving it.
+- **Card heights vary.** Usually because the body copy length varies. Standardize copy length to 2 lines max. If a room genuinely needs more, that's a different pattern (a "featured room" block, not a card in the grid).
+- **The image looks different ratios on different cards.** All photos must be the same crop ratio. If they're not, ask the lead or photographer for re-crops. Don't try to force-crop in CSS.
+
+## When you're done
+
+You have one saved template, six cards on the page using that template, and identical spacing across all of them. Editing the template later (right-click → Edit Template) lets you change all six cards at once. That's the leverage.
+
+<details>
+<summary>Literal Elementor clicks for saving and reusing the template</summary>
+
+**To save a template:**
+
+1. In the Elementor editor, navigate to the card you've built. The card should be a single Container holding the image, heading, and body text.
+2. Right-click the **container handle** (the small icon at the top-left of the container when selected) → **Save as Template**.
+3. In the dialog: Name = `room-card-[client-slug]` (e.g., `room-card-cedar-stone`). Type = stays as default.
+4. Click **Save**.
+
+**To insert a template:**
+
+1. Click the **folder icon** in the editor (or drag the **Template widget** in if you prefer).
+2. Switch to the **My Templates** tab.
+3. Find your saved template. Click **Insert**.
+4. Elementor asks "Apply settings?" — choose **Yes** the first time (so Globals stay in sync) or **No** to keep page settings as they are. **Yes** is usually right.
+5. The template drops in. Edit the image, heading, and body for that specific room.
+
+**To edit the template after the fact:**
+
+1. **Templates → Saved Templates** (in the WordPress admin) → find your template → **Edit with Elementor**.
+2. Make your change. Update.
+3. The template updates in the library, but **already-inserted instances do not update automatically**. This is a common surprise. To update existing instances, you need to delete them from the page and re-insert.
+4. If you want changes to propagate automatically across all instances, use **Global Widgets** instead of regular Saved Templates — but Global Widgets are an older Elementor pattern and Logan generally avoids them. Saved Templates + manual reinsert is the cleaner workflow.
+
+**Naming convention:**
+
+- `room-card-[client-slug]` — per-client room card.
+- `cta-banner-[client-slug]` — per-client CTA banner.
+- `amenity-row-[client-slug]` — per-client amenity row.
+- This keeps the My Templates library tidy when you've worked on 4 sites and have 30 templates saved.
+
+**When NOT to template:**
+
+- Highly bespoke one-off blocks (don't pollute the library with stuff you'll only ever use once).
+- Theme Builder elements (header/footer/single post template) — those use a different system: Theme Builder, not Saved Templates.
+
+</details>

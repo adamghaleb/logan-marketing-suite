@@ -1,0 +1,75 @@
+---
+title: "Footer"
+slug: "footer"
+order: 11
+---
+
+## What it is
+
+Three columns at the bottom of every page: contact info, a short site map, and a small "follow along" or newsletter snippet. Below those, a thin band of small print — copyright, accessibility statement link, "site by Logan Marketing." Quiet, useful, easy to skim.
+
+## When to reach for it
+
+On every page, always. The footer is part of the Theme Builder, not a per-page block. Build it once, attach it to all pages.
+
+## What makes it Logan
+
+- Three columns. Not four, not two. Three is the rhythm.
+- **Column 1**: contact. Address, phone (clickable), email (clickable), check-in hours.
+- **Column 2**: short site map. Six links max — Home, Rooms, About, Things to do, Contact, Blog. No "Privacy Policy" buried here as a link (that goes in the small print band below).
+- **Column 3**: short prompt + newsletter or social. "Stay in touch" + email field, or three social icons with the @handle.
+- Small print band below: copyright year (auto-update), accessibility link, privacy link, "site by Logan Marketing" with link.
+- Type is small but readable. Logan's footer is calmer than competitors — no logo grid, no awards display, no "we accept" credit-card icons.
+
+## What to watch for
+
+- Copyright year must auto-update (use a dynamic year, not a hardcoded number that goes stale).
+- Phone and email must be clickable (`tel:` and `mailto:` links). Visitors on mobile expect to tap and call.
+- Address should match Google Business Profile exactly. Comma placement, suite number, ZIP — match it character for character. NAP consistency (Name, Address, Phone) matters for local SEO.
+- Accessibility statement link is required if the inn claims any kind of ADA compliance (and most should — it's also a sign of care).
+- Don't try to be clever with footer animations. Footers are utility.
+- On mobile, the three columns should stack vertically. Don't try to keep them side-by-side.
+
+<details>
+<summary>How to actually build it in Elementor</summary>
+
+Footers live in the **Theme Builder**, not in individual pages. **WordPress Admin → Templates → Theme Builder → Footer → Add New**.
+
+Set **Display Conditions** to "Entire Site" (so it appears everywhere) once you're done.
+
+Build the footer with Flexbox Containers:
+
+**Outer container**: Full Width, Padding 64px top / 32px bottom, background a slightly muted brand color.
+
+**Inner container** (the three columns): Boxed (~1100px), Direction Row on desktop, Column on tablet/mobile, Gap 48px.
+
+**Column 1 — Contact**:
+
+- Heading (H4 or span — Logan style usually skips the heading and just runs the info as text).
+- Text Editor with address (formatted with line breaks, no comma chains).
+- Text Editor with phone, formatted as `tel:` link.
+- Text Editor with email, formatted as `mailto:` link.
+- Check-in hours line.
+
+**Column 2 — Site map**:
+
+- Use Elementor's **Nav Menu widget**. Create a WordPress menu in **Appearance → Menus** called "Footer Menu" with 6 links.
+- Vertical layout.
+- Use Global Font, small body size.
+
+**Column 3 — Stay in touch**:
+
+- Either a small newsletter form (see newsletter-signup playbook entry, simplified to a single inline field) or three social icons with @handles.
+- For social icons, use **Social Icons widget**, set color to Global Colors brand, size 24px.
+
+**Small print band** (separate Flexbox container below the three columns):
+
+- Direction Row, Justify Content Space Between, Align Items Center, top border 1px in muted brand color.
+- Left: dynamic year + property name + "All rights reserved." Use Elementor's dynamic copyright shortcode, or `&copy; [year] [Property Name]`.
+- Right: small inline links — Privacy, Accessibility, "site by Logan Marketing."
+
+For the dynamic year, use an HTML widget with `<span id="year"></span>` and a small JS snippet, OR a dynamic shortcode plugin, OR just type the current year and put a calendar reminder to update it (not ideal but acceptable).
+
+Common mistakes: hardcoding the copyright year, using non-clickable phone numbers, addresses that don't match Google Business Profile, footer that doesn't stack on mobile, including too many links (the site map is a shortcut, not a sitemap).
+
+</details>

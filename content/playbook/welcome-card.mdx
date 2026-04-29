@@ -1,0 +1,55 @@
+---
+title: "Welcome card"
+slug: "welcome-card"
+order: 2
+---
+
+## What it is
+
+A short paragraph from the innkeeper, signed. Three or four sentences, set generously, with a handwritten-looking signature underneath. It sits just below the hero on the home page and tells the guest who actually runs this place.
+
+## When to reach for it
+
+On almost every home page. Also on "About" or "Our story" pages where you want the owner's voice up top before the longer history. Skip it if the property is a corporate group — this only works when there's a real human to sign it.
+
+## What makes it Logan
+
+- Names the innkeeper. "Maggie & Tom" beats "Our team."
+- One specific sensory detail — the sourdough they bake on Tuesdays, the dog who sits under the breakfast table, the porch light that stays on until eleven.
+- Short. Long enough to feel personal, short enough to read in fifteen seconds.
+- The signature is an SVG, not a font that mimics handwriting. Real ink scanned in if possible.
+- No "Welcome!" headline above it. The card itself is the welcome.
+
+## What to watch for
+
+- AI-flavor copy gives this away fast. Watch for "We pride ourselves on" or "Our passion is hospitality." If you see those, send the copy back to the client (or rewrite it with their permission) using one specific detail they've actually told you.
+- Don't center-align long paragraphs. Left-align reads warmer and is easier on the eye.
+- The signature shouldn't be larger than the body text by more than 1.5x. Big swooping signatures look like a real estate flyer.
+- Photo of the innkeepers can sit beside the card on desktop, but should stack above the copy on mobile, not get cropped into a circle the size of a thumbnail.
+
+<details>
+<summary>How to actually build it in Elementor</summary>
+
+Use a Flexbox Container, **Direction: Row** on desktop, **Direction: Column** on tablet and mobile. **Width: Boxed** (max ~1100px). **Gap: 48px** between the photo and the text on desktop, 24px on stacked.
+
+Two children:
+
+1. **Image widget** — innkeeper(s), portrait or 4:5 crop. **Image Size: Medium Large** (768px). Alt text: "[innkeeper names], [property name]".
+2. **Inner container** holding the body text and signature, vertically.
+
+For the body:
+
+- **Text Editor widget** (not Heading — this is body copy). Global Font for body, default size, line-height 1.6.
+- 3–4 sentences max. If the client gave you 8 sentences, ask which detail matters most and trim.
+
+For the signature:
+
+- **Image widget** with the SVG signature file. **Width: ~180px** on desktop, ~140px mobile. Margin-top: 16px.
+- Alt text: "Signed by [innkeeper name]" (so screen readers don't announce it as "image").
+- If no signature exists yet, set the names in the script-style font from Global Fonts (Logan keeps one slot for this) and flag it for the lead designer to swap in a real signature later.
+
+Save the whole inner container as a **Saved Template** named `welcome-card-[client-slug]` so you can drop it into the About page without rebuilding it.
+
+Common mistakes: using a Heading widget for the paragraph (breaks heading hierarchy), centering the text (cold), oversizing the signature, or letting the photo dominate on mobile because you forgot to switch direction.
+
+</details>
