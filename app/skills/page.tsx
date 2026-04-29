@@ -16,6 +16,19 @@ function cardClassName(card: SkillCard): string {
 export default function SkillsIndexPage() {
   return (
     <main className="page">
+      <Link href="/" className="back-link">
+        <span
+          style={{
+            fontFamily: "var(--hand)",
+            fontSize: 22,
+            color: "var(--lavigo-400)",
+            lineHeight: 1,
+          }}
+        >
+          ←
+        </span>
+        <span>back to the toolkit</span>
+      </Link>
       <section className="section" style={{ marginTop: 0 }}>
         <div className="section-head">
           <span className="section-num">i.</span>

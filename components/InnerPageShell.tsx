@@ -30,9 +30,32 @@ export function InnerPageShell({
   sidebar,
   children,
 }: InnerPageShellProps) {
+  const parentCrumb = breadcrumbs
+    .slice(0, -1)
+    .reverse()
+    .find((crumb) => crumb.href);
+  const backHref = parentCrumb?.href ?? "/";
+  const backLabel = parentCrumb?.label
+    ? `back to ${parentCrumb.label}`
+    : "back to the toolkit";
+
   return (
     <main className="page">
       <div className="page-inner" data-screen-label={`Logan suite — ${title}`}>
+        <Link href={backHref} className="back-link">
+          <span
+            style={{
+              fontFamily: "var(--hand)",
+              fontSize: 22,
+              color: "var(--lavigo-400)",
+              lineHeight: 1,
+            }}
+          >
+            ←
+          </span>
+          <span>{backLabel}</span>
+        </Link>
+
         <nav
           aria-label="Breadcrumb"
           style={{
@@ -73,55 +96,15 @@ export function InnerPageShell({
         {intro && <p className="inner-intro">{intro}</p>}
 
         {sidebar && sidebar.length > 0 ? (
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "minmax(0, 220px) minmax(0, 1fr)",
-              gap: 32,
-              alignItems: "start",
-            }}
-            className="inner-grid"
-          >
-            <aside
-              aria-label="Section navigation"
-              style={{
-                position: "sticky",
-                top: 24,
-                background: "var(--paper-2)",
-                border: "1px solid var(--line)",
-                borderRadius: 14,
-                padding: 16,
-                fontFamily: "var(--sans)",
-                fontSize: 13.5,
-                lineHeight: 1.5,
-              }}
-            >
-              <ul
-                style={{
-                  listStyle: "none",
-                  margin: 0,
-                  padding: 0,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 6,
-                }}
-              >
+          <div className="inner-grid">
+            <aside className="inner-grid-aside" aria-label="Section navigation">
+              <ul className="inner-grid-aside-list">
                 {sidebar.map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      style={{
-                        display: "block",
-                        padding: "6px 8px",
-                        borderRadius: 8,
-                        color: item.active
-                          ? "var(--lavigo-600)"
-                          : "var(--ink-2)",
-                        background: item.active
-                          ? "var(--lavigo-50)"
-                          : "transparent",
-                        textDecoration: "none",
-                      }}
+                      className="inner-grid-aside-item"
+                      data-active={item.active ? "true" : "false"}
                     >
                       {item.label}
                     </Link>

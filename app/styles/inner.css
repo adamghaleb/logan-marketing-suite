@@ -106,25 +106,6 @@ body[data-mode="dark"] .practice-check {
     transform: translateY(0);
   }
 }
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px 6px 8px;
-  border-radius: 99px;
-  font-family: var(--sans);
-  font-size: 13.5px;
-  color: var(--ink-2);
-  background: transparent;
-  border: 1px dashed var(--line);
-  margin-bottom: 28px;
-  transition: all 0.15s;
-}
-.back-link:hover {
-  background: var(--lovego-50);
-  border-color: var(--lovego-200);
-  color: var(--lovego-600);
-}
 .inner-eyebrow {
   font-family: var(--hand);
   font-size: 22px;
