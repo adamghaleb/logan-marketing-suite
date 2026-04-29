@@ -1,0 +1,135 @@
+/* BingusCat — pixel-ish SVG cat with reading glasses.
+   Idle/talk/blink animations are pure CSS keyframes (no rAF). */
+
+.cat {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Tail wags slowly during idle, faster while talking */
+@keyframes wag {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+.tail {
+  transform-origin: 50px 60px;
+  animation: wag 2.4s ease-in-out infinite;
+}
+
+.cat[data-state="talking"] .tail {
+  animation-duration: 1.1s;
+}
+
+/* Floating sparkles around the cat */
+@keyframes sparkle {
+  0%,
+  80%,
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  20%,
+  60% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.sparkle {
+  opacity: 0;
+  animation: sparkle 4s ease-in-out infinite;
+}
+
+.sparkleTwo {
+  animation-delay: 1.3s;
+}
+
+.sparkleThree {
+  animation-delay: 2.6s;
+}
+
+/* Idle body breathing — soft scale on the body ellipse */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.015);
+  }
+}
+
+.body {
+  transform-origin: 50px 64px;
+  animation: breathe 3.4s ease-in-out infinite;
+}
+
+/* Blink — eyelids drop on the white circles every ~5s.
+   We animate via clip-path on a transparent overlay so the eye whites
+   appear to "close" without stripping the SVG structure. */
+@keyframes blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  94%,
+  97% {
+    transform: scaleY(0.05);
+  }
+}
+
+.eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink 5.2s ease-in-out infinite;
+}
+
+.eyeRight {
+  animation-delay: 0.04s;
+}
+
+/* When talking, the mouth halves "flap" subtly */
+@keyframes mouthTalk {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.8px);
+  }
+}
+
+.cat[data-state="talking"] .mouthLeft,
+.cat[data-state="talking"] .mouthRight {
+  animation: mouthTalk 0.34s ease-in-out infinite;
+}
+
+.cat[data-state="talking"] .mouthRight {
+  animation-delay: 0.17s;
+}
+
+/* Reading-glasses bridge gets a tiny shimmer to remind us they're glass */
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.glasses {
+  animation: shimmer 4.6s ease-in-out infinite;
+}
