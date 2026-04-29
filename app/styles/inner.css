@@ -414,6 +414,185 @@ body[data-mode="dark"] .practice-check {
   }
 }
 
+/* MDX prose used by InnerPageShell — dossier, playbook, tutorials, primer pages.
+   Mirrors .skill-mdx so any markdown content rendered through InnerPageShell
+   gets headings, lists, tables, code blocks, and quotes styled consistently. */
+.mdx-body {
+  max-width: 720px;
+  color: var(--ink-2);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.mdx-body h1 {
+  display: none;
+}
+.mdx-body h2 {
+  font-family: var(--header);
+  font-size: 26px;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: var(--lavigo-800);
+  margin: 36px 0 12px;
+  font-weight: 500;
+}
+.mdx-body h3 {
+  font-family: var(--header);
+  font-size: 19px;
+  line-height: 1.25;
+  color: var(--lavigo-800);
+  margin: 24px 0 8px;
+  font-weight: 500;
+}
+.mdx-body h4 {
+  font-family: var(--header);
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--lavigo-600);
+  margin: 20px 0 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.mdx-body p {
+  margin: 0 0 16px;
+}
+.mdx-body strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.mdx-body em {
+  font-style: italic;
+}
+.mdx-body a {
+  color: var(--lavigo-600);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.mdx-body a:hover {
+  color: var(--lavigo-400);
+}
+.mdx-body ul,
+.mdx-body ol {
+  margin: 0 0 18px;
+  padding-left: 22px;
+}
+.mdx-body ul {
+  list-style: disc;
+}
+.mdx-body ol {
+  list-style: decimal;
+}
+.mdx-body li {
+  margin: 6px 0;
+  padding-left: 4px;
+}
+.mdx-body li::marker {
+  color: var(--lavigo-400);
+}
+.mdx-body blockquote {
+  margin: 18px 0;
+  padding: 12px 18px;
+  border-left: 3px solid var(--lavigo-200);
+  background: var(--paper-2);
+  border-radius: 0 10px 10px 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-style: italic;
+}
+.mdx-body code {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  background: var(--paper-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 5px;
+  padding: 1px 6px;
+}
+.mdx-body pre {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  margin: 18px 0;
+}
+.mdx-body pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.mdx-body hr {
+  border: none;
+  border-top: 1px dashed var(--line-soft);
+  margin: 32px 0;
+}
+.mdx-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0 22px;
+  font-size: 14.5px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  display: block;
+  overflow-x: auto;
+}
+.mdx-body thead {
+  background: var(--lavigo-50);
+}
+.mdx-body th,
+.mdx-body td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px dashed var(--line-soft);
+  vertical-align: top;
+}
+.mdx-body th {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--lavigo-600);
+  font-weight: 600;
+  border-bottom: 1px solid var(--line);
+}
+.mdx-body tbody tr:last-child td {
+  border-bottom: none;
+}
+.mdx-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 16px 0;
+}
+.mdx-body details {
+  margin: 22px 0;
+  padding: 14px 18px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.mdx-body details[open] {
+  border-color: var(--lavigo-200);
+}
+.mdx-body summary {
+  cursor: pointer;
+  font-family: var(--header);
+  font-size: 15px;
+  color: var(--lavigo-600);
+  list-style: none;
+}
+.mdx-body summary::-webkit-details-marker {
+  display: none;
+}
+.mdx-body > *:first-child {
+  margin-top: 0;
+}
+
 /* Skill page MDX prose */
 .skill-mdx {
   max-width: 680px;

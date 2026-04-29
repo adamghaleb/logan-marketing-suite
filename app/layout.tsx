@@ -8,6 +8,7 @@ import {
   getDisplayFontVar,
 } from "@/lib/mily-tweaks";
 import "./globals.css";
+import "./styles/inner.css";
 
 export const metadata: Metadata = {
   title: MILY_PAGE_TITLE,
