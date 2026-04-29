@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mily-mcp": {
+      "command": "npx",
+      "args": ["-y", "mily-mcp"],
+      "env": {
+        "WP_USER": "<your wp user>",
+        "WP_APP_PASSWORD": "<application password>"
+      }
+    }
+  }
+}
