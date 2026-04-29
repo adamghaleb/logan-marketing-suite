@@ -48,6 +48,80 @@ export const SKILL_SLUGS: readonly SkillSlug[] = [
   "logan-pm-handoff",
 ];
 
+export interface ToolkitCategory {
+  readonly num: string;
+  readonly title: string;
+  readonly description: string;
+  readonly meta: string;
+  readonly route?: string;
+  readonly comingSoon?: boolean;
+  readonly tape?: boolean;
+  readonly tapePeach?: boolean;
+}
+
+export const TOOLKIT_CATEGORIES: readonly ToolkitCategory[] = [
+  {
+    num: "i.",
+    title: "Claude Code skills",
+    description:
+      "Nine custom skills that drop into Claude Code. Page builds, component picking, Figma → Elementor, QA passes.",
+    meta: "9 skills",
+    route: "/skills",
+    tape: true,
+  },
+  {
+    num: "ii.",
+    title: "Tutorials",
+    description:
+      "Step-by-step walkthroughs for the things you'll do most often: hero builds, room cards, mobile fixes, page meta.",
+    meta: "guided practice",
+    route: "/tutorials",
+  },
+  {
+    num: "iii.",
+    title: "Playbook",
+    description:
+      "Logan's section library. The patterns Logan ships over and over — open one, see what makes it Logan.",
+    meta: "section patterns",
+    route: "/playbook",
+    tape: true,
+    tapePeach: true,
+  },
+  {
+    num: "iv.",
+    title: "Templates",
+    description:
+      "Three example boutique-inn pages, fully built. Click into any preview to see the structural pattern.",
+    meta: "Elementor mocks",
+    route: "/templates",
+  },
+  {
+    num: "v.",
+    title: "Logan voice dossier",
+    description:
+      "How Logan writes — tone, structure, do's and don'ts, before-and-afters from real pages.",
+    meta: "voice + tone",
+    route: "/dossier",
+  },
+  {
+    num: "vi.",
+    title: "Daily practice",
+    description:
+      "A small pattern a day — recreate it in Elementor. Builds the muscles you'll use on real briefs.",
+    meta: "daily reps",
+    route: "/practice",
+    tape: true,
+  },
+  {
+    num: "vii.",
+    title: "MCP server",
+    description:
+      "Direct staging WordPress ops from Claude — drafts only, never production.",
+    meta: "coming soon",
+    comingSoon: true,
+  },
+];
+
 export const SKILL_CARDS: readonly SkillCard[] = [
   {
     slug: "logan-elementor-page-build",

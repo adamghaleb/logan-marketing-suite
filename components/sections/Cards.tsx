@@ -1,11 +1,26 @@
 import Link from "next/link";
-import { SKILL_CARDS, type SkillCard } from "@/lib/constants";
+import { TOOLKIT_CATEGORIES, type ToolkitCategory } from "@/lib/constants";
 
-function cardClassName(card: SkillCard): string {
+function cardClassName(category: ToolkitCategory): string {
   const parts = ["card"];
-  if (card.tape) parts.push("tape");
-  if (card.tapePeach) parts.push("tape-peach");
+  if (category.comingSoon) parts.push("card-soon");
+  if (category.tape) parts.push("tape");
+  if (category.tapePeach) parts.push("tape-peach");
   return parts.join(" ");
+}
+
+function CardBody({ category }: { readonly category: ToolkitCategory }) {
+  return (
+    <>
+      <span className="card-num">{category.num}</span>
+      <h3>{category.title}</h3>
+      <p>{category.description}</p>
+      <div className="card-meta">{category.meta}</div>
+      {category.comingSoon ? (
+        <span className="card-soon-pill">coming soon</span>
+      ) : null}
+    </>
+  );
 }
 
 export function Cards() {
@@ -15,21 +30,27 @@ export function Cards() {
         <span className="section-num">i.</span>
         <h2 className="section-title">your toolkit</h2>
         <span className="section-line" />
-        <span className="section-tag">nine Claude skills, Logan-shaped</span>
+        <span className="section-tag">seven ways in</span>
       </div>
       <div className="cards">
-        {SKILL_CARDS.map((card) => (
-          <Link
-            key={card.slug}
-            href={card.route}
-            className={cardClassName(card)}
-          >
-            <span className="card-num">{card.num}</span>
-            <h3>{card.title}</h3>
-            <p>{card.description}</p>
-            <div className="card-meta">{card.meta}</div>
-          </Link>
-        ))}
+        {TOOLKIT_CATEGORIES.map((category) => {
+          if (category.comingSoon || !category.route) {
+            return (
+              <div key={category.title} className={cardClassName(category)}>
+                <CardBody category={category} />
+              </div>
+            );
+          }
+          return (
+            <Link
+              key={category.title}
+              href={category.route}
+              className={cardClassName(category)}
+            >
+              <CardBody category={category} />
+            </Link>
+          );
+        })}
       </div>
     </section>
   );
