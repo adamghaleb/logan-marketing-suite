@@ -8,6 +8,10 @@ When making a decision worth logging, add an entry with the date, what was decid
 
 ## 2026-04-29
 
+**Scaffold port: Milkyway swaps in for Gloock as `--display`.** Per the design handoff direction, the local Milkyway-DEMO.ttf becomes the display face exposed via `next/font/local`. Helvetica Neue is exposed as `--amp` through a system-font stack (set inline on `<body>`) so the ampersand glyph works on macOS without a bundled file and degrades gracefully elsewhere. Tailwind v4 wired via `@tailwindcss/postcss`; `globals.css` keeps the design CSS verbatim and just adds `@import "tailwindcss";` at the top plus a small `.amp` utility.
+
+## 2026-04-29
+
 **Bingus character locked.** Goofy nerdy cat. Calls her Mily. Sprinkled-but-rare "It is I, Bingus." Mildly chaotic allowed. Admits cat-ness when he doesn't know things. Two modes: casual (full Bingus) and locked-in (one Bingus-ism, then crisp help). All voice rules in `BINGUS.md`.
 
 ## 2026-04-29
