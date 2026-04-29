@@ -14,8 +14,12 @@
 }
 
 .bubble {
-  background: var(--paper);
-  border: 1px solid var(--line);
+  background: linear-gradient(
+    180deg,
+    var(--lavigo-50, oklch(0.96 0.04 292)),
+    var(--paper-2)
+  );
+  border: 1px solid var(--lavigo-100, oklch(0.88 0.05 292));
   border-radius: 18px;
   border-bottom-right-radius: 6px;
   padding: 14px 16px;
@@ -233,10 +237,36 @@
   background: transparent;
   border: none;
   padding: 0;
+  overflow: visible;
 }
 
 .cat:hover {
   transform: rotate(-4deg) scale(1.04);
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translate(-50%, 0) scale(0.55);
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -48px) scale(1.05);
+    opacity: 0;
+  }
+}
+
+.heart {
+  position: absolute;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  transform: translate(-50%, 0);
+  animation: floatHeart 1s ease-out forwards;
+  filter: drop-shadow(0 1px 2px oklch(0.7 0.18 18 / 0.4));
 }
 
 @media (max-width: 640px) {

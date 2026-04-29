@@ -116,6 +116,10 @@ export default function Bingus({
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [open, setOpen] = useState(true);
+  const [isPetting, setIsPetting] = useState(false);
+  const [hearts, setHearts] = useState<
+    ReadonlyArray<{ id: string; x: number; delay: number }>
+  >([]);
   const logRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -164,13 +168,31 @@ export default function Bingus({
     setOpen(false);
   }, []);
 
-  const handleWake = useCallback(() => {
+  const handleCatClick = useCallback(() => {
     setOpen(true);
+    setIsPetting(true);
+    const burst = Array.from({ length: 5 }, () => ({
+      id: makeMessageId(),
+      x: Math.round((Math.random() - 0.5) * 36),
+      delay: Math.round(Math.random() * 140),
+    }));
+    setHearts((previous) => [...previous, ...burst]);
+    const burstIds = new Set(burst.map((h) => h.id));
+    window.setTimeout(() => {
+      setHearts((previous) => previous.filter((h) => !burstIds.has(h.id)));
+    }, 1100);
+    window.setTimeout(() => {
+      setIsPetting(false);
+    }, 900);
   }, []);
 
   if (!bingusOn) return null;
 
-  const catState = isSending ? "talking" : "idle";
+  const catState: "idle" | "talking" | "petting" = isPetting
+    ? "petting"
+    : isSending
+      ? "talking"
+      : "idle";
 
   return (
     <div className={styles.wrap} aria-live="polite">
@@ -245,10 +267,27 @@ export default function Bingus({
       <button
         type="button"
         className={styles.cat}
-        onClick={handleWake}
-        aria-label={open ? "Bingus is listening" : "Wake Bingus up"}
+        onClick={handleCatClick}
+        aria-label={open ? "Pet Bingus" : "Wake Bingus up"}
       >
         <BingusCat state={catState} />
+        {hearts.map((heart) => (
+          <svg
+            key={heart.id}
+            className={styles.heart}
+            style={{
+              left: `calc(50% + ${heart.x}px)`,
+              animationDelay: `${heart.delay}ms`,
+            }}
+            viewBox="0 0 16 16"
+            aria-hidden="true"
+          >
+            <path
+              d="M 8 14 C 8 11, 4 9, 4 5 C 4 2, 7 1, 8 4 C 9 1, 12 2, 12 5 C 12 9, 8 11, 8 14 Z"
+              fill="oklch(0.7 0.18 18)"
+            />
+          </svg>
+        ))}
       </button>
     </div>
   );
