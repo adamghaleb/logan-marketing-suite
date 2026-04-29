@@ -33,5 +33,5 @@ export function getDisplayFontVar(font: MilyDisplayFont): string {
   return DISPLAY_FONT_VARS[font];
 }
 
-export const MILY_PAGE_TITLE = "mily.computer";
+export const MILY_PAGE_TITLE = "the Mily Suite — for Mily, by Adam";
 export const MILY_PLACEHOLDER_HEADING = "Mily's Home";

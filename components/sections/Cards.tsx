@@ -15,7 +15,7 @@ export function Cards() {
         <span className="section-num">i.</span>
         <h2 className="section-title">your toolkit</h2>
         <span className="section-line" />
-        <span className="section-tag">nine skills, all yours</span>
+        <span className="section-tag">nine Claude skills, Logan-shaped</span>
       </div>
       <div className="cards">
         {SKILL_CARDS.map((card) => (
@@ -25,7 +25,6 @@ export function Cards() {
             className={cardClassName(card)}
           >
             <span className="card-num">{card.num}</span>
-            <div className="card-icon">{card.icon}</div>
             <h3>{card.title}</h3>
             <p>{card.description}</p>
             <div className="card-meta">{card.meta}</div>

@@ -1,7 +1,6 @@
 export const SITE_NAME = "Mily";
 export const FROM_NAME = "Adam";
-export const SITE_DOMAIN = "mily.computer";
-export const SITE_TAGLINE = "the Logan Marketing suite";
+export const SITE_TAGLINE = "the Logan Marketing Suite";
 
 export type SkillSlug =
   | "logan-elementor-page-build"
@@ -18,7 +17,6 @@ export interface SkillCard {
   readonly slug: SkillSlug;
   readonly route: string;
   readonly num: string;
-  readonly icon: string;
   readonly title: string;
   readonly description: string;
   readonly meta: string;
@@ -55,31 +53,28 @@ export const SKILL_CARDS: readonly SkillCard[] = [
     slug: "logan-elementor-page-build",
     route: SKILL_ROUTES["logan-elementor-page-build"],
     num: "i.",
-    icon: "🪴",
-    title: "Build a page",
+    title: "Brief → page sections",
     description:
-      "Section-by-section build plan from a brief. Hero, intro, content blocks, CTA, QA at the end. Tailored to Logan's inside template.",
-    meta: "page-build skill",
+      "A brief in, a section-by-section build plan out. Hero, intro blocks, CTA, mobile pass, end-of-page QA — built around Logan's inside template.",
+    meta: "page builder",
     tape: true,
   },
   {
     slug: "logan-component-picker",
     route: SKILL_ROUTES["logan-component-picker"],
     num: "ii.",
-    icon: "✎",
-    title: "Pick the right section",
+    title: "Component picker",
     description:
-      "A short Q&A that names the exact Logan component for the chunk of copy in front of you. Walks you out of blank-page paralysis.",
-    meta: "component picker",
+      "Paste a chunk of copy, get the exact Logan section to use. Walks you out of blank-page paralysis without overthinking it.",
+    meta: "copy → component",
   },
   {
     slug: "logan-hospitality-copy-seo",
     route: SKILL_ROUTES["logan-hospitality-copy-seo"],
     num: "iii.",
-    icon: "❀",
-    title: "Write copy + SEO meta",
+    title: "Hospitality copy & SEO",
     description:
-      "Hospitality voice for Logan clients — innkeepers, breakfast, the dog. Plus meta titles, descriptions, alt text, FAQ ideas.",
+      "Innkeeper voice — the porch, the breakfast, the dog. Plus meta titles, descriptions, alt text, and FAQs in Logan's tone.",
     meta: "voice + meta",
     tape: true,
     tapePeach: true,
@@ -88,52 +83,47 @@ export const SKILL_CARDS: readonly SkillCard[] = [
     slug: "logan-figma-handoff",
     route: SKILL_ROUTES["logan-figma-handoff"],
     num: "iv.",
-    icon: "✿",
-    title: "Read a Figma file",
+    title: "Figma → Elementor",
     description:
-      "Turns a lead designer's Figma file into Elementor steps. What to ask, what to figure out, what not to redesign.",
-    meta: "Figma → Elementor",
+      "Turns the lead designer's Figma file into Elementor steps. What to ask before you start, what to figure out, what not to redesign.",
+    meta: "Figma to Elementor",
   },
   {
     slug: "logan-elementor-troubleshoot",
     route: SKILL_ROUTES["logan-elementor-troubleshoot"],
     num: "v.",
-    icon: "✦",
-    title: "Fix something broken",
+    title: "Elementor troubleshooter",
     description:
-      "Calm symptom → diagnosis → fix walkthroughs for the Elementor problems you'll actually hit. Ordered by frequency.",
-    meta: "troubleshoot",
+      "Symptom → cause → fix walkthroughs for the breakage you'll actually hit — column overflows, mobile spacing, font swaps, plugin conflicts.",
+    meta: "diagnose & fix",
   },
   {
     slug: "logan-elementor-qa",
     route: SKILL_ROUTES["logan-elementor-qa"],
     num: "vi.",
-    icon: "♡",
-    title: "Check my work",
+    title: "Pre-handoff QA pass",
     description:
-      "Pre-handoff audit. Headings, alt text, links, mobile layout, brand consistency, page meta. Pass / fail with notes.",
-    meta: "QA pass",
+      "Audits headings, alt text, link integrity, mobile layout, brand consistency, and page meta. Returns pass/fail with concrete notes.",
+    meta: "QA checklist",
     tape: true,
   },
   {
     slug: "logan-elementor-template-json",
     route: SKILL_ROUTES["logan-elementor-template-json"],
     num: "vii.",
-    icon: "✱",
-    title: "Make an Elementor template",
+    title: "Elementor template JSON",
     description:
-      "Generates a valid Elementor `.json` template you can import. Modern flexbox containers. Always import to staging first.",
-    meta: "template JSON",
+      "Generates a valid Elementor `.json` you can import. Modern flex containers, Logan-shaped defaults, staging-first workflow baked in.",
+    meta: "importable JSON",
   },
   {
     slug: "logan-staging-automation",
     route: SKILL_ROUTES["logan-staging-automation"],
     num: "viii.",
-    icon: "❖",
-    title: "Work on staging",
+    title: "Staging WordPress ops",
     description:
-      "Safe REST/CLI ops on a staging WordPress site. Drafts only, never auto-publishes, refuses to touch production.",
-    meta: "staging only",
+      "Safe REST/CLI ops on a staging WordPress site. Drafts only, never auto-publishes, refuses to touch production no matter how nicely you ask.",
+    meta: "drafts on staging",
     tape: true,
     tapePeach: true,
   },
@@ -141,10 +131,9 @@ export const SKILL_CARDS: readonly SkillCard[] = [
     slug: "logan-pm-handoff",
     route: SKILL_ROUTES["logan-pm-handoff"],
     num: "ix.",
-    icon: "✉",
-    title: "Write a handoff",
+    title: "PM handoff message",
     description:
-      "Short, structured PM handoff message. What was built, deviations, missing inputs, open questions. No defensive language.",
-    meta: "handoff message",
+      "Tight, structured handoff — what was built, what changed from spec, what's missing, what you're unsure of. No defensive padding.",
+    meta: "handoff note",
   },
 ];
