@@ -432,3 +432,164 @@ body[data-mode="dark"] .practice-check {
     grid-template-columns: 1fr;
   }
 }
+
+/* Skill page MDX prose */
+.skill-mdx {
+  max-width: 680px;
+  color: var(--ink-2);
+  font-size: 16px;
+  line-height: 1.65;
+}
+.skill-mdx h1 {
+  display: none; /* the page-inner h1 already shows the title from frontmatter */
+}
+.skill-mdx h2 {
+  font-family: var(--header);
+  font-size: 26px;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: var(--lavigo-800);
+  margin: 36px 0 12px;
+  font-weight: 400;
+}
+.skill-mdx h3 {
+  font-family: var(--header);
+  font-size: 19px;
+  line-height: 1.25;
+  color: var(--lavigo-800);
+  margin: 24px 0 8px;
+  font-weight: 400;
+}
+.skill-mdx p {
+  margin: 0 0 14px;
+}
+.skill-mdx blockquote {
+  margin: 14px 0;
+  padding: 10px 16px;
+  border-left: 3px solid var(--lavigo-200);
+  background: var(--paper-2);
+  border-radius: 0 8px 8px 0;
+  color: var(--ink);
+  font-family: var(--serif, var(--header));
+  font-style: italic;
+}
+.skill-mdx ul,
+.skill-mdx ol {
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+.skill-mdx li {
+  margin: 4px 0;
+}
+.skill-mdx a {
+  color: var(--lavigo-600);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.skill-mdx a:hover {
+  color: var(--lavigo-400);
+}
+.skill-mdx code {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  background: var(--paper-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 5px;
+  padding: 1px 6px;
+}
+.skill-mdx pre {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  margin: 14px 0 18px;
+}
+.skill-mdx pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.skill-mdx hr {
+  border: none;
+  border-top: 1px dashed var(--line-soft);
+  margin: 28px 0;
+}
+.skill-mdx details {
+  margin: 22px 0 0;
+  padding: 14px 18px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.skill-mdx details[open] {
+  border-color: var(--lavigo-200);
+}
+.skill-mdx summary {
+  cursor: pointer;
+  font-family: var(--header);
+  font-size: 15px;
+  color: var(--lavigo-600);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.skill-mdx summary::-webkit-details-marker {
+  display: none;
+}
+.skill-mdx summary::before {
+  content: "+";
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--lavigo-400);
+  width: 14px;
+  display: inline-block;
+}
+.skill-mdx details[open] > summary::before {
+  content: "−";
+}
+.skill-mdx details[open] > *:not(summary) {
+  margin-top: 12px;
+}
+
+/* Next-skill footer link */
+.skill-next {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  margin: 48px 0 0;
+  padding: 18px 22px;
+  background: var(--paper-2);
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+.skill-next:hover {
+  border-color: var(--lavigo-200);
+  background: var(--lavigo-50);
+}
+.skill-next-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+.skill-next-title {
+  font-family: var(--header);
+  font-size: 18px;
+  color: var(--lavigo-800);
+  letter-spacing: -0.005em;
+}
+.skill-next-arrow {
+  font-family: var(--mono);
+  font-size: 18px;
+  color: var(--lavigo-400);
+}

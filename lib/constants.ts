@@ -4,15 +4,15 @@ export const SITE_DOMAIN = "mily.computer";
 export const SITE_TAGLINE = "the Logan Marketing suite";
 
 export type SkillSlug =
-  | "layout-fundamentals"
-  | "tone-and-voice"
-  | "wordpress-and-elementor"
-  | "accessibility-basics"
-  | "responsive-design"
-  | "design-systems-on-a-budget"
-  | "content-and-seo"
-  | "performance-and-images"
-  | "handoff-and-feedback";
+  | "logan-elementor-page-build"
+  | "logan-component-picker"
+  | "logan-hospitality-copy-seo"
+  | "logan-figma-handoff"
+  | "logan-elementor-troubleshoot"
+  | "logan-elementor-qa"
+  | "logan-elementor-template-json"
+  | "logan-staging-automation"
+  | "logan-pm-handoff";
 
 export interface SkillCard {
   readonly slug: SkillSlug;
@@ -27,112 +27,124 @@ export interface SkillCard {
 }
 
 export const SKILL_ROUTES: Readonly<Record<SkillSlug, string>> = {
-  "layout-fundamentals": "/skills/layout-fundamentals",
-  "tone-and-voice": "/skills/tone-and-voice",
-  "wordpress-and-elementor": "/skills/wordpress-and-elementor",
-  "accessibility-basics": "/skills/accessibility-basics",
-  "responsive-design": "/skills/responsive-design",
-  "design-systems-on-a-budget": "/skills/design-systems-on-a-budget",
-  "content-and-seo": "/skills/content-and-seo",
-  "performance-and-images": "/skills/performance-and-images",
-  "handoff-and-feedback": "/skills/handoff-and-feedback",
+  "logan-elementor-page-build": "/skills/logan-elementor-page-build",
+  "logan-component-picker": "/skills/logan-component-picker",
+  "logan-hospitality-copy-seo": "/skills/logan-hospitality-copy-seo",
+  "logan-figma-handoff": "/skills/logan-figma-handoff",
+  "logan-elementor-troubleshoot": "/skills/logan-elementor-troubleshoot",
+  "logan-elementor-qa": "/skills/logan-elementor-qa",
+  "logan-elementor-template-json": "/skills/logan-elementor-template-json",
+  "logan-staging-automation": "/skills/logan-staging-automation",
+  "logan-pm-handoff": "/skills/logan-pm-handoff",
 };
+
+export const SKILL_SLUGS: readonly SkillSlug[] = [
+  "logan-elementor-page-build",
+  "logan-component-picker",
+  "logan-hospitality-copy-seo",
+  "logan-figma-handoff",
+  "logan-elementor-troubleshoot",
+  "logan-elementor-qa",
+  "logan-elementor-template-json",
+  "logan-staging-automation",
+  "logan-pm-handoff",
+];
 
 export const SKILL_CARDS: readonly SkillCard[] = [
   {
-    slug: "layout-fundamentals",
-    route: SKILL_ROUTES["layout-fundamentals"],
+    slug: "logan-elementor-page-build",
+    route: SKILL_ROUTES["logan-elementor-page-build"],
     num: "i.",
     icon: "🪴",
-    title: "Layout fundamentals",
+    title: "Build a page",
     description:
-      "Grids, rhythm, whitespace. The bones every Logan Marketing page sits on before color or copy ever shows up.",
-    meta: "8 lessons",
+      "Section-by-section build plan from a brief. Hero, intro, content blocks, CTA, QA at the end. Tailored to Logan's inside template.",
+    meta: "page-build skill",
     tape: true,
   },
   {
-    slug: "tone-and-voice",
-    route: SKILL_ROUTES["tone-and-voice"],
+    slug: "logan-component-picker",
+    route: SKILL_ROUTES["logan-component-picker"],
     num: "ii.",
     icon: "✎",
-    title: "Tone & voice",
+    title: "Pick the right section",
     description:
-      "Warm, specific, observational. How Logan writes about innkeepers, breakfast, and the dog — and how to match it.",
-    meta: "voice guide",
+      "A short Q&A that names the exact Logan component for the chunk of copy in front of you. Walks you out of blank-page paralysis.",
+    meta: "component picker",
   },
   {
-    slug: "wordpress-and-elementor",
-    route: SKILL_ROUTES["wordpress-and-elementor"],
+    slug: "logan-hospitality-copy-seo",
+    route: SKILL_ROUTES["logan-hospitality-copy-seo"],
     num: "iii.",
     icon: "❀",
-    title: "WordPress & Elementor",
+    title: "Write copy + SEO meta",
     description:
-      "The stack Logan ships on. Page builds, templates, the parts you'll touch day one without breaking the theme.",
-    meta: "5 walkthroughs",
+      "Hospitality voice for Logan clients — innkeepers, breakfast, the dog. Plus meta titles, descriptions, alt text, FAQ ideas.",
+    meta: "voice + meta",
     tape: true,
     tapePeach: true,
   },
   {
-    slug: "accessibility-basics",
-    route: SKILL_ROUTES["accessibility-basics"],
+    slug: "logan-figma-handoff",
+    route: SKILL_ROUTES["logan-figma-handoff"],
     num: "iv.",
     icon: "✿",
-    title: "Accessibility basics",
+    title: "Read a Figma file",
     description:
-      "Contrast, focus states, alt text. Small habits that keep boutique sites usable for actual humans.",
-    meta: "checklist",
+      "Turns a lead designer's Figma file into Elementor steps. What to ask, what to figure out, what not to redesign.",
+    meta: "Figma → Elementor",
   },
   {
-    slug: "responsive-design",
-    route: SKILL_ROUTES["responsive-design"],
+    slug: "logan-elementor-troubleshoot",
+    route: SKILL_ROUTES["logan-elementor-troubleshoot"],
     num: "v.",
     icon: "✦",
-    title: "Responsive design",
+    title: "Fix something broken",
     description:
-      "Phone-first thinking for hospitality clients. Where layouts collapse cleanly and where they need care.",
-    meta: "patterns",
+      "Calm symptom → diagnosis → fix walkthroughs for the Elementor problems you'll actually hit. Ordered by frequency.",
+    meta: "troubleshoot",
   },
   {
-    slug: "design-systems-on-a-budget",
-    route: SKILL_ROUTES["design-systems-on-a-budget"],
+    slug: "logan-elementor-qa",
+    route: SKILL_ROUTES["logan-elementor-qa"],
     num: "vi.",
     icon: "♡",
-    title: "Design systems on a budget",
+    title: "Check my work",
     description:
-      "Tiny token sets, two type scales, a real palette. Just enough system to make a small studio fast.",
-    meta: "starter kit",
+      "Pre-handoff audit. Headings, alt text, links, mobile layout, brand consistency, page meta. Pass / fail with notes.",
+    meta: "QA pass",
     tape: true,
   },
   {
-    slug: "content-and-seo",
-    route: SKILL_ROUTES["content-and-seo"],
+    slug: "logan-elementor-template-json",
+    route: SKILL_ROUTES["logan-elementor-template-json"],
     num: "vii.",
     icon: "✱",
-    title: "Content & SEO",
+    title: "Make an Elementor template",
     description:
-      "Structured copy that ranks without sounding like it's trying. Heads, meta, and what to ask the innkeeper.",
-    meta: "field notes",
+      "Generates a valid Elementor `.json` template you can import. Modern flexbox containers. Always import to staging first.",
+    meta: "template JSON",
   },
   {
-    slug: "performance-and-images",
-    route: SKILL_ROUTES["performance-and-images"],
+    slug: "logan-staging-automation",
+    route: SKILL_ROUTES["logan-staging-automation"],
     num: "viii.",
     icon: "❖",
-    title: "Performance & images",
+    title: "Work on staging",
     description:
-      "Real photos, sized right. Lazy-loading, srcset, and the small habits that keep boutique sites fast.",
-    meta: "image cookbook",
+      "Safe REST/CLI ops on a staging WordPress site. Drafts only, never auto-publishes, refuses to touch production.",
+    meta: "staging only",
     tape: true,
     tapePeach: true,
   },
   {
-    slug: "handoff-and-feedback",
-    route: SKILL_ROUTES["handoff-and-feedback"],
+    slug: "logan-pm-handoff",
+    route: SKILL_ROUTES["logan-pm-handoff"],
     num: "ix.",
     icon: "✉",
-    title: "Handoff & feedback",
+    title: "Write a handoff",
     description:
-      "Sending work, taking notes, surviving critique. How to ship to a senior designer and grow from the response.",
-    meta: "templates",
+      "Short, structured PM handoff message. What was built, deviations, missing inputs, open questions. No defensive language.",
+    meta: "handoff message",
   },
 ];
