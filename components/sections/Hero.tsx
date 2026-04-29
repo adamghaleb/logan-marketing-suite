@@ -35,8 +35,8 @@ export function Hero({ name }: HeroProps) {
         </h1>
         <p className="sub">
           everything I could think of to help you land softly into the new job —
-          their playbook, patterns from their past sites, daily practice, and a
-          goofy cat named Bingus.
+          a four-phase plan to actually get hired, their playbook, patterns from
+          their past sites, and a goofy cat named Bingus.
         </p>
       </div>
       <div className="today-card">

@@ -71,6 +71,16 @@ export const TOOLKIT_CATEGORIES: readonly ToolkitCategory[] = [
   },
   {
     num: "ii.",
+    title: "Get this job",
+    description:
+      "A four-phase plan: prep the interview, take the interview, secure the offer, build the remote setup. Open it for the full checklist.",
+    meta: "4-phase roadmap",
+    route: "/practice",
+    tape: true,
+    tapePeach: true,
+  },
+  {
+    num: "iii.",
     title: "Tutorials",
     description:
       "Step-by-step walkthroughs for the things you'll do most often: hero builds, room cards, mobile fixes, page meta.",
@@ -78,17 +88,16 @@ export const TOOLKIT_CATEGORIES: readonly ToolkitCategory[] = [
     route: "/tutorials",
   },
   {
-    num: "iii.",
+    num: "iv.",
     title: "Playbook",
     description:
       "Logan's section library. The patterns Logan ships over and over — open one, see what makes it Logan.",
     meta: "section patterns",
     route: "/playbook",
     tape: true,
-    tapePeach: true,
   },
   {
-    num: "iv.",
+    num: "v.",
     title: "Templates",
     description:
       "Three example boutique-inn pages, fully built. Click into any preview to see the structural pattern.",
@@ -96,21 +105,12 @@ export const TOOLKIT_CATEGORIES: readonly ToolkitCategory[] = [
     route: "/templates",
   },
   {
-    num: "v.",
+    num: "vi.",
     title: "Logan voice dossier",
     description:
       "How Logan writes — tone, structure, do's and don'ts, before-and-afters from real pages.",
     meta: "voice + tone",
     route: "/dossier",
-  },
-  {
-    num: "vi.",
-    title: "Daily practice",
-    description:
-      "A small pattern a day — recreate it in Elementor. Builds the muscles you'll use on real briefs.",
-    meta: "daily reps",
-    route: "/practice",
-    tape: true,
   },
   {
     num: "vii.",

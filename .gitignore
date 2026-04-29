@@ -55,3 +55,4 @@ temp/
 
 # Design handoff bundles (kept locally, not committed)
 .design-incoming/
+.vercel

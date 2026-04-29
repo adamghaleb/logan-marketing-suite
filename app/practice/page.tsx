@@ -89,10 +89,13 @@ const PHASES: ReadonlyArray<PracticePhase> = [
 export default function PracticePage() {
   return (
     <InnerPageShell
-      eyebrow="iv. · job-prep plan"
-      title="Practice — get this job"
+      eyebrow="ii. · job-prep roadmap"
+      title="Get this job"
       intro="Mily, this is a four-phase plan to land the Logan Marketing role and run it well from day one. Work it in order — prepare, take the interview, secure the offer, then build the remote setup that makes the rest of the work easy. Check things off as you go; the boxes save on this device."
-      breadcrumbs={[{ label: "the toolkit", href: "/" }, { label: "practice" }]}
+      breadcrumbs={[
+        { label: "the toolkit", href: "/" },
+        { label: "get this job" },
+      ]}
     >
       <nav
         aria-label="Phases"
