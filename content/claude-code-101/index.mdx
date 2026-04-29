@@ -1,0 +1,169 @@
+---
+title: Claude Code 101
+description: What Claude Code is, what it can do, what it can't do — explained for a smart person who isn't into the technical side.
+status: live
+order: 3
+---
+
+# Claude Code 101
+
+A friendly, jargon-free guide to the AI tool the suite is built around. You don't have to read this to use Bingus — but if you ever wonder "what _is_ this thing," start here.
+
+---
+
+## What is Claude?
+
+**Claude is an AI assistant made by Anthropic.** Think of it like ChatGPT's calmer cousin — it can read, write, summarize, plan, code, design, and answer questions in normal conversation.
+
+You probably already know Claude through the chat website at claude.ai. That's the simplest version: a chat box, you type, Claude types back.
+
+## What is Claude Code?
+
+**Claude Code is Claude in your computer's terminal.** It's the same Claude brain, but instead of just chatting, it can:
+
+- Read files on your computer
+- Write or edit files (with your permission)
+- Run commands (with your permission)
+- Use installed "skills" — small instruction files that teach it how to do specific tasks well
+
+That's it. It's a chat that can also touch your computer, with your permission, when you ask it to.
+
+<details>
+<summary><strong>Why a terminal?</strong></summary>
+
+The terminal (sometimes called "command line") is just a text-only window where you can type commands. It looks intimidating but for our purposes it's just a place you talk to Claude. Once it's set up, you literally just type messages and read answers — same as a chat website. The reason it's a terminal is so Claude can do things on your computer when you want it to, not just type words back.
+
+</details>
+
+---
+
+## What it can do
+
+- Answer questions about WordPress, Elementor, design, copy, anything
+- Write copy, alt text, meta descriptions, headings
+- Generate Elementor template files you can import
+- QA your work (check links, headings, contrast, alt text)
+- Read a Figma file you paste into chat and tell you how to build it in Elementor
+- Walk you through fixing something broken
+- Help you write a project manager handoff message
+- Run skills — task-specific instruction sets we made for you (see the Skills page)
+- Eventually: connect directly to your WordPress site and make changes safely (Layer 3 / 4)
+
+## What it can't do
+
+- It can't see your screen unless you tell it what's on it (paste text, paste a screenshot)
+- It can't open Elementor or click for you (yet — that's Layer 4)
+- It can't access the internet unless you give it a specific link or use a web tool
+- It can't remember conversations across sessions unless you give it notes (this is improving)
+- It can't make truly creative leaps the way a senior designer does — it's incredible at pattern execution, not at _inventing_ a brand
+
+The honest version: it's an extremely fast, extremely good intern that knows everything but has no instinct for what your client actually wants. **You** still have the instinct. Claude moves your hands faster.
+
+---
+
+## How "skills" work
+
+A skill is a small folder with a `SKILL.md` file inside. The file tells Claude how to handle a specific task. When you ask Claude something that matches a skill's description, it triggers the skill automatically — no menu to click, no commands to remember.
+
+For example, if you say "help me build a Logan page," Claude notices the words "Logan" and "page" and triggers the **Build a page** skill. The skill knows Logan's section taxonomy, knows the Elementor steps, and knows what to ask you for.
+
+You don't manage skills. You just install them once. Claude picks the right one when you talk.
+
+We made 9 skills for you. They're listed on the [Skills page](/skills) and live in the public GitHub repo for the suite.
+
+---
+
+## How to install Claude Code on your computer
+
+You'll do this once. It takes about 10 minutes.
+
+### Mac
+
+1. Open the **Terminal** app (press Cmd+Space, type "Terminal," press Enter)
+2. Paste this and press Enter:
+   ```
+   curl -fsSL https://claude.ai/install.sh | sh
+   ```
+3. Follow the prompts. It will ask you to log in with your Anthropic account.
+4. When it's done, type `claude` and press Enter to start.
+
+### Windows
+
+1. Install [Windows Terminal](https://aka.ms/terminal) if you don't have it
+2. Open Windows Terminal
+3. Paste this and press Enter:
+   ```
+   irm https://claude.ai/install.ps1 | iex
+   ```
+4. Follow the prompts. It will ask you to log in.
+5. When it's done, type `claude` and press Enter to start.
+
+<details>
+<summary><strong>If something goes wrong</strong></summary>
+
+The most common issue is that the install script needs `node` (a programming language runtime) installed. If it complains, install Node.js from [nodejs.org](https://nodejs.org/) (pick the LTS version), then re-run the install command.
+
+If you're stuck for more than 15 minutes, ping Adam. We'll screen-share.
+
+</details>
+
+---
+
+## How to install the Mily skills
+
+Once Claude Code is installed, you grab the suite's skills with one command:
+
+```
+curl -fsSL https://raw.githubusercontent.com/[REPO_PATH]/main/scripts/install-mily-skills.sh | sh
+```
+
+(Adam will fill in the real URL when the repo is public.)
+
+The script clones the suite repo, copies the 9 skills into Claude's skills folder, and you're done. See the [Install Guide](/install-guide) for the slow version with screenshots.
+
+---
+
+## The first three things to try
+
+Once Claude Code is running, try these in order:
+
+### 1. Just say hi
+
+```
+You: hi
+Claude: Hello! How can I help?
+```
+
+That's it. You have an AI assistant.
+
+### 2. Ask it to do something file-y
+
+```
+You: make me a folder called "test" on my desktop
+```
+
+Watch how it asks permission before doing the action. That permission prompt is your safety net — Claude never touches your computer without you saying yes.
+
+### 3. Trigger a Mily skill
+
+```
+You: write me 3 meta description options for a romantic Hudson Valley B&B home page
+```
+
+This will trigger **Write copy + SEO meta** automatically. You'll see Claude pull up the skill and produce hospitality-flavored options.
+
+If those three things worked, you're set. The rest is just using it.
+
+---
+
+## What "Bingus" is, vs Claude
+
+Bingus is **Claude with a personality and a system prompt that knows the suite.** Underneath he is the same Claude. The difference is:
+
+- He calls you Mily
+- He knows Logan's component playbook
+- He knows the 4-layer system
+- He's a goofy nerdy cat
+- He lives on this website (at the floating bubble or `/bingus`)
+
+You can also use raw Claude Code in your terminal for everything else. Bingus is the suite-specific friend; raw Claude is the general-purpose one. Both are useful.

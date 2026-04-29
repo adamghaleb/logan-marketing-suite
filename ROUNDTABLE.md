@@ -12,13 +12,13 @@ A thinking framework for AI-assisted development. When referenced, apply this me
 
 Before anything else, decide how deep to go:
 
-| Decision Type | Depth | Apply |
-|---------------|-------|-------|
-| Trivial (naming, formatting, one-liner) | **Skip this file.** Just do it. | — |
-| Small (component, function, API shape) | **Light** | First Principles only |
-| Medium (feature, data model, flow) | **Medium** | First Principles + UX + Pragmatic |
-| Large (architecture, core system) | **Heavy** | All 5 lenses |
-| Strategic (product direction, roadmap) | **Deep** — Full debate | All 5, with explicit tensions |
+| Decision Type                           | Depth                           | Apply                             |
+| --------------------------------------- | ------------------------------- | --------------------------------- |
+| Trivial (naming, formatting, one-liner) | **Skip this file.** Just do it. | —                                 |
+| Small (component, function, API shape)  | **Light**                       | First Principles only             |
+| Medium (feature, data model, flow)      | **Medium**                      | First Principles + UX + Pragmatic |
+| Large (architecture, core system)       | **Heavy**                       | All 5 lenses                      |
+| Strategic (product direction, roadmap)  | **Deep** — Full debate          | All 5, with explicit tensions     |
 
 If unsure which level, start with Decompose. What you find tells you which playbook to use.
 
@@ -41,7 +41,8 @@ If unsure which level, start with Decompose. What you find tells you which playb
 ## The Five Lenses
 
 ### 1. First Principles
-*How does this actually work?*
+
+_How does this actually work?_
 
 - Decompose before solving — break it down to the smallest parts that can be reasoned about independently.
 - Map the data flow — what enters the system, what transforms it, what comes out the other side.
@@ -51,13 +52,15 @@ If unsure which level, start with Decompose. What you find tells you which playb
 - Metric before building — decide what "working" looks like before you write the first line.
 
 **Ask:**
+
 - What's the naive solution, and where exactly does it fail?
 - What's the dependency graph?
 - Where does this bottleneck?
 - How does this decision age — will it create debt in six months?
 
 ### 2. User Experience
-*How does this actually feel?*
+
+_How does this actually feel?_
 
 - One sentence — if you can't explain what this does in one sentence a non-technical person would get, you don't understand it yet.
 - Find the magic moment — the single interaction where the user says "holy shit, this is good."
@@ -66,13 +69,15 @@ If unsure which level, start with Decompose. What you find tells you which playb
 - First 30 seconds determine everything — what a new user sees and feels immediately defines whether they stay.
 
 **Ask:**
+
 - Would I use this every day?
 - What would I remove?
 - What's the emotional state at each step?
 - How does the feeling change over weeks of use?
 
 ### 3. Pragmatic Build
-*How does this actually ship?*
+
+_How does this actually ship?_
 
 - Design for day 1 AND day 365 — the empty state with zero data and the full state with 10,000 items both need to work and feel intentional.
 - Respect the user's mode — if they're in rapid-fire capture mode, don't interrupt with questions. If they're in thinking mode, don't rush them.
@@ -81,13 +86,15 @@ If unsure which level, start with Decompose. What you find tells you which playb
 - Sequence ruthlessly — everything is possible, but what's the dependency chain? What must exist before anything else can?
 
 **Ask:**
+
 - What does this look like empty? Full? Broken? Loading?
 - What's the minimum version that teaches us something?
 - What ships first? What are the edge cases that will embarrass us?
 - What maintenance burden does this create over time?
 
 ### 4. Pattern & Coherence
-*What is this actually about?*
+
+_What is this actually about?_
 
 - As above, so below — the structure of your files should mirror the structure of your product should mirror the structure of your thinking. When they diverge, something is wrong.
 - Hold the tension — when you find a contradiction (speed vs. quality, simplicity vs. power), don't rush to resolve it. The best designs hold both sides in creative tension.
@@ -96,13 +103,15 @@ If unsure which level, start with Decompose. What you find tells you which playb
 - Sometimes the most creative act is removing — creating space for something better to emerge.
 
 **Ask:**
+
 - What deeper pattern is this an instance of?
 - Does this feel coherent at every scale? (file structure ↔ mental model ↔ product architecture)
 - What is this system trying to become?
 - What would emerge if we created more space?
 
 ### 5. Novelty & Experience
-*What does this actually change?*
+
+_What does this actually change?_
 
 - Language is technology — the name of a variable, a feature, a product shapes how everyone thinks about it. Naming is architecture.
 - Novelty is connective — the most valuable insight isn't the isolated idea, it's when two unconnected domains reveal their hidden relationship.
@@ -110,6 +119,7 @@ If unsure which level, start with Decompose. What you find tells you which playb
 - Time is a dimension — everything evolves. How does this look in a week? A month? A year?
 
 **Ask:**
+
 - What does it FEEL like to use this?
 - What would make someone describe this to a friend?
 - What's connecting here that nobody has named yet?
@@ -204,4 +214,4 @@ connections nobody else has named.]
 
 ---
 
-*Living document. Add thinkers. Refine lenses. Evolve.*
+_Living document. Add thinkers. Refine lenses. Evolve._

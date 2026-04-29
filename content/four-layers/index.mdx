@@ -1,0 +1,157 @@
+---
+title: The four layers of help
+description: A simple way to think about how AI can help you build websites — from "give me advice" all the way to "just do it for me."
+status: live
+order: 2
+---
+
+# The four layers of help
+
+There are four ways AI can help you build a website in WordPress + Elementor. Pick whichever one feels right for what you're doing today. You can always move up a layer later. You don't have to know any of this to start.
+
+The point of the four layers is **comfort**. You stay on the layer that feels right, and you climb only when you want to.
+
+---
+
+## The 30-second version
+
+| Layer | Plain name                | What happens                                                               | What you need                                   |
+| ----- | ------------------------- | -------------------------------------------------------------------------- | ----------------------------------------------- |
+| **1** | Just give me advice       | AI writes you a checklist or some copy. You do the clicking.               | Nothing.                                        |
+| **2** | Make me a template        | AI hands you an Elementor template file. You import it yourself.           | Nothing.                                        |
+| **3** | Do it on my staging site  | AI creates draft pages on a practice site. You review before publishing.   | A WordPress staging site + an App Password.     |
+| **4** | Live in Elementor with me | AI works directly inside Elementor with you, like a pair of helpful hands. | Same as Layer 3, plus the MCP server installed. |
+
+You can stay on Layer 1 your whole career and be excellent at this job. The higher layers are just shortcuts when you want them.
+
+---
+
+## Layer 1 — Just give me advice
+
+**The simplest. No setup. No risk.**
+
+You tell Bingus (or Claude) what you're working on. Bingus gives you back a checklist, an outline, copy options, alt text, meta descriptions, a QA list, or whatever you need. **You** open Elementor and do the clicking.
+
+This is where every junior designer starts and where most of your day will live, even six months in.
+
+<details>
+<summary><strong>How it actually works</strong></summary>
+
+You're just chatting with Bingus or running a skill (like "Build a page" or "Write copy + SEO meta"). The AI never touches your WordPress site. It's like texting a smart friend who knows Logan's playbook by heart.
+
+Examples:
+
+- "Write me 3 meta description options for this room page"
+- "Give me a QA checklist for this About page before I send it to PM"
+- "What sections should I use for a Things-To-Do page?"
+
+Cost: free or very cheap. Risk: zero — Bingus is just talking.
+
+</details>
+
+---
+
+## Layer 2 — Make me a template
+
+**A small step up. Still no risk.**
+
+You ask the AI to generate an Elementor template (a `.json` file). You download it. You go into Elementor's template library and import it manually. You see it, you adjust it, you make it yours.
+
+The AI never touches your site. You're still the one in control of every click.
+
+<details>
+<summary><strong>How it actually works</strong></summary>
+
+Elementor lets you import templates as `.json` files through Templates → Saved Templates → Import. The AI generates a valid `.json`, you download it, you import it. Then you treat it like any other template — drag it into a page, edit it, customize it.
+
+The "Make an Elementor template" skill handles this. It's marked Phase 3 because the JSON has to be exactly right or Elementor will reject it, and you should always import to a staging site first.
+
+Cost: free. Risk: low — worst case the import fails and you delete the file.
+
+</details>
+
+---
+
+## Layer 3 — Do it on my staging site
+
+**Now we need a staging site. The AI starts doing real work.**
+
+A "staging site" is a private practice copy of your WordPress site where you can break things without anyone seeing. With one set up, the AI can:
+
+- Create draft pages (drafts are invisible to the public)
+- Upload images
+- Set page titles, slugs, and SEO meta
+- Import the templates from Layer 2 directly into the library
+
+You review everything before it goes live. Nothing publishes without your "yes."
+
+<details>
+<summary><strong>How it actually works</strong></summary>
+
+WordPress has something called the **REST API** — a way for outside tools to talk to your site over the internet. To use it safely, you create an **Application Password** (a special password only this tool can use, that you can revoke any time without changing your real password).
+
+The AI uses that App Password to log in and create drafts. Drafts have a status of "draft" instead of "published," so they're invisible to the public until you click Publish.
+
+We do this on **staging** first, never on a real client site, until everything is boring and predictable.
+
+Cost: free if your host gives you staging, otherwise depends on host. Risk: medium — you should always test on staging, never directly on a live client site.
+
+</details>
+
+---
+
+## Layer 4 — Live in Elementor with me
+
+**The futuristic one. Still safe if you set it up right.**
+
+This uses something called an **MCP server** (think of it as a translator that lets Claude Code speak directly to Elementor). With it installed, Claude can read your page, suggest changes, and make edits directly inside Elementor as you work — like having a second pair of hands.
+
+This is the most powerful layer and the one that needs the most care. We turn it on slowly: read-only first, then draft-only, then editing-with-permission.
+
+<details>
+<summary><strong>How it actually works</strong></summary>
+
+MCP (Model Context Protocol) is a standard for connecting AI tools to apps. The Mily MCP server runs on your computer and translates between Claude and your WordPress + Elementor site.
+
+We launch it in stages:
+
+- **Stage 1 (read-only):** Claude can list your pages, read what's on them, and tell you what's there. It can't change anything.
+- **Stage 2 (draft-only):** Claude can create draft pages and upload images. Still can't publish.
+- **Stage 3 (controlled edits):** Claude can edit existing drafts on staging. Every edit shows up in Elementor's revision history so you can roll back.
+- **Stage 4 (production-aware):** Claude can edit live sites — but only with explicit "yes, do that" approval per change, and with automatic backups before each one.
+
+You don't have to use Layer 4 to be great at this job. It's a power tool. We're building it because _if_ you want it, it should exist and be safe.
+
+Cost: free (it runs on your own computer). Risk: highest of any layer — that's why it's gated and staged.
+
+</details>
+
+---
+
+## How to navigate between layers
+
+You don't pick a layer once and stay there. You pick a layer **per task**.
+
+| Situation                                    | Layer that fits |
+| -------------------------------------------- | --------------- |
+| Writing a meta description                   | 1               |
+| Building one section of a page               | 1               |
+| QA-ing a finished page                       | 1               |
+| Spinning up a fresh hospitality template     | 2               |
+| Setting up a new client site's pages         | 3               |
+| Bulk-fixing alt text across a site           | 3 or 4          |
+| Live editing a page side-by-side with the AI | 4               |
+
+Bingus will suggest the right layer when you describe what you're doing. You can always say "no, just give me advice" and stay on Layer 1. He won't push.
+
+---
+
+## Where you are right now
+
+If today is your first day: **you are on Layer 1.** Open Bingus, ask him a question, see what happens. That's the whole job for now.
+
+When Layer 2 starts to feel like it'd save you time: read the [Make an Elementor template](/skills/logan-elementor-template-json) skill page.
+
+When you have a staging site set up and you're curious: read the [Staging Sandbox walkthrough](/staging-sandbox).
+
+Layer 4 will be there when you want it. No rush.

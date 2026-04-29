@@ -26,24 +26,24 @@ When stuck, decompose the problem before asking for help. Most "I'm stuck" momen
 
 These are the defaults. Deviate only with good reason and log the reason in DECISIONS.md.
 
-| Layer | Default |
-|-------|---------|
-| Language | TypeScript, always |
-| Mobile | React Native + Expo |
-| Web | Next.js |
-| Backend | Supabase (PostgreSQL, Auth, Edge Functions, Storage) |
-| Vector search | pgvector extension |
-| Styling | Tailwind CSS |
-| Components | Functional components only, no classes |
-| State | React hooks, Zustand if needed |
-| Structure | Monorepo when multiple apps, flat when single |
+| Layer         | Default                                              |
+| ------------- | ---------------------------------------------------- |
+| Language      | TypeScript, always                                   |
+| Mobile        | React Native + Expo                                  |
+| Web           | Next.js                                              |
+| Backend       | Supabase (PostgreSQL, Auth, Edge Functions, Storage) |
+| Vector search | pgvector extension                                   |
+| Styling       | Tailwind CSS                                         |
+| Components    | Functional components only, no classes               |
+| State         | React hooks, Zustand if needed                       |
+| Structure     | Monorepo when multiple apps, flat when single        |
 
 ---
 
 ## Code Style
 
 - **Descriptive names.** No abbreviations. `processVideoTranscript` not `procVidTx`. If the name is long, that's fine.
-- **Types over comments.** If the type signature explains the function, you don't need a comment. Add comments only for *why*, never for *what*.
+- **Types over comments.** If the type signature explains the function, you don't need a comment. Add comments only for _why_, never for _what_.
 - **Small functions.** If a function is longer than ~30 lines, it's probably doing too much.
 - **Error handling is not optional.** Every async operation gets a try/catch or .catch. Every error state gets a UI. No silent failures.
 - **No magic numbers or strings.** Constants get named. Configs get centralized.
@@ -52,13 +52,13 @@ These are the defaults. Deviate only with good reason and log the reason in DECI
 
 ## Project Files
 
-| File | Purpose |
-|------|---------|
-| `ROUNDTABLE.md` | Thinking framework. Read before architecture decisions. |
-| `CLAUDE.md` | This file. Project rules and preferences. |
-| `DECISIONS.md` | Living log of architectural decisions. You write to this. |
-| `ROADMAP.md` | Project roadmap and version plan. Reference for scope. |
-| `README.md` | Project description. Keep updated. |
+| File            | Purpose                                                   |
+| --------------- | --------------------------------------------------------- |
+| `ROUNDTABLE.md` | Thinking framework. Read before architecture decisions.   |
+| `CLAUDE.md`     | This file. Project rules and preferences.                 |
+| `DECISIONS.md`  | Living log of architectural decisions. You write to this. |
+| `ROADMAP.md`    | Project roadmap and version plan. Reference for scope.    |
+| `README.md`     | Project description. Keep updated.                        |
 
 ---
 

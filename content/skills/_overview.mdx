@@ -1,0 +1,140 @@
+---
+title: Skills
+description: Nine custom Claude skills built for your job at Logan. Plain-English on top, technical detail tucked underneath.
+status: live
+order: 4
+---
+
+# Skills
+
+These are the nine skills Adam made for you. Each one teaches Claude how to handle a specific part of your job at Logan Marketing — building pages, writing copy, fixing things, handing off to PM.
+
+You install them once. Claude picks the right one automatically when you talk to it (or to Bingus).
+
+---
+
+## How they work, in one paragraph
+
+Every skill is a small instruction file (`SKILL.md`) inside a folder. The file tells Claude when to use the skill and what to do. When you say something that matches a skill's description, Claude triggers it without you needing to remember a command. So you just talk normally — "help me QA this page" — and the right skill kicks in.
+
+[How to install all 9 skills →](/install-guide)
+
+---
+
+## The nine skills
+
+### 1. Build a page
+
+**When to use:** You have a page assignment and you want a step-by-step build plan tailored to Logan's component library.
+
+**What you get:** A section-by-section build plan, exact components to use, where to place copy, what images you need, and a QA checklist at the end.
+
+**Trigger phrases:** "help me build a [page type]," "what sections should I use for…," "give me a build plan for…"
+
+[Open the skill](/skills/logan-elementor-page-build) · [View on GitHub](#)
+
+---
+
+### 2. Pick the right section
+
+**When to use:** You know what kind of page you're building (Things to Do, Rooms, About) but you're staring at a blank canvas wondering which Logan components fit.
+
+**What you get:** A short Q&A, then a recommended set of components in the right order, with reasoning.
+
+**Trigger phrases:** "what section do I use for…," "I'm building a [page type]," "blank page paralysis"
+
+[Open the skill](/skills/logan-component-picker) · [View on GitHub](#)
+
+---
+
+### 3. Write copy + SEO meta
+
+**When to use:** You need hospitality-voice copy, headings, meta titles, meta descriptions, FAQ ideas, alt text, or CTA copy.
+
+**What you get:** Copy in Logan's hospitality style — warm, place-rooted, sensory, specific. With SEO best practices baked in.
+
+**Trigger phrases:** "write copy for…," "give me 3 meta descriptions," "what should the H1 be," "alt text for this image"
+
+[Open the skill](/skills/logan-hospitality-copy-seo) · [View on GitHub](#)
+
+---
+
+### 4. Read a Figma file
+
+**When to use:** The lead designer hands you a Figma file and you need to translate it into Elementor without missing anything.
+
+**What you get:** A mapping from Figma elements to Elementor (auto-layout → flex containers, color styles → globals, etc.), plus a list of what to ask the lead vs. what to figure out yourself.
+
+**Trigger phrases:** "translating from Figma," "got a Figma file from…," "Figma to Elementor"
+
+[Open the skill](/skills/logan-figma-handoff) · [View on GitHub](#)
+
+---
+
+### 5. Fix something broken
+
+**When to use:** Something looks wrong, won't save, won't load, or won't behave. You need a calm, specific answer.
+
+**What you get:** A symptom → diagnosis → fix walkthrough for the most common Elementor problems, ordered by frequency.
+
+**Trigger phrases:** "[anything] is broken," "this won't [verb]," "Elementor is being weird"
+
+[Open the skill](/skills/logan-elementor-troubleshoot) · [View on GitHub](#)
+
+---
+
+### 6. Check my work
+
+**When to use:** A page is done (or so you think). Run this before handing off to PM.
+
+**What you get:** A pre-handoff QA audit — heading hierarchy, alt text, links, mobile layout, brand consistency, placeholder content, page meta. Pass/fail with notes.
+
+**Trigger phrases:** "QA this page," "check my work," "ready for handoff?"
+
+[Open the skill](/skills/logan-elementor-qa) · [View on GitHub](#)
+
+---
+
+### 7. Make an Elementor template
+
+**When to use:** You want a reusable Elementor section/page template generated as a `.json` file you can import.
+
+**What you get:** A valid Elementor template JSON, designed for modern Flexbox containers, that you import through Templates → Saved Templates → Import.
+
+**Trigger phrases:** "make me a template for…," "generate Elementor JSON," "importable template"
+
+> ⚠️ Always import to a staging site first. Always check it visually before using on a real client site.
+
+[Open the skill](/skills/logan-elementor-template-json) · [View on GitHub](#)
+
+---
+
+### 8. Work on staging
+
+**When to use:** You have a staging WordPress site set up and you want Claude to create drafts, upload images, or import templates directly.
+
+**What you get:** Safe, staging-only operations using the WordPress REST API and a one-app-only password. Always creates drafts, never auto-publishes.
+
+**Trigger phrases:** "create a draft page on…," "upload these images to staging," "import this template"
+
+> ⚠️ This skill never touches a production site. If you ask it to, it will refuse and ask for staging.
+
+[Open the skill](/skills/logan-staging-automation) · [View on GitHub](#)
+
+---
+
+### 9. Write a handoff
+
+**When to use:** Page (or set of pages) is done and self-QA'd. Ready for PM to review.
+
+**What you get:** A short, structured handoff message with what was built, deviations from the template (if any), missing inputs, and open questions. No emotional commentary, no defensive language.
+
+**Trigger phrases:** "write a PM handoff," "send this to [PM name]," "ready for review message"
+
+[Open the skill](/skills/logan-pm-handoff) · [View on GitHub](#)
+
+---
+
+## You don't have to remember any of this
+
+Bingus knows all 9 skills and when to use each. Just describe what you're doing and the right one will trigger.
