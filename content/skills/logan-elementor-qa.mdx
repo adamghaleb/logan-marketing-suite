@@ -1,0 +1,73 @@
+---
+title: "Check my work"
+slug: "logan-elementor-qa"
+order: 6
+techName: "logan-elementor-qa"
+---
+
+# Check my work
+
+A page is done — or at least you think it is. Run this before you tell PM it's ready. It catches the small stuff that PM would catch in 30 seconds and flag back to you.
+
+## When you'd use this
+
+Right before handoff. Always before handoff. If you only call one skill on a page after the build, this is the one.
+
+Also useful mid-build, when you've finished a big section and want to make sure you didn't drift from the template before you keep going.
+
+## What you say to Claude
+
+> "QA this page."
+
+> "Check my work — ready for handoff?"
+
+> "Run the QA pass on the Sprucedale About page."
+
+## What you get back
+
+A pass/fail audit with notes, covering:
+
+- **Heading hierarchy.** One H1, H2s in order, no skipped levels.
+- **Alt text.** Every non-decorative image has it. None say "image of."
+- **Links.** Internal links resolve, no `#` placeholders, external links open how they should.
+- **Mobile and tablet layout.** Things stack, things don't overflow, font sizes don't shrink to nothing.
+- **Brand consistency.** Globals are being used, no rogue hex colors, no rogue fonts.
+- **Template adherence.** The page still looks like Logan's inside template, not a remix.
+- **Placeholder content.** No "Lorem ipsum" left over, no "Property Name Goes Here," no stock placeholder photos.
+- **Page meta.** Featured image set, slug is human-readable, meta title and meta description filled.
+
+Each item gets a pass, a fail, or a "check this manually" note when Claude can't see it directly.
+
+## Try it
+
+> "Mily, I just finished the Things to Do page on the Whalers Inn staging site. QA it for me."
+
+You'll get the checklist back with each item marked. Anything that fails comes with a one-line fix suggestion so you can knock them out and re-run.
+
+<details>
+<summary>How it actually works under the hood</summary>
+
+- Reads from: `~/.claude/skills/logan-elementor-qa/SKILL.md`
+- GitHub: [skills/elementor-hospitality-qa/SKILL.md](https://github.com/adamghaleb/logan-marketing-suite/blob/main/skills/elementor-hospitality-qa/SKILL.md)
+- Trigger phrases:
+  - "QA this page"
+  - "check my work"
+  - "ready for handoff?"
+  - "run the QA pass"
+
+The skill is the per-page version of `templates/self-qa-checklist.md`. It runs the checklist Logan uses for hospitality builds and reports per-item pass/fail. The full checklist:
+
+- Heading hierarchy (one H1, H2/H3 in order, no level skips)
+- Alt text on all non-decorative images, no "image of…" patterns
+- Link integrity (internal resolves, no `#` placeholders, external `target` set correctly)
+- Responsive layouts at desktop, tablet, mobile breakpoints
+- Brand consistency: global colors and global fonts, no local overrides
+- Template adherence: components belong to the inside template
+- No placeholder content (Lorem, "Property Name Goes Here," stock holders)
+- Page meta: featured image, slug, meta title, meta description, focus keyword
+
+When the skill can't see something directly (true responsive behavior, real device rendering), it returns a "manual check" note rather than a false pass. It does not run on a production site without explicit approval — staging is the default surface.
+
+The skill is the gate for `logan-pm-handoff`: a clean QA pass is the prerequisite for writing a handoff message.
+
+</details>

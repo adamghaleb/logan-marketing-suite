@@ -1,0 +1,67 @@
+---
+title: "Write a handoff"
+slug: "logan-pm-handoff"
+order: 9
+techName: "logan-pm-handoff"
+---
+
+# Write a handoff
+
+A page (or a set of pages) is done and self-QA'd. PM needs to know it's ready. This skill writes the message — short, structured, no apologies, no defensive language.
+
+## When you'd use this
+
+End of a build, after the QA skill came back clean. The work is done; now you just need to tell PM in the format they expect. This skill keeps the message tight so the review is fast.
+
+Also useful when something needed a deviation from the template ("I had to add a fourth image because the room had four key features") and you want to flag it cleanly without making it a whole thing.
+
+## What you say to Claude
+
+> "Write a PM handoff for the Sprucedale About page."
+
+> "Send this to PM — Things to Do page is ready for review."
+
+> "Ready for review message — I built three Rooms pages on Whalers Inn staging."
+
+## What you get back
+
+A short message in Logan's handoff format:
+
+1. **What was built.** Page title(s) and staging URL(s).
+2. **Deviations from the template.** What you changed and why. One sentence each.
+3. **Missing inputs.** What you didn't have but worked around. Honest, no defensiveness.
+4. **Open questions.** Stuff PM or the lead has to answer before launch.
+
+What's not in there: emotional commentary, apologies for normal time taken, defensive explanations of why something took the time it took.
+
+If the QA didn't pass yet, the skill stops you. It will not write a handoff for an unfinished page.
+
+## Try it
+
+> "Mily, write a handoff for the Bottger Mansion About page on staging. Built it from the inside template. One deviation — used the two-column block instead of the centered intro because the client copy was longer than the template assumes. No missing inputs."
+
+You'll get a 5-sentence message you can paste into Logan's PM tool as-is. Or tweak in 30 seconds if anything's off.
+
+<details>
+<summary>How it actually works under the hood</summary>
+
+- Reads from: `~/.claude/skills/logan-pm-handoff/SKILL.md`
+- GitHub: [skills/logan-pm-handoff/SKILL.md](https://github.com/adamghaleb/logan-marketing-suite/blob/main/skills/logan-pm-handoff/SKILL.md)
+- Trigger phrases:
+  - "write a PM handoff"
+  - "send this to PM"
+  - "ready for review message"
+  - "handoff message for…"
+
+The skill is the prose version of the `templates/pm-handoff-message.md` template, applied to the specific page Mily just built. It enforces:
+
+- **Status taxonomy:** Not Started / In Progress / Ready for Review / In Review / Revisions / Approved / Published — the message goes out at "Ready for Review."
+- **Required fields:** page URL(s), what was built, deviations from the template (with reason), any missing inputs, any open questions
+- **Banned content:** emotional commentary, apologies for normal-length time on task, defensive explanations
+- **Hard prerequisite:** the QA skill must have passed first. If Mily asks for a handoff on a page that hasn't been QA'd, the skill redirects her to `logan-elementor-qa` instead of writing a premature handoff
+
+There's a separate path for "I'm stuck mid-build" — that doesn't go through this skill at all. Mid-build escalations are not handoffs and are handled directly to PM with the "what I tried, what didn't work, what I think the issue is, what I need" pattern.
+
+Adam wrote the format to keep handoffs boring and fast. Boring handoffs ship faster than dramatic ones.
+
+</details>

@@ -1,0 +1,64 @@
+---
+title: "Make an Elementor template"
+slug: "logan-elementor-template-json"
+order: 7
+techName: "logan-elementor-template-json"
+---
+
+# Make an Elementor template
+
+You want a reusable Elementor section or page generated as a `.json` file you can import. That's this skill. It writes the file, you download it, you bring it into Elementor through Templates → Saved Templates → Import.
+
+## When you'd use this
+
+When you're building the same kind of section more than twice and you'd rather not click your way through it every time. Or when the lead asks for a starter template for a new page archetype. Or when you want to test a layout idea without touching a real site.
+
+This skill lives on **Layer 2** of the four-layer system — the AI hands you a file, you do the import. The AI never touches your site.
+
+## What you say to Claude
+
+> "Make me a template for a hospitality testimonial section."
+
+> "Generate Elementor JSON for a 3-column amenities grid."
+
+> "Importable template — Things to Do page hero with map and CTA."
+
+## What you get back
+
+A valid Elementor `.json` file, designed for modern Flexbox containers (not legacy sections), that you can drop into Elementor's import dialog. Plus:
+
+- A short note about what's in the template
+- Where it's meant to go (page-level, section-level, or saved-block)
+- The exact import path: Templates → Saved Templates → Import
+- A reminder to import to **staging first**, never directly to a live client site
+
+## Try it
+
+> "Mily, I need a saved-block template for a 3-up amenities row — icon, short heading, one-line description, repeated three times. Logan inside-template style."
+
+You'll get the JSON. Save it as `amenities-3up.json`. Import it on staging. Open it in Elementor, look it over, drag it into a real page. If anything looks off, ask the skill for a v2.
+
+<details>
+<summary>How it actually works under the hood</summary>
+
+> Always import to a staging site first. Always check the result visually before using it on a real client site.
+
+- Reads from: `~/.claude/skills/logan-elementor-template-json/SKILL.md`
+- GitHub: [skills/elementor-template-json/SKILL.md](https://github.com/adamghaleb/logan-marketing-suite/blob/main/skills/elementor-template-json/SKILL.md)
+- Trigger phrases:
+  - "make me a template for…"
+  - "generate Elementor JSON"
+  - "importable template"
+  - "saved template for…"
+
+Elementor's saved-template import expects a specific JSON shape. The skill encodes the schema for the modern Flexbox container era (the format Elementor has used since 2023, not the legacy Section/Column structure). Specifically it knows:
+
+- Top-level `version`, `title`, `type` (`page`, `section`, `container`)
+- The `content` tree of containers and widgets, each with a unique `id`, `elType`, `widgetType`, `settings` block, and `elements` array for children
+- How to express Flexbox properties: `flex_direction`, `flex_justify_content`, `flex_align_items`, `flex_gap`
+- How to use Logan's global colors and global fonts via the `__globals__` settings block, not hardcoded hex/font values
+- Responsive overrides via `_tablet` and `_mobile` suffixed settings
+
+The skill emits one file per request, names it descriptively, and includes a comment block at the top of the response that says "import to staging, verify visually." It will not generate templates for legacy Section/Column layouts — Logan is on Flexbox containers and that's where the skill stays. It also will not auto-import the file anywhere; that's the `logan-staging-automation` skill's job.
+
+</details>

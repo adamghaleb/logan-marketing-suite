@@ -1,0 +1,69 @@
+---
+title: "Build a page"
+slug: "logan-elementor-page-build"
+order: 1
+techName: "logan-elementor-page-build"
+---
+
+# Build a page
+
+You have a page assignment and a blank Elementor canvas. This is the skill for that. It walks you through the page section by section, tells you which Logan components to use, where the copy goes, what images you need, and what to check before you call it done.
+
+## When you'd use this
+
+You just got a page handed to you — About, Things to Do, a single room page, a new content page on an existing site — and you want a plan before you start dragging widgets around. You don't have to know which sections to use. You don't have to remember the QA checklist. The skill brings both.
+
+If you find yourself staring at the inside template wondering "where do I start?", this is the one to call.
+
+## What you say to Claude
+
+> "Help me build an About page for Sprucedale Ranch."
+
+> "Give me a build plan for a Things to Do page."
+
+> "I'm filling in the inside template for a B&B rooms page — what sections should I use?"
+
+You don't need a perfect prompt. Describe the page in your own words and Claude will pick this skill up.
+
+## What you get back
+
+A section-by-section plan, written in order, that looks like this:
+
+1. **Hero section** — which Logan component to use, what the headline should do, what image to grab.
+2. **Intro paragraph** — placement, tone, length.
+3. **Content sections** — usually 2 to 4 of them, each tied to a specific component from the inside template.
+4. **CTA block** — where it goes and what verb to use.
+5. **QA pass at the end** — heading hierarchy, alt text, mobile layout, brand consistency.
+
+Plain English the whole way. No "leverage your hero section" type stuff.
+
+## Try it
+
+Try this prompt right now in Claude:
+
+> "I'm building a 'Things to Do' page for The Whalers Inn in Mystic, Connecticut. Walk me through the build."
+
+You'll get a plan with hero, intro, three or four activity sections, a map embed, a CTA, and a QA list. Adjust as you go. The plan is a starting point, not a contract.
+
+<details>
+<summary>How it actually works under the hood</summary>
+
+- Reads from: `~/.claude/skills/logan-elementor-page-build/SKILL.md`
+- GitHub: [skills/elementor-page-build/SKILL.md](https://github.com/adamghaleb/logan-marketing-suite/blob/main/skills/elementor-page-build/SKILL.md)
+- Trigger phrases:
+  - "help me build a [page type]"
+  - "give me a build plan for…"
+  - "what sections should I use for…"
+  - "I'm filling in the inside template for…"
+
+The skill is an Anthropic-format `SKILL.md` file. Its YAML frontmatter has a `description` that includes the trigger phrases above, which Claude uses to decide when to load it. The body of the file teaches Claude:
+
+- The Logan inside-template component vocabulary (hero, intro, image+text rows, two-column layouts, gallery, testimonial block, CTA, etc.)
+- Hospitality page archetypes (Home, Rooms, About, Things to Do, Gallery, Contact, Blog post)
+- The order sections usually go in for each archetype
+- Where copy belongs and how long each chunk should be
+- The pre-handoff QA checklist that runs at the end
+
+The skill defers to the `logan-component-picker` skill for the "which exact component do I drag in" question and to `logan-elementor-qa` for the final pre-handoff sweep. It will not redesign templates or invent new components — that is the lead designer's domain, by Adam's design.
+
+</details>

@@ -1,0 +1,62 @@
+---
+title: "Pick the right section"
+slug: "logan-component-picker"
+order: 2
+techName: "logan-component-picker"
+---
+
+# Pick the right section
+
+You know roughly what page you're building, but the inside template gives you a dozen blocks to choose from and you're not sure which one fits the chunk of copy in front of you. This skill is the tiebreaker.
+
+## When you'd use this
+
+Mid-build, you've got a paragraph of copy, an image, and three different two-column layouts you could use. You don't want to guess. You want a recommendation with a reason.
+
+Or earlier than that — you opened a brand-new page, the inside template is loaded, and you don't know which section to drop in first. Blank-page paralysis. This skill walks you out of it.
+
+## What you say to Claude
+
+> "What section should I use for an amenities list?"
+
+> "I'm building a Rooms page — give me a section order."
+
+> "Two paragraphs and four photos. Which Logan block fits?"
+
+## What you get back
+
+A short Q&A where Claude asks you maybe one or two clarifying questions ("Is the copy a single block or a list of items?" "Are the photos same-size or mixed?"), then recommends:
+
+- The exact component name from the inside template
+- Why it fits this content
+- A small note if there's a runner-up worth considering
+
+If you're picking sections for a whole page, you get an ordered list — top of page to bottom — with one line of reasoning each.
+
+## Try it
+
+> "Mily, I have a single hero photo, a one-sentence tagline, and a button. What section?"
+
+You'll get back something like: "Use the Hero with Centered Headline block. The single photo and single button are exactly what it's built for. If the photo is portrait orientation, switch to Hero Split instead."
+
+<details>
+<summary>How it actually works under the hood</summary>
+
+- Reads from: `~/.claude/skills/logan-component-picker/SKILL.md`
+- GitHub: [skills/component-picker/SKILL.md](https://github.com/adamghaleb/logan-marketing-suite/blob/main/skills/component-picker/SKILL.md)
+- Trigger phrases:
+  - "what section do I use for…"
+  - "I'm building a [page type]"
+  - "blank page paralysis"
+  - "which block fits…"
+
+The skill bundles a flat catalog of every named component on Logan's inside template (hero variants, intro blocks, image+text rows, two-column layouts, list/grid blocks, gallery patterns, testimonial blocks, CTA blocks, contact blocks). For each component the skill knows:
+
+- What kind of content it expects (one image vs many, short copy vs long, list vs prose)
+- Common page archetypes it shows up in
+- Adjacent components it pairs well with
+- Components it conflicts with on the same page
+
+The decision flow is a short Q&A: content shape → image count → content length → page archetype → recommended component. If the inputs are ambiguous, the skill asks a clarifying question rather than guessing. It will not invent components — if nothing in the catalog fits, it says so and tells you to ask the lead.
+
+</details>

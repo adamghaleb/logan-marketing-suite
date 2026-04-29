@@ -1,0 +1,75 @@
+---
+title: "Write copy + SEO meta"
+slug: "logan-hospitality-copy-seo"
+order: 3
+techName: "logan-hospitality-copy-seo"
+---
+
+# Write copy + SEO meta
+
+Hospitality copy in Logan's voice. Plus the SEO bits — meta titles, meta descriptions, alt text, FAQ ideas — all in the same warm, place-rooted, specific style.
+
+## When you'd use this
+
+Anytime you need words. A headline that has to do real work. A meta description that fits in 160 characters and still sounds human. Three alt text options for the same photo. The CTA on the bottom of a Rooms page that shouldn't say "Submit."
+
+Also when client-provided copy is fine but a little flat and you want a polish pass before it goes into Elementor.
+
+## What you say to Claude
+
+> "Write me 3 meta description options for the Bottger Mansion Rooms page."
+
+> "Polish this About paragraph for me — keep the facts, lift the voice."
+
+> "Alt text for a photo of the wraparound porch with two Adirondack chairs at sunset."
+
+> "Give me a hospitality-style H1 for a Things to Do page in the Finger Lakes."
+
+## What you get back
+
+Copy in Logan's hospitality voice, with the rules baked in:
+
+- **Warm, not saccharine.** No "stunning," no "breathtaking," no "luxurious."
+- **Place-rooted.** The town, the region, the named local winery.
+- **Sensory and specific.** "Tuesday-morning blueberry scones" beats "delicious breakfasts."
+- **CTA verbs that fit hospitality.** "Reserve your suite," "Plan your stay," "Book a weekend." Never "Click here."
+
+For SEO meta you get character counts, location keyword woven in naturally, and 3 options to pick from rather than 1 take-it-or-leave-it.
+
+## Try it
+
+> "I need a meta title and a meta description for The Whalers Inn rooms page. The inn is in Mystic, Connecticut. Mid-range, 12 rooms, walking distance to the seaport."
+
+You'll get three meta titles in the format `Property | Type + Location` and three meta descriptions at 140 to 160 characters, each with a location keyword and a CTA verb.
+
+<details>
+<summary>How it actually works under the hood</summary>
+
+- Reads from: `~/.claude/skills/logan-hospitality-copy-seo/SKILL.md`
+- GitHub: [skills/hospitality-copy-seo/SKILL.md](https://github.com/adamghaleb/logan-marketing-suite/blob/main/skills/hospitality-copy-seo/SKILL.md)
+- Trigger phrases:
+  - "write copy for…"
+  - "give me 3 meta descriptions"
+  - "what should the H1 be"
+  - "alt text for this image"
+  - "polish this paragraph"
+
+The skill rolls up Logan's hospitality voice rules with the meta/alt/heading patterns from the toolkit's `reference/08-hospitality-seo.md` and `templates/alt-text-patterns.md` and `templates/meta-description-patterns.md` files.
+
+Voice rules (always applied):
+
+- Avoid the cliché list ("stunning," "breathtaking," "luxurious," "world-class," "best-in-class")
+- Prefer concrete sensory detail over generic adjectives
+- Anchor copy to a location, an amenity, or a moment
+- Imperative or warm-second-person CTAs over "Submit" / "Click here"
+
+SEO patterns (always applied):
+
+- Meta title: `Property Name | Type + Location` template
+- Meta description: 140 to 160 characters, location keyword woven in, value prop, CTA verb
+- Alt text: property + subject + (when relevant) season/time/feature; never "image of…"
+- Headings: descriptive of the page's value, not just the property name
+
+The skill produces options (3 by default), not single answers, so Mily can pick. It will not invent factual claims about a property — pricing, room counts, policies — and will flag those for client review instead.
+
+</details>

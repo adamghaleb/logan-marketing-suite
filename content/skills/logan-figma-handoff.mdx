@@ -1,0 +1,60 @@
+---
+title: "Read a Figma file"
+slug: "logan-figma-handoff"
+order: 4
+techName: "logan-figma-handoff"
+---
+
+# Read a Figma file
+
+The lead designer hands you a Figma file. You need to turn it into Elementor without missing anything important — and without redesigning anything that wasn't supposed to change.
+
+## When you'd use this
+
+Pretty much any time a Figma link lands in your inbox. The skill helps you read the file like a builder, not a designer. It tells you what maps to Elementor cleanly, what doesn't, and what to ask the lead about before you start clicking.
+
+If you've ever opened a Figma file and felt vaguely overwhelmed by the layers panel — this is the skill.
+
+## What you say to Claude
+
+> "I'm translating from Figma — give me the mapping."
+
+> "Got a Figma file from the lead. Walk me through reading it."
+
+> "Figma to Elementor — what should I worry about?"
+
+## What you get back
+
+A walkthrough in three parts:
+
+1. **The mental mapping.** Figma auto-layout becomes an Elementor flexbox container. Color styles become global colors. Text styles become global fonts. Frame variants become saved templates. Spacing tokens become padding and margin values.
+2. **What to ask the lead vs. figure out yourself.** "The hero has three slightly different paddings on three breakpoints — which is canonical?" goes to the lead. "The H2 should be Bold and dark grey" you can read off the file yourself.
+3. **Common translation traps.** Figma's gap behavior is not always identical to Elementor's. Font rendering differs in browser vs. Figma. Image masks and effects often don't translate one-to-one — and that's fine, that's expected.
+
+## Try it
+
+> "Mily, the lead just sent me a Figma file for a new Rooms page. Same template family as the inside template. What should I check before I start building?"
+
+You'll get a short pre-build inspection list: confirm color styles match Logan globals, confirm text styles match, look for any spacing values that aren't in the global token set, look for any new components that aren't in the inside template (those need a question to the lead).
+
+<details>
+<summary>How it actually works under the hood</summary>
+
+- Reads from: `~/.claude/skills/logan-figma-handoff/SKILL.md`
+- GitHub: [skills/elementor-figma-handoff/SKILL.md](https://github.com/adamghaleb/logan-marketing-suite/blob/main/skills/elementor-figma-handoff/SKILL.md)
+- Trigger phrases:
+  - "translating from Figma"
+  - "got a Figma file from…"
+  - "Figma to Elementor"
+  - "reading a Figma file"
+
+The skill encodes the Figma → Elementor mental mapping plus the "ambiguity vs. literal absence" rule. Specifically it teaches Claude:
+
+- **Mapping table:** auto-layout → flexbox container; frame variants → saved templates; color styles → global colors; text styles → global fonts; spacing tokens → padding/margin values
+- **Inspection without dev mode:** how to read measurements, spacing, font sizes, and colors when dev mode isn't enabled
+- **Breakpoint mapping:** Figma frames at 1920/1440/1024/768/375 → Elementor desktop/tablet/mobile responsive values
+- **Ask vs. assume:** ambiguity goes to the lead; literal absence (no spec for tablet, no hover state shown) is a question, not a guess
+
+Anti-trigger: doing original Figma design work. That's the lead designer's domain. The skill will explicitly redirect any "design me a Figma layout" request back up the chain.
+
+</details>

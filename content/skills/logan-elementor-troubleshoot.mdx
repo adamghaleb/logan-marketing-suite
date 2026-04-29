@@ -1,0 +1,69 @@
+---
+title: "Fix something broken"
+slug: "logan-elementor-troubleshoot"
+order: 5
+techName: "logan-elementor-troubleshoot"
+---
+
+# Fix something broken
+
+Elementor is being weird. The page won't save, or the mobile view is wrong, or a heading is the wrong color despite the global being set right. This skill stays calm and walks through the fix.
+
+## When you'd use this
+
+Any time the editor surprises you. Any time something looks fine on desktop but wrong on a real phone. Any time a widget setting just disappeared. Any time you're 30 seconds away from rage-quitting.
+
+The skill is ordered by frequency — the things that break most often come up first, so the fix is usually right at the top of the list.
+
+## What you say to Claude
+
+> "The mobile view looks fine in the editor but broken on my phone."
+
+> "I changed something and the page looks broken now. Help."
+
+> "Elementor is being weird — heading is the wrong color and the global is set right."
+
+## What you get back
+
+For each problem you describe, a tight three-part answer:
+
+1. **Symptom.** "Mobile editor looks fine, real phone is broken."
+2. **Diagnosis.** "Browser cache, then check responsive overrides at the right breakpoint."
+3. **Fix.** Step-by-step, in plain language, with the menu paths you'd actually click.
+
+If your problem isn't the most common one, the skill asks one or two questions and narrows in. If your problem is "the database is broken" or "the theme file changed" — it stops, says this is lead-territory, and tells you what to escalate.
+
+## Try it
+
+> "Mily, I changed an H2 and now the whole page section looks shifted. What do I do?"
+
+You'll get the full sequence: regenerate Elementor CSS first (Elementor → Tools → Regenerate CSS), then Files & Data → Regenerate Files, then a hard browser refresh. Plus a note: if those three don't fix it, that's the cue to call the lead.
+
+<details>
+<summary>How it actually works under the hood</summary>
+
+- Reads from: `~/.claude/skills/logan-elementor-troubleshoot/SKILL.md`
+- GitHub: [skills/elementor-troubleshoot/SKILL.md](https://github.com/adamghaleb/logan-marketing-suite/blob/main/skills/elementor-troubleshoot/SKILL.md)
+- Trigger phrases:
+  - "[anything] is broken"
+  - "this won't [verb]"
+  - "Elementor is being weird"
+  - "I changed something and now…"
+  - "mobile looks fine in editor but broken on real phone"
+
+The skill carries a frequency-ordered list of common Elementor failure modes, each with symptom → diagnosis → fix. The big ones:
+
+- Page layout broken after change → regenerate CSS, regenerate files, clear cache
+- Mobile fine in editor, broken on phone → cache, then responsive override at correct breakpoint
+- Widget settings disappeared after Elementor update → experiment toggles, plugin compatibility
+- Editor slow or freezing → disable plugins one by one, check browser memory, reduce image sizes
+- Can't drag a widget where you want it → container Direction (row vs column) and Justify Content
+- Heading wrong color despite global → local override; right-click property → Reset
+- Image won't upload → file size, format, WP upload limit
+- Form not sending → SMTP, spam filter, Elementor form actions
+- Site slow on mobile → image size, lazy loading, plugin bloat (escalate beyond this)
+- Broke something I can't undo → WP revisions, Elementor history panel; never panic-publish
+
+There's a hard escalation rule: any database, theme file, or plugin change is lead-territory. The skill will refuse to walk Mily into those without an explicit "the lead said it's okay."
+
+</details>

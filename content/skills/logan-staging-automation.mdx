@@ -1,0 +1,73 @@
+---
+title: "Work on staging"
+slug: "logan-staging-automation"
+order: 8
+techName: "logan-staging-automation"
+---
+
+# Work on staging
+
+Once you have a WordPress staging site set up, this skill lets Claude do real work on it — create draft pages, upload images, import templates — without ever touching a live client site.
+
+## When you'd use this
+
+You're past Layer 1 (advice) and Layer 2 (templates as files), and you have a staging site ready to take instructions. You'd rather Claude create the draft page on staging than copy-paste the build plan section by section yourself.
+
+This is **Layer 3** of the four-layer system. It's the first place Claude is doing things, not just talking.
+
+## What you say to Claude
+
+> "Create a draft page on staging called Rooms."
+
+> "Upload these four images to the staging site's media library."
+
+> "Import this template to staging."
+
+The skill assumes you've named your staging site somewhere Claude can find it (either in the conversation or in your saved settings).
+
+## What you get back
+
+A short report of what happened:
+
+- Page created — slug, title, status (always `draft`, never `publish`)
+- Images uploaded — filenames, sizes, where they ended up
+- Template imported — name, where it lives in your library
+- Anything that didn't work, with the actual error message and a suggested next step
+
+Drafts are invisible to the public. You review everything before you flip it to published yourself.
+
+## Try it
+
+> "Mily, on the staging site for The Whalers Inn, create a draft page called 'Things to Do in Mystic' with the slug `things-to-do`. Featured image is the harbor sunset photo I uploaded yesterday."
+
+You'll get a confirmation: page created as draft, slug set, featured image attached, here's the staging URL — go look.
+
+<details>
+<summary>How it actually works under the hood</summary>
+
+> This skill never touches a production site. If you ask it to, it refuses and asks for the staging URL instead.
+
+- Reads from: `~/.claude/skills/logan-staging-automation/SKILL.md`
+- GitHub: [skills/staging-automation/SKILL.md](https://github.com/adamghaleb/logan-marketing-suite/blob/main/skills/staging-automation/SKILL.md)
+- Trigger phrases:
+  - "create a draft page on…"
+  - "upload these images to staging"
+  - "import this template"
+  - "on the staging site, …"
+
+The skill talks to WordPress via the **REST API** using a per-app **Application Password** — a credential that lives only in the staging environment, can be revoked any time, and never overlaps with the user's real WP login. The endpoints it uses:
+
+- `POST /wp-json/wp/v2/pages` — create page (always with `status: 'draft'`)
+- `POST /wp-json/wp/v2/media` — upload media
+- `POST /wp-json/wp/v2/elementor_library` (if Elementor is exposed) — import templates
+
+Hard rules baked into the skill:
+
+- The hostname must match a known staging pattern (subdomain `staging.`, or a host on the explicit allowlist) — production hosts get rejected at the request layer
+- Page status defaults to `draft`. The skill cannot publish in a single step, by design
+- Every action returns the resulting URL plus an "open this to verify" prompt
+- Network calls use exponential backoff with jitter (1s → 2s → 4s) and retry only on 5xx and network errors, never on 4xx
+
+If the production check fails, the skill stops and asks for the staging URL. Built that way deliberately by Adam — the staging gate is not a setting Mily can turn off in chat.
+
+</details>
