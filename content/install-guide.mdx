@@ -1,0 +1,134 @@
+---
+title: Install guide
+slug: install-guide
+description: How to drop all 9 Mily skills onto your computer with one command, in plain English.
+status: live
+order: 5
+---
+
+# Install guide
+
+This is the one-command setup for the suite. You paste a single line into your terminal and Claude gets the 9 Logan skills it needs to help you build pages, write copy, QA work, and hand off to PM.
+
+---
+
+## What you're about to do
+
+You're going to copy a special command, paste it into your terminal, and press Enter. The command quietly downloads 9 small "skill" folders from Adam's GitHub and tucks them into the place on your computer where Claude Code looks for them. Nothing on your computer gets modified outside that one folder. If a skill is already there, the installer leaves your copy alone. You can run the command again any time you want — it's safe.
+
+---
+
+## The one-liner
+
+Paste this into your terminal (Terminal on Mac, Git Bash or WSL on Windows) and press Enter:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/adamghaleb/logan-marketing-suite/main/scripts/install-mily-skills.sh | bash
+```
+
+That's the whole install. You'll see a few friendly lines scroll by, ending with "You're all set, Mily."
+
+---
+
+## What just happened?
+
+- The installer cloned Adam's `logan-marketing-suite` repo into a temporary folder.
+- It copied every `logan-*` skill into `~/.claude/skills/` (the place Claude Code already looks).
+- It skipped any skill you already had, so nothing of yours was overwritten.
+
+---
+
+## How to actually use them
+
+You don't pick a skill from a menu. You just talk to Claude (or to Bingus) the way you'd talk to a coworker. Claude reads what you said, matches it to the right skill, and runs it.
+
+Try one of these:
+
+1. **"Help me build a Things-To-Do page for a Hudson Valley B&B."**
+   This wakes up the **Build a page** skill. You'll get a section-by-section plan tuned to Logan's component library.
+
+2. **"Write me 3 meta description options for an inn home page in the Finger Lakes."**
+   This wakes up **Write copy + SEO meta**. You'll get hospitality-voice options that fit the 140–160 character window.
+
+3. **"QA this page before I hand it off to PM."**
+   This wakes up **Check my work**. You'll get a pre-handoff checklist run against the page, with pass/fail notes.
+
+If you forget what's installed, just ask Bingus: "what skills do I have?"
+
+---
+
+<details>
+<summary><strong>The slow version: manual install, file locations, uninstall, troubleshooting</strong></summary>
+
+### Manual install (no curl)
+
+If you'd rather see every step:
+
+1. Open your terminal.
+2. Make sure Claude Code is installed. (See the [Claude Code 101](/claude-code-101) page.)
+3. Clone the repo somewhere convenient:
+   ```bash
+   git clone https://github.com/adamghaleb/logan-marketing-suite.git
+   cd logan-marketing-suite
+   ```
+4. Copy the skills into your Claude skills folder:
+   ```bash
+   mkdir -p ~/.claude/skills
+   cp -R skills/logan-* ~/.claude/skills/
+   ```
+5. Done. Open Claude Code (or Bingus) and try one of the trigger phrases above.
+
+### Where the files live
+
+| Thing                    | Path                                                                  |
+| ------------------------ | --------------------------------------------------------------------- |
+| Claude's skills folder   | `~/.claude/skills/`                                                   |
+| One Mily skill, example  | `~/.claude/skills/logan-elementor-page-build/SKILL.md`                |
+| The installer (on disk)  | wherever you saved it — typically run via `curl ... \| bash`, no save |
+| Override the skills root | set `CLAUDE_HOME` before running the installer                        |
+
+If `CLAUDE_HOME` is set, the installer uses `$CLAUDE_HOME/skills` instead of `~/.claude/skills`.
+
+### How to uninstall
+
+Skills are just folders. Delete the ones you no longer want:
+
+```bash
+rm -rf ~/.claude/skills/logan-elementor-page-build
+```
+
+Or remove all 9 at once:
+
+```bash
+rm -rf ~/.claude/skills/logan-*
+```
+
+Nothing else on your computer is touched. Claude Code itself stays installed.
+
+### Re-installing or updating
+
+The installer never overwrites a skill that already exists, so to pick up a new version of one:
+
+1. Delete that one folder (`rm -rf ~/.claude/skills/logan-<name>`).
+2. Run the one-liner again.
+
+To force-refresh everything, delete all `logan-*` folders, then run the one-liner.
+
+### Troubleshooting
+
+- **"command not found: curl"** — On Mac, curl ships with the OS. On Linux, install with your package manager (`sudo apt install curl` or `sudo dnf install curl`). On Windows, use Git Bash or WSL — don't use PowerShell.
+- **"Could not reach GitHub"** — Check Wi-Fi. Then try `git clone https://github.com/adamghaleb/logan-marketing-suite.git` directly to confirm git can reach GitHub.
+- **"The skills folder isn't in the repo yet"** — That means the skill files are still being published. Re-run the same command in a day or two.
+- **Skill installed but Claude doesn't use it** — Restart Claude Code. Ask Bingus directly: "do you have the logan-elementor-page-build skill?" If he says no, check that the folder really lives at `~/.claude/skills/logan-elementor-page-build/SKILL.md`.
+- **Windows, but you don't have Git Bash or WSL** — Install [Git for Windows](https://git-scm.com/download/win) (it bundles Git Bash) or set up [WSL](https://learn.microsoft.com/windows/wsl/install). Then re-run the one-liner inside that terminal.
+- **Stuck for more than 15 minutes** — Ping Adam. Screen-share fixes it in two minutes.
+
+</details>
+
+---
+
+## Where to go next
+
+- New to Claude Code itself? Read [Claude Code 101](/claude-code-101).
+- Curious how the skills get used in your day-to-day? Read [The four layers of help](/four-layers).
+- Just want to see what each skill does? Read [Skills](/skills).
