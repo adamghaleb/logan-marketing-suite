@@ -26,35 +26,6 @@ export function BingusCat({
     >
       <title>{title}</title>
 
-      {/* Sparkles */}
-      <text
-        className={styles.sparkle}
-        x="14"
-        y="20"
-        fontSize="10"
-        fill="oklch(0.62 0.13 290)"
-      >
-        ✦
-      </text>
-      <text
-        className={`${styles.sparkle} ${styles.sparkleTwo}`}
-        x="82"
-        y="22"
-        fontSize="8"
-        fill="oklch(0.62 0.13 290)"
-      >
-        ✦
-      </text>
-      <text
-        className={`${styles.sparkle} ${styles.sparkleThree}`}
-        x="78"
-        y="62"
-        fontSize="9"
-        fill="oklch(0.62 0.13 290)"
-      >
-        ♡
-      </text>
-
       {/* Tail */}
       <path
         className={styles.tail}
