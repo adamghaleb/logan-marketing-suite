@@ -7,7 +7,8 @@ export const metadata: Metadata = {
     "How to drop all 9 Mily skills onto your computer with one command, in plain English.",
 };
 
-const ONE_LINER = "curl -fsSL https://mily.computer/install.sh | bash";
+const ONE_LINER =
+  "curl -fsSL https://raw.githubusercontent.com/adamghaleb/logan-marketing-suite/main/public/install.sh | bash";
 
 export default function InstallGuidePage() {
   return (

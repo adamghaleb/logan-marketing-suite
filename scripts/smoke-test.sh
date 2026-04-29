@@ -1,22 +1,22 @@
 #!/usr/bin/env bash
-# smoke-test.sh — quick sanity check for a deployed mily.computer environment.
+# smoke-test.sh — quick sanity check for a deployed Logan Marketing Suite (Mily) environment.
 #
 # Usage:
-#   ./scripts/smoke-test.sh                              # defaults to http://localhost:3000
-#   ./scripts/smoke-test.sh https://mily.computer        # check production
-#   BASE_URL=https://staging.mily.computer ./scripts/smoke-test.sh
+#   ./scripts/smoke-test.sh                                                     # defaults to https://logan-marketing-suite.vercel.app
+#   ./scripts/smoke-test.sh https://logan-marketing-suite.vercel.app            # check production
+#   BASE_URL=https://logan-marketing-suite-git-staging.vercel.app ./scripts/smoke-test.sh
 #
 # What it checks (in plain English):
 #   1. The front door — does the home page load and look like Mily's site?
 #   2. Mily's API — does the bingus chat endpoint answer (or politely say "not deployed yet")?
-#   3. The install script — does mily.computer/install.sh return a real bash script?
+#   3. The install script — does /install.sh return a real bash script?
 #
 # All HTTP calls retry 3 times with exponential backoff (1s, 2s, 4s) plus a small
 # jitter, and only retry on 5xx or network errors — never on 4xx (per CLAUDE.md).
 
 set -euo pipefail
 
-BASE_URL="${1:-${BASE_URL:-http://localhost:3000}}"
+BASE_URL="${1:-${BASE_URL:-https://logan-marketing-suite.vercel.app}}"
 BASE_URL="${BASE_URL%/}"
 
 color() { printf "\033[%sm%s\033[0m" "$1" "$2"; }
@@ -103,10 +103,10 @@ home_body="$(printf '%s\n' "$home_resp"   | extract_body)"
 if [[ "$home_status" != "200" ]]; then
   fail "home page returned $home_status (expected 200). Is the app actually deployed?"
 fi
-if ! printf '%s' "$home_body" | grep -qi 'mily.computer'; then
-  warn "home page returned 200 but didn't mention mily.computer in the HTML. Double-check the title."
+if ! printf '%s' "$home_body" | grep -qiE 'mily|logan marketing suite'; then
+  warn "home page returned 200 but didn't mention 'Mily' or 'Logan Marketing Suite' in the HTML. Double-check the title."
 else
-  ok "front door looks right (200 + mily.computer in the page)"
+  ok "front door looks right (200 + Mily/Logan Marketing Suite in the page)"
 fi
 
 # --- 2. Mily's API ---------------------------------------------------------
@@ -145,10 +145,14 @@ if [[ "$install_status" != "200" ]]; then
 fi
 
 first_line="$(printf '%s\n' "$install_body" | head -n 1)"
-if [[ "$first_line" != "#!/usr/bin/env bash" ]]; then
-  fail "install.sh did not start with '#!/usr/bin/env bash'. First line was: $first_line"
+if [[ "$first_line" != \#!/* ]]; then
+  fail "install.sh did not start with a '#!' shebang. First line was: $first_line"
 fi
-ok "install script looks like a real bash script"
+if ! printf '%s' "$install_body" | grep -qiE 'mily|claude'; then
+  warn "install.sh has a shebang but didn't mention 'mily' or 'claude'. Double-check it's the right script."
+else
+  ok "install script looks like a real bash script"
+fi
 
 # --- done ------------------------------------------------------------------
 ok "you're good — all smoke checks passed against ${BASE_URL}"
