@@ -1,54 +1,78 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { InnerPageShell } from "@/components/InnerPageShell";
 import { listContent } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "The Logan Marketing dossier",
+  title: "Dossier · Mily Suite",
+  description:
+    "How Logan writes — tone, structure, and the do's and don'ts pulled from real pages.",
 };
+
+const ROMAN: ReadonlyArray<string> = [
+  "i.",
+  "ii.",
+  "iii.",
+  "iv.",
+  "v.",
+  "vi.",
+  "vii.",
+  "viii.",
+  "ix.",
+  "x.",
+  "xi.",
+  "xii.",
+  "xiii.",
+  "xiv.",
+  "xv.",
+];
+
+function romanNumeral(n: number): string {
+  return ROMAN[n - 1] ?? `${n}.`;
+}
 
 export default async function DossierIndexPage() {
   const entries = await listContent("dossier");
 
   return (
-    <InnerPageShell
-      eyebrow="v. · the dossier"
-      title="The Logan Marketing dossier"
-      intro="Everything Adam could pull together about Logan before Mily walked in — agency profile, voice, the cast of characters, a 90-day plan, and the questions to ask back. Read it as a primer, not a script."
-      breadcrumbs={[{ label: "the toolkit", href: "/" }, { label: "dossier" }]}
-    >
-      <div className="prose-list">
-        {entries.map((entry, index) => (
-          <article key={entry.slug} className="prose-row">
-            <div className="prose-num">
-              {String(index + 1).padStart(2, "0")}
-            </div>
-            <div>
-              <h3 className="prose-title">
-                <Link
-                  href={`/dossier/${entry.slug}`}
-                  style={{ color: "inherit", textDecoration: "none" }}
-                >
-                  {entry.title}
-                </Link>
-              </h3>
-              <p className="prose-body">{entry.firstParagraph}</p>
-              <Link
-                href={`/dossier/${entry.slug}`}
-                style={{
-                  display: "inline-block",
-                  marginTop: 8,
-                  fontFamily: "var(--mono)",
-                  fontSize: 11,
-                  color: "var(--lavigo-400)",
-                }}
-              >
-                read this section →
-              </Link>
-            </div>
-          </article>
-        ))}
-      </div>
-    </InnerPageShell>
+    <main className="page">
+      <section className="section" style={{ marginTop: 0 }}>
+        <div className="section-head">
+          <span className="section-num">v.</span>
+          <h2 className="section-title">Logan voice dossier</h2>
+          <span className="section-line" />
+          <span className="section-tag">{entries.length} chapters</span>
+        </div>
+        <p
+          style={{
+            maxWidth: "55ch",
+            color: "var(--ink-2)",
+            marginBottom: 24,
+          }}
+        >
+          How Logan writes — the tone, the structure, the do's and don'ts.
+          Pulled from real pages they've shipped.
+        </p>
+        <div className="cards">
+          {entries.map((entry, i) => (
+            <Link
+              key={entry.slug}
+              href={`/dossier/${entry.slug}`}
+              className="card"
+            >
+              <span className="card-num">{romanNumeral(i + 1)}</span>
+              <h3>{entry.title}</h3>
+              <p>{entry.firstParagraph}</p>
+              <div className="card-meta">voice + tone</div>
+            </Link>
+          ))}
+        </div>
+
+        <p style={{ marginTop: 36 }}>
+          <Link href="/" style={{ fontSize: 14 }}>
+            ← back to the suite
+          </Link>
+        </p>
+      </section>
+    </main>
   );
 }

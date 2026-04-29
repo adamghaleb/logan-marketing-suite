@@ -1,69 +1,84 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { InnerPageShell } from "@/components/InnerPageShell";
 import { listContent } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Tutorials — Logan Marketing toolkit",
+  title: "Tutorials · Mily Suite",
+  description:
+    "Step-by-step walkthroughs for the work you'll do most often on the job at Logan Marketing.",
 };
+
+const ROMAN: ReadonlyArray<string> = [
+  "i.",
+  "ii.",
+  "iii.",
+  "iv.",
+  "v.",
+  "vi.",
+  "vii.",
+  "viii.",
+  "ix.",
+  "x.",
+  "xi.",
+  "xii.",
+  "xiii.",
+  "xiv.",
+  "xv.",
+];
+
+function romanNumeral(n: number): string {
+  return ROMAN[n - 1] ?? `${n}.`;
+}
 
 export default async function TutorialsIndexPage() {
   const entries = await listContent("tutorials");
 
   return (
-    <InnerPageShell
-      eyebrow="ii. · tutorials"
-      title="Step-by-step tutorials"
-      intro="Four end-to-end walkthroughs of the most common first-week tasks. Mily can do these cold; Adam wrote them so you can follow along on real Logan work."
-      breadcrumbs={[
-        { label: "the toolkit", href: "/" },
-        { label: "tutorials" },
-      ]}
-    >
-      <div className="prose-list">
-        {entries.map((entry, index) => (
-          <article key={entry.slug} className="prose-row">
-            <div className="prose-num">
-              {String(index + 1).padStart(2, "0")}
-            </div>
-            <div>
-              <h3 className="prose-title">
-                <Link
-                  href={`/tutorials/${entry.slug}`}
-                  style={{ color: "inherit", textDecoration: "none" }}
-                >
-                  {entry.title}
-                </Link>
-              </h3>
-              {typeof entry.estimatedMinutes === "number" && (
-                <div
-                  style={{
-                    fontFamily: "var(--mono)",
-                    fontSize: 11,
-                    color: "var(--lavigo-400)",
-                    margin: "0 0 6px",
-                  }}
-                >
-                  ~{entry.estimatedMinutes} min
-                </div>
-              )}
-              <p className="prose-body">{entry.firstParagraph}</p>
+    <main className="page">
+      <section className="section" style={{ marginTop: 0 }}>
+        <div className="section-head">
+          <span className="section-num">ii.</span>
+          <h2 className="section-title">Tutorials</h2>
+          <span className="section-line" />
+          <span className="section-tag">{entries.length} walkthroughs</span>
+        </div>
+        <p
+          style={{
+            maxWidth: "55ch",
+            color: "var(--ink-2)",
+            marginBottom: 24,
+          }}
+        >
+          Step-by-step walkthroughs for the things you'll do most often on the
+          job. Read once, build once, you've got it.
+        </p>
+        <div className="cards">
+          {entries.map((entry, i) => {
+            const meta =
+              typeof entry.estimatedMinutes === "number"
+                ? `${entry.estimatedMinutes} min`
+                : "guided practice";
+            return (
               <Link
+                key={entry.slug}
                 href={`/tutorials/${entry.slug}`}
-                style={{
-                  display: "inline-block",
-                  marginTop: 8,
-                  fontFamily: "var(--mono)",
-                  fontSize: 11,
-                  color: "var(--lavigo-400)",
-                }}
+                className="card"
               >
-                start the tutorial →
+                <span className="card-num">{romanNumeral(i + 1)}</span>
+                <h3>{entry.title}</h3>
+                <p>{entry.firstParagraph}</p>
+                <div className="card-meta">{meta}</div>
               </Link>
-            </div>
-          </article>
-        ))}
-      </div>
-    </InnerPageShell>
+            );
+          })}
+        </div>
+
+        <p style={{ marginTop: 36 }}>
+          <Link href="/" style={{ fontSize: 14 }}>
+            ← back to the suite
+          </Link>
+        </p>
+      </section>
+    </main>
   );
 }

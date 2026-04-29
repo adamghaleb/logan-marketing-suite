@@ -50,7 +50,7 @@
 .header {
   font-family: var(--hand);
   font-size: 18px;
-  color: var(--lovego-400);
+  color: var(--lavigo-400, var(--lovego-400));
   line-height: 1;
   margin-bottom: 8px;
   display: flex;
@@ -93,19 +93,29 @@
 }
 
 .bingusMessage {
-  background: var(--lovego-50);
-  border: 1px solid var(--lovego-100);
+  background: var(--paper);
+  border: 1px solid var(--lavigo-100, oklch(0.88 0.05 292));
   color: var(--ink);
   align-self: flex-start;
   border-bottom-left-radius: 4px;
 }
 
+:global(body[data-mode="dark"]) .bingusMessage {
+  background: oklch(0.32 0.04 292);
+  border-color: oklch(0.42 0.06 292);
+}
+
 .userMessage {
-  background: var(--paper-2);
-  border: 1px solid var(--line);
+  background: var(--lavigo-100, oklch(0.88 0.05 292));
+  border: 1px solid var(--lavigo-200, oklch(0.82 0.07 292));
   color: var(--ink);
   align-self: flex-end;
   border-bottom-right-radius: 4px;
+}
+
+:global(body[data-mode="dark"]) .userMessage {
+  background: oklch(0.42 0.08 292);
+  border-color: oklch(0.5 0.1 292);
 }
 
 .errorMessage {
@@ -114,9 +124,14 @@
   color: var(--ink);
 }
 
+:global(body[data-mode="dark"]) .errorMessage {
+  background: oklch(0.36 0.06 55);
+  border-color: oklch(0.6 0.12 45);
+}
+
 .thinking {
   font-style: italic;
-  color: var(--ink-3);
+  color: var(--ink-2);
   font-size: 13px;
   display: inline-flex;
   align-items: center;
@@ -175,6 +190,11 @@
     border-color 0.12s,
     background 0.12s;
   min-width: 0;
+}
+
+.input::placeholder {
+  color: var(--ink-3);
+  opacity: 1;
 }
 
 .input:focus {
