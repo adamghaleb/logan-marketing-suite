@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode, CSSProperties } from "react";
 import { AMP_FONT_STACK, fontVars } from "./fonts";
+import { TweaksPanel } from "@/components/TweaksPanel";
 import {
   MILY_PAGE_TITLE,
   MILY_TWEAKS_DEFAULT,
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         style={bodyStyle}
       >
         {children}
+        <TweaksPanel />
       </body>
     </html>
   );

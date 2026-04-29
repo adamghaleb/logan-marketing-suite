@@ -1,3 +1,6 @@
+import Bingus from "@/components/Bingus";
+import { MouseOfTheDay } from "@/components/MouseOfTheDay";
+import { Practice } from "@/components/Practice";
 import { Cards } from "@/components/sections/Cards";
 import { Footer } from "@/components/sections/Footer";
 import { Hero } from "@/components/sections/Hero";
@@ -13,8 +16,11 @@ export default function HomePage() {
       <UrlBar />
       <Hero name={name} />
       <Cards />
+      <Practice />
+      <MouseOfTheDay />
       <System />
       <Footer name={name} fromName={fromName} />
+      <Bingus />
     </main>
   );
 }
