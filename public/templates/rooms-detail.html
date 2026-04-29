@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Cedar Suite — Cedar &amp; Salt Inn</title>
+    <meta
+      name="description"
+      content="Our biggest room. King bed, gas fireplace, claw-foot tub, and a window seat that looks out at the harbor lights."
+    />
+    <style>
+      :root {
+        --ink: #1c2530;
+        --ink-soft: #4a5663;
+        --paper: #f7f4ee;
+        --paper-2: #efeae0;
+        --line: #d9d2c2;
+        --accent: #2f4a3f;
+        --accent-soft: #c8d3cb;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.55;
+      }
+      a {
+        color: var(--accent);
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Slim header */
+      header.site {
+        border-bottom: 1px solid var(--line);
+        padding: 16px 0;
+      }
+      .site-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .brand {
+        font-family: "Didot", "Bodoni 72", Georgia, serif;
+        font-size: 20px;
+        letter-spacing: 0.04em;
+      }
+      .crumb {
+        font-family: system-ui, sans-serif;
+        font-size: 12.5px;
+        color: var(--ink-soft);
+        letter-spacing: 0.04em;
+      }
+      .crumb a {
+        text-decoration: none;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 18px;
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        font-family: system-ui, sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.03em;
+        border-radius: 2px;
+      }
+
+      /* Hero/title block */
+      .room-head {
+        padding: 56px 0 24px;
+      }
+      .room-head .eyebrow {
+        font-family: system-ui, sans-serif;
+        font-size: 11px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 12px;
+      }
+      .room-head h1 {
+        font-family: "Didot", Georgia, serif;
+        font-size: clamp(34px, 5vw, 52px);
+        line-height: 1.08;
+        font-weight: 400;
+        margin: 0 0 12px;
+      }
+      .room-head p {
+        color: var(--ink-soft);
+        font-size: 17px;
+        max-width: 640px;
+        margin: 0;
+      }
+
+      /* Gallery — Elementor image grid */
+      .gallery {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 240px 240px;
+        gap: 10px;
+        padding-bottom: 56px;
+      }
+      .gallery .g {
+        background: var(--accent-soft) center/cover no-repeat;
+        border-radius: 2px;
+      }
+      .gallery .g.lead {
+        grid-row: 1 / span 2;
+      }
+      @media (max-width: 760px) {
+        .gallery {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 180px 180px 180px;
+        }
+        .gallery .g.lead {
+          grid-row: 1 / span 2;
+          grid-column: 1 / span 2;
+        }
+      }
+
+      /* Two-column body: details + booking sidebar */
+      .layout {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 56px;
+        padding-bottom: 72px;
+        align-items: start;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+      }
+
+      .body h2 {
+        font-family: "Didot", Georgia, serif;
+        font-size: 26px;
+        font-weight: 400;
+        margin: 36px 0 12px;
+      }
+      .body p {
+        color: var(--ink-soft);
+        margin: 0 0 14px;
+        font-size: 16.5px;
+      }
+      .body ul.amenities {
+        list-style: none;
+        padding: 0;
+        margin: 8px 0 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 24px;
+      }
+      .body ul.amenities li {
+        font-size: 15px;
+        padding-left: 18px;
+        position: relative;
+        color: var(--ink-soft);
+      }
+      .body ul.amenities li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 9px;
+        width: 8px;
+        height: 8px;
+        border: 1px solid var(--accent);
+        border-radius: 50%;
+      }
+
+      /* Booking sidebar — Elementor sticky widget */
+      aside.book {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 2px;
+        padding: 28px 26px;
+        position: sticky;
+        top: 24px;
+      }
+      aside.book .price {
+        font-family: "Didot", Georgia, serif;
+        font-size: 32px;
+        line-height: 1;
+      }
+      aside.book .price small {
+        font-family: system-ui, sans-serif;
+        font-size: 13px;
+        color: var(--ink-soft);
+        letter-spacing: 0.04em;
+      }
+      aside.book .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 18px 0 10px;
+      }
+      aside.book label {
+        display: block;
+        font-family: system-ui, sans-serif;
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        margin-bottom: 4px;
+      }
+      aside.book input,
+      aside.book select {
+        width: 100%;
+        padding: 8px 10px;
+        font: inherit;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 2px;
+      }
+      aside.book .btn {
+        width: 100%;
+        text-align: center;
+        margin-top: 14px;
+      }
+      aside.book .note {
+        font-size: 12.5px;
+        color: var(--ink-soft);
+        margin-top: 12px;
+        line-height: 1.5;
+      }
+
+      /* FAQ */
+      section.faq {
+        background: var(--paper-2);
+        padding: 64px 0;
+        border-top: 1px solid var(--line);
+      }
+      .faq-head {
+        text-align: center;
+        max-width: 560px;
+        margin: 0 auto 36px;
+      }
+      .faq-head h2 {
+        font-family: "Didot", Georgia, serif;
+        font-size: clamp(26px, 3.6vw, 34px);
+        font-weight: 400;
+        margin: 0 0 8px;
+      }
+      .faq-head p {
+        color: var(--ink-soft);
+        margin: 0;
+      }
+      details {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 2px;
+        padding: 18px 22px;
+        margin-bottom: 10px;
+      }
+      details summary {
+        cursor: pointer;
+        font-family: system-ui, sans-serif;
+        font-size: 15.5px;
+        font-weight: 500;
+        list-style: none;
+        outline: none;
+      }
+      details summary::-webkit-details-marker {
+        display: none;
+      }
+      details summary::after {
+        content: "+";
+        float: right;
+        color: var(--accent);
+        font-size: 22px;
+        line-height: 0.8;
+      }
+      details[open] summary::after {
+        content: "–";
+      }
+      details p {
+        color: var(--ink-soft);
+        margin: 12px 0 0;
+        font-size: 15px;
+      }
+
+      /* Closing CTA */
+      .cta {
+        background: var(--accent);
+        color: #fff;
+        padding: 56px 24px;
+        text-align: center;
+      }
+      .cta h2 {
+        font-family: "Didot", Georgia, serif;
+        font-weight: 400;
+        font-size: clamp(24px, 3.4vw, 32px);
+        margin: 0 0 12px;
+      }
+      .cta p {
+        opacity: 0.85;
+        max-width: 540px;
+        margin: 0 auto 22px;
+      }
+      .cta .btn {
+        background: #fff;
+        color: var(--accent);
+      }
+
+      footer.site {
+        background: #1c2530;
+        color: #cdd2d8;
+        padding: 28px 0;
+        font-size: 13px;
+      }
+      footer .legal {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      footer a {
+        color: #cdd2d8;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="container site-row">
+        <div class="brand">Cedar &amp; Salt Inn</div>
+        <div class="crumb">
+          <a href="./inn-homepage.html">Home</a> ·
+          <a href="./inn-homepage.html#rooms">Rooms</a> · The Cedar Suite
+        </div>
+        <a class="btn" href="#book">Book This Room</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="container room-head">
+        <div class="eyebrow">Room 03 · Second Floor</div>
+        <h1>The Cedar Suite</h1>
+        <p>
+          Our biggest room. King bed, working fireplace, deep claw-foot tub, and
+          a window seat that looks west toward the harbor. Sleeps two,
+          comfortably and quietly.
+        </p>
+      </section>
+
+      <section class="container">
+        <div class="gallery" aria-label="Photos of the Cedar Suite">
+          <div
+            class="g lead"
+            role="img"
+            aria-label="King bed in the Cedar Suite with linen bedding and a window seat"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=70&quot;);
+            "
+          ></div>
+          <div
+            class="g"
+            role="img"
+            aria-label="Cast-iron claw-foot tub by a window with sheer curtains"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=900&q=70&quot;);
+            "
+          ></div>
+          <div
+            class="g"
+            role="img"
+            aria-label="Small marble fireplace with a stack of birch logs beside it"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=900&q=70&quot;);
+            "
+          ></div>
+          <div
+            class="g"
+            role="img"
+            aria-label="Reading nook with a velvet armchair and a brass floor lamp"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=70&quot;);
+            "
+          ></div>
+          <div
+            class="g"
+            role="img"
+            aria-label="Window seat overlooking Camden Harbor at sunset"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1499678329028-101435549a4e?auto=format&fit=crop&w=900&q=70&quot;);
+            "
+          ></div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="layout">
+          <div class="body">
+            <h2>About the room</h2>
+            <p>
+              Margaret found the four-poster bed at an estate sale outside
+              Rockland in 2017. Theo refinished it over a long winter. The
+              mattress is new — the bed frame is the part with stories.
+            </p>
+            <p>
+              The fireplace is gas, lit with a remote tucked into the writing
+              desk drawer. We leave a small basket of birch tinder anyway,
+              because guests like the sound. The tub is original to the house,
+              circa 1898, and yes — it does fit two people if they are very fond
+              of each other.
+            </p>
+
+            <h2>Amenities</h2>
+            <ul class="amenities">
+              <li>King bed, linen sheets, down duvet</li>
+              <li>Working gas fireplace</li>
+              <li>Claw-foot tub and walk-in shower</li>
+              <li>Small writing desk with reading chair</li>
+              <li>Window seat with harbor view</li>
+              <li>Local artisan toiletries</li>
+              <li>Dimmable lighting throughout</li>
+              <li>Quiet hours after 10 p.m.</li>
+            </ul>
+
+            <h2>What's included</h2>
+            <p>
+              Full breakfast served family-style at 8:30 in the dining room.
+              Self-serve coffee and a kettle on the second-floor landing
+              starting at 7. Afternoon wine and cheese on the porch from 5 to
+              6:30, weather depending. Off-street parking for one vehicle.
+            </p>
+          </div>
+
+          <aside class="book" id="book" aria-label="Booking">
+            <div class="price">$345 <small>/ night</small></div>
+            <div class="row">
+              <div>
+                <label for="checkin">Check-in</label>
+                <input id="checkin" type="date" />
+              </div>
+              <div>
+                <label for="checkout">Check-out</label>
+                <input id="checkout" type="date" />
+              </div>
+            </div>
+            <div>
+              <label for="guests">Guests</label>
+              <select id="guests">
+                <option>1 guest</option>
+                <option selected>2 guests</option>
+              </select>
+            </div>
+            <a class="btn" href="./contact-stay.html">Check Availability</a>
+            <p class="note">
+              Two-night minimum on weekends. We'll confirm by hand within the
+              day — usually faster. Cancellation up to seven days before
+              arrival, no charge.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="faq">
+        <div class="container">
+          <div class="faq-head">
+            <h2>A few common questions</h2>
+            <p>If yours isn't here, write to us — we read every note.</p>
+          </div>
+          <details>
+            <summary>Is the inn dog-friendly?</summary>
+            <p>
+              We have one resident black lab, Biscuit, and a longstanding policy
+              of not adding more dogs to the mix. We're happy to recommend
+              kennels in town that we've used ourselves.
+            </p>
+          </details>
+          <details>
+            <summary>What's the parking situation?</summary>
+            <p>
+              One off-street spot per room, behind the inn, accessed from the
+              alley off Pearl Street. Street parking is also free in Camden
+              after 4 p.m. and on weekends.
+            </p>
+          </details>
+          <details>
+            <summary>Can we eat breakfast in the room?</summary>
+            <p>
+              We can absolutely send a tray up. Just let Margaret know the night
+              before so she can plate accordingly. Coffee comes with a small jug
+              of cream from a farm two miles away.
+            </p>
+          </details>
+          <details>
+            <summary>Do you accommodate dietary needs?</summary>
+            <p>
+              Yes — vegetarian, gluten-free, and dairy-free are no trouble at
+              all if we know in advance. Vegan and more involved restrictions we
+              can do with a few days' notice.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h2>Ready when you are.</h2>
+        <p>
+          We'll hold a soft block on dates for 24 hours while you decide. No
+          deposit required to start the conversation.
+        </p>
+        <a class="btn" href="./contact-stay.html">Reserve The Cedar Suite</a>
+      </section>
+    </main>
+
+    <footer class="site">
+      <div class="container legal">
+        <span>© 2026 Cedar &amp; Salt Inn · 42 Bay View Street, Camden ME</span>
+        <span><a href="./inn-homepage.html">Back to home</a></span>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cedar &amp; Salt Inn — A coastal B&amp;B in Camden, Maine</title>
+    <meta
+      name="description"
+      content="Six rooms, a wraparound porch, and an unhurried breakfast. Cedar & Salt Inn sits two blocks from Camden Harbor."
+    />
+    <style>
+      :root {
+        --ink: #1c2530;
+        --ink-soft: #4a5663;
+        --paper: #f7f4ee;
+        --paper-2: #efeae0;
+        --line: #d9d2c2;
+        --accent: #2f4a3f;
+        --accent-soft: #c8d3cb;
+        --salt: #8aa6b3;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.55;
+      }
+      a {
+        color: var(--accent);
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Elementor-style header section */
+      header.site {
+        border-bottom: 1px solid var(--line);
+        background: var(--paper);
+      }
+      .site-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .brand {
+        font-family: "Didot", "Bodoni 72", Georgia, serif;
+        font-size: 22px;
+        letter-spacing: 0.04em;
+      }
+      .brand small {
+        display: block;
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        color: var(--ink-soft);
+        text-transform: uppercase;
+      }
+      nav.primary ul {
+        list-style: none;
+        display: flex;
+        gap: 22px;
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, sans-serif;
+        font-size: 14px;
+      }
+      nav.primary a {
+        text-decoration: none;
+        color: var(--ink);
+      }
+      nav.primary a:hover {
+        color: var(--accent);
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 18px;
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        font-family: system-ui, sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.03em;
+        border-radius: 2px;
+      }
+      .btn.outline {
+        background: transparent;
+        color: var(--accent);
+        border: 1px solid var(--accent);
+      }
+
+      /* Hero section — Elementor full-width */
+      .hero {
+        position: relative;
+        min-height: 78vh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        color: #fff;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(28, 37, 48, 0.35),
+            rgba(28, 37, 48, 0.55)
+          ),
+          #6b7d80
+            url("https://images.unsplash.com/photo-1499678329028-101435549a4e?auto=format&fit=crop&w=1600&q=70")
+            center/cover no-repeat;
+      }
+      .hero-inner {
+        padding: 88px 24px;
+        max-width: 760px;
+      }
+      .hero-eyebrow {
+        font-family: system-ui, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        opacity: 0.85;
+        margin-bottom: 18px;
+      }
+      .hero h1 {
+        font-family: "Didot", Georgia, serif;
+        font-weight: 400;
+        font-size: clamp(36px, 6vw, 64px);
+        line-height: 1.1;
+        margin: 0 0 14px;
+      }
+      .hero p {
+        font-size: 18px;
+        line-height: 1.5;
+        max-width: 540px;
+        margin: 0 auto 28px;
+        opacity: 0.95;
+      }
+      .hero .btn {
+        background: #fff;
+        color: var(--ink);
+      }
+
+      /* Generic Elementor section + row + cols */
+      section.row {
+        padding: 72px 0;
+      }
+      section.row.alt {
+        background: var(--paper-2);
+      }
+      .row-head {
+        text-align: center;
+        max-width: 640px;
+        margin: 0 auto 44px;
+      }
+      .row-head .eyebrow {
+        font-family: system-ui, sans-serif;
+        font-size: 11px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 12px;
+      }
+      .row-head h2 {
+        font-family: "Didot", Georgia, serif;
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 400;
+        margin: 0 0 12px;
+        line-height: 1.15;
+      }
+      .row-head p {
+        color: var(--ink-soft);
+        margin: 0;
+        font-size: 16.5px;
+      }
+
+      .cols-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+      }
+      .cols-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+      @media (max-width: 760px) {
+        .cols-2,
+        .cols-3 {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .site-row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        nav.primary ul {
+          flex-wrap: wrap;
+        }
+      }
+
+      /* Rooms cards */
+      .room-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .room-card .ph {
+        aspect-ratio: 4/3;
+        background: var(--accent-soft) center/cover no-repeat;
+      }
+      .room-card .body {
+        padding: 20px 22px 24px;
+      }
+      .room-card h3 {
+        font-family: "Didot", Georgia, serif;
+        font-weight: 400;
+        font-size: 22px;
+        margin: 0 0 6px;
+      }
+      .room-card p {
+        color: var(--ink-soft);
+        font-size: 14.5px;
+        margin: 0 0 14px;
+      }
+      .room-card .meta {
+        font-family: system-ui, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        color: var(--ink-soft);
+        display: flex;
+        justify-content: space-between;
+      }
+
+      /* Intro split */
+      .intro img {
+        aspect-ratio: 5/4;
+        object-fit: cover;
+        border-radius: 2px;
+      }
+      .intro h2 {
+        font-family: "Didot", Georgia, serif;
+        font-size: clamp(28px, 4vw, 38px);
+        font-weight: 400;
+        line-height: 1.15;
+        margin: 0 0 16px;
+      }
+      .intro p {
+        color: var(--ink-soft);
+        margin: 0 0 14px;
+        font-size: 16.5px;
+      }
+      .intro .signoff {
+        font-style: italic;
+        color: var(--accent);
+        margin-top: 18px;
+      }
+
+      /* CTA band */
+      .cta {
+        background: var(--accent);
+        color: #fff;
+        padding: 64px 24px;
+        text-align: center;
+      }
+      .cta h2 {
+        font-family: "Didot", Georgia, serif;
+        font-weight: 400;
+        font-size: clamp(26px, 3.6vw, 36px);
+        margin: 0 0 12px;
+      }
+      .cta p {
+        opacity: 0.85;
+        max-width: 540px;
+        margin: 0 auto 22px;
+      }
+      .cta .btn {
+        background: #fff;
+        color: var(--accent);
+      }
+
+      /* Footer */
+      footer.site {
+        background: #1c2530;
+        color: #cdd2d8;
+        padding: 48px 0 32px;
+        font-size: 14px;
+      }
+      footer .cols-3 {
+        gap: 36px;
+      }
+      footer h4 {
+        font-family: system-ui, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #fff;
+        margin: 0 0 14px;
+      }
+      footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      footer li {
+        margin-bottom: 6px;
+      }
+      footer a {
+        color: #cdd2d8;
+        text-decoration: none;
+      }
+      footer a:hover {
+        color: #fff;
+      }
+      .legal {
+        border-top: 1px solid #2a3441;
+        margin-top: 36px;
+        padding-top: 18px;
+        font-size: 12px;
+        color: #8a93a0;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="container site-row">
+        <div class="brand">
+          Cedar &amp; Salt Inn
+          <small>Camden, Maine — est. 2014</small>
+        </div>
+        <nav class="primary" aria-label="Primary">
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#stay">Plan a Stay</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <a class="btn" href="#book">Check Availability</a>
+      </div>
+    </header>
+
+    <section class="hero" aria-label="Hero">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">Six rooms · Two blocks from the harbor</div>
+        <h1>An unhurried inn on the Maine coast.</h1>
+        <p>
+          A wraparound porch built in 1898, a kitchen that smells like brown
+          butter at 8 a.m., and a black lab named Biscuit who will absolutely
+          escort you to your room.
+        </p>
+        <a class="btn" href="#book">See available dates</a>
+      </div>
+    </section>
+
+    <section class="row" id="story">
+      <div class="container">
+        <div class="cols-2 intro">
+          <img
+            src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=70"
+            alt="The front porch of Cedar and Salt Inn at dusk, with two rocking chairs and a brass lantern"
+          />
+          <div>
+            <span
+              class="eyebrow"
+              style="
+                font-family: system-ui, sans-serif;
+                font-size: 11px;
+                letter-spacing: 0.32em;
+                text-transform: uppercase;
+                color: var(--accent);
+              "
+              >Our Story</span
+            >
+            <h2>
+              Two innkeepers, one stubborn old house, and a lot of blueberries.
+            </h2>
+            <p>
+              We bought the house in 2014 from a retired sea captain who
+              insisted we keep the porch swing. We did. We also kept the
+              cast-iron tub on the third floor, the original mantle in the
+              parlor, and the slightly crooked door to room four.
+            </p>
+            <p>
+              Breakfast is served family-style at 8:30. Coffee starts at 7. Wine
+              and a small cheese plate appear on the porch around 5, weather
+              permitting.
+            </p>
+            <p class="signoff">— Margaret &amp; Theo Whitcombe</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="row alt" id="rooms">
+      <div class="container">
+        <div class="row-head">
+          <div class="eyebrow">Stay With Us</div>
+          <h2>Six rooms, each a little different.</h2>
+          <p>
+            All rooms include private bath, locally-roasted coffee, and a full
+            breakfast. Rates from $245/night, two-night minimum on weekends.
+          </p>
+        </div>
+        <div class="cols-3">
+          <article class="room-card">
+            <div
+              class="ph"
+              role="img"
+              aria-label="The Harbor Room with a queen bed and water view"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=70&quot;);
+              "
+            ></div>
+            <div class="body">
+              <h3>The Harbor Room</h3>
+              <p>
+                Top-floor corner room. Queen bed, claw-foot tub, partial view of
+                the schooner fleet from the dormer window.
+              </p>
+              <div class="meta">
+                <span>Sleeps 2</span><span>From $295</span>
+              </div>
+            </div>
+          </article>
+          <article class="room-card">
+            <div
+              class="ph"
+              role="img"
+              aria-label="The Cedar Suite featuring a king bed and a small fireplace"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=900&q=70&quot;);
+              "
+            ></div>
+            <div class="body">
+              <h3>The Cedar Suite</h3>
+              <p>
+                Our biggest room. King bed, gas fireplace, sitting area with two
+                reading chairs and a small writing desk.
+              </p>
+              <div class="meta">
+                <span>Sleeps 2</span><span>From $345</span>
+              </div>
+            </div>
+          </article>
+          <article class="room-card">
+            <div
+              class="ph"
+              role="img"
+              aria-label="The Garden Room, a smaller room facing the back garden"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=70&quot;);
+              "
+            ></div>
+            <div class="body">
+              <h3>The Garden Room</h3>
+              <p>
+                Ground floor, queen bed, French doors that open onto the herb
+                garden and the apple tree Theo refuses to prune.
+              </p>
+              <div class="meta">
+                <span>Sleeps 2</span><span>From $245</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="book">
+      <h2>Plan your stay.</h2>
+      <p>
+        Spring fills up first — sailors, blueberry-pickers, and people who like
+        fog. Reserve early and we'll send a hand-drawn map of our four favorite
+        walks.
+      </p>
+      <a class="btn" href="#contact">Check Availability</a>
+    </section>
+
+    <footer class="site" id="contact">
+      <div class="container">
+        <div class="cols-3">
+          <div>
+            <h4>Find Us</h4>
+            <p style="margin: 0">
+              42 Bay View Street<br />Camden, Maine 04843<br />(207) 555-0148
+            </p>
+          </div>
+          <div>
+            <h4>Visit</h4>
+            <ul>
+              <li><a href="#rooms">Rooms &amp; Rates</a></li>
+              <li><a href="#story">Our Story</a></li>
+              <li><a href="#stay">Plan a Stay</a></li>
+              <li><a href="#contact">Directions</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Stay In Touch</h4>
+            <p style="margin: 0">
+              Quarterly letters about the porch, the dog, and what's blooming.
+              No spam — Margaret writes them by hand and we type them up.
+            </p>
+          </div>
+        </div>
+        <div class="legal">
+          <span>© 2026 Cedar &amp; Salt Inn</span>
+          <span>Built by Logan Marketing</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
