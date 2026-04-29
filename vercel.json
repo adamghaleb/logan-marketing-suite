@@ -4,14 +4,6 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "regions": ["iad1"],
-  "env": {
-    "ANTHROPIC_API_KEY": "@anthropic-api-key"
-  },
-  "build": {
-    "env": {
-      "ANTHROPIC_API_KEY": "@anthropic-api-key"
-    }
-  },
   "headers": [
     {
       "source": "/fonts/(.*)",
