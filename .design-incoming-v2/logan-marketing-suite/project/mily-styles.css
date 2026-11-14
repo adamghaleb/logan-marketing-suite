@@ -1,0 +1,803 @@
+@import url("https://fonts.googleapis.com/css2?family=Gloock&family=Nunito:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@font-face {
+  font-family: "Mochi Boom";
+  src: url("fonts/MochiBoom.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mochi Boom Extrude";
+  src: url("fonts/MochiBoomExtrude.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Milkyway";
+  src: url("fonts/Milkyway.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Talina";
+  src: url("fonts/Talina.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fredoka One";
+  src: url("fonts/Fredoka.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fredoka Dingbats";
+  src: url("fonts/FredokaDingbats.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  /* Lovego palette */
+  --paper: oklch(0.975 0.012 85); /* warm cream */
+  --paper-2: oklch(0.955 0.016 80); /* warmer cream */
+  --paper-grid: oklch(0.92 0.018 285); /* lavender grid lines */
+  --lovego-50: oklch(0.96 0.022 290); /* faintest lavender wash */
+  --lovego-100: oklch(0.92 0.04 290); /* dusty lavender */
+  --lovego-200: oklch(0.84 0.07 290); /* soft lavender */
+  --lovego-400: oklch(0.68 0.13 288); /* lovego — the soul */
+  --lovego-600: oklch(0.48 0.16 285); /* deep indigo */
+  --lovego-800: oklch(0.28 0.13 282); /* near-black indigo */
+
+  --peach: oklch(0.84 0.08 55);
+  --peach-deep: oklch(0.62 0.13 45);
+  --sage: oklch(0.78 0.06 155);
+
+  --ink: oklch(0.22 0.04 285);
+  --ink-2: oklch(0.38 0.04 285);
+  --ink-3: oklch(0.55 0.03 285);
+  --ink-4: oklch(0.72 0.02 285);
+
+  --line: oklch(0.86 0.025 285);
+  --line-soft: oklch(0.92 0.018 285);
+
+  --serif: "Gloock", "Times New Roman", serif;
+  --display: "Milkyway", "Gloock", serif;
+  --header: "Fredoka One", "Nunito", sans-serif;
+  --hand: "Caveat", cursive;
+  --dingbats: "Fredoka Dingbats", sans-serif;
+  --sans: "Nunito", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--sans);
+  font-weight: 400;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 15.5px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    var(--paper-grid) 1.2px,
+    transparent 1.2px
+  );
+  background-size: 28px 28px;
+  background-position: 0 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+a {
+  color: var(--lovego-600);
+  text-decoration-color: var(--lovego-200);
+  text-underline-offset: 3px;
+}
+a:hover {
+  text-decoration-color: var(--lovego-400);
+}
+
+.serif {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+.hand {
+  font-family: var(--hand);
+  font-weight: 500;
+}
+.mono {
+  font-family: var(--mono);
+}
+
+/* Page shell — narrow, like a real personal homepage */
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 56px 32px 200px;
+  position: relative;
+}
+
+/* Top bar — fake browser feel, signature touch */
+.urlbar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-3);
+  margin-bottom: 36px;
+}
+.urlbar-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sage);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--sage), transparent 75%);
+}
+.urlbar b {
+  color: var(--lovego-600);
+  font-weight: 600;
+}
+
+/* Header */
+.head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+.greeting-eyebrow {
+  font-family: var(--hand);
+  font-size: 26px;
+  color: var(--lovego-400);
+  line-height: 1;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.greeting-eyebrow svg {
+  display: block;
+}
+.h1 {
+  font-family: var(--display);
+  font-size: clamp(44px, 6vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--lovego-800);
+  margin: 0 0 14px;
+  font-weight: 400;
+}
+.h1 .accent {
+  color: var(--lovego-400);
+  font-style: normal;
+  position: relative;
+  display: inline-block;
+}
+.h1 .accent::after {
+  content: "";
+  position: absolute;
+  left: 2%;
+  right: 2%;
+  bottom: 4px;
+  height: 8px;
+  background: var(--lovego-100);
+  z-index: -1;
+  border-radius: 4px;
+}
+.sub {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 480px;
+}
+
+/* Today widget — dated, like a journal */
+.today-card {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+  min-width: 200px;
+  text-align: right;
+  position: relative;
+  transform: rotate(1.2deg);
+  box-shadow: 0 6px 18px -10px oklch(0.4 0.14 285 / 0.18);
+}
+.today-card::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 24px;
+  right: 24px;
+  height: 12px;
+  background: var(--lovego-100);
+  border-radius: 2px;
+  transform: rotate(-2deg);
+  opacity: 0.7;
+}
+.today-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 4px;
+}
+.today-day {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.15;
+  color: var(--lovego-800);
+}
+.today-week {
+  font-family: var(--hand);
+  font-size: 18px;
+  color: var(--lovego-400);
+  margin-top: 2px;
+}
+
+/* Sections */
+.section {
+  margin-top: 64px;
+}
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.section-num {
+  font-family: var(--hand);
+  font-size: 22px;
+  color: var(--lovego-400);
+  line-height: 1;
+}
+.section-title {
+  font-family: var(--header);
+  font-weight: 400;
+  font-size: 28px;
+  letter-spacing: 0.002em;
+  color: var(--lovego-800);
+  margin: 0;
+}
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+  position: relative;
+  top: -4px;
+}
+.section-tag {
+  font-family: var(--hand);
+  font-size: 18px;
+  color: var(--ink-3);
+}
+
+/* Card grid */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.card {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px;
+  position: relative;
+  transition:
+    transform 0.18s,
+    box-shadow 0.18s,
+    border-color 0.18s;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card:hover {
+  transform: translateY(-2px) rotate(-0.4deg);
+  box-shadow: 0 12px 30px -16px oklch(0.4 0.14 285 / 0.25);
+  border-color: var(--lovego-200);
+}
+.card-num {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-family: var(--hand);
+  font-size: 22px;
+  color: var(--lovego-200);
+}
+.card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  background: var(--lovego-50);
+  border: 1px solid var(--lovego-100);
+}
+.card h3 {
+  font-family: var(--header);
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.005em;
+  color: var(--lovego-800);
+  line-height: 1.15;
+  margin: 4px 0 0;
+}
+.card p {
+  font-size: 14.5px;
+  color: var(--ink-2);
+  line-height: 1.55;
+  margin: 0;
+}
+.card-meta {
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Tape decoration on cards */
+.card.tape::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 22px;
+  width: 56px;
+  height: 16px;
+  background: oklch(0.94 0.07 290 / 0.6);
+  border-left: 1px dashed oklch(0.85 0.05 290 / 0.5);
+  border-right: 1px dashed oklch(0.85 0.05 290 / 0.5);
+  transform: rotate(-3deg);
+}
+.card.tape-peach::before {
+  background: oklch(0.94 0.06 55 / 0.7);
+}
+
+/* Mouse-of-the-day — signature touch */
+.mouse-card {
+  margin-top: 36px;
+  background: linear-gradient(180deg, var(--lovego-50), var(--paper-2));
+  border: 1px solid var(--lovego-100);
+  border-radius: 16px;
+  padding: 24px 26px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 22px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.mouse-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle at 2px 2px,
+    var(--lovego-100) 1px,
+    transparent 1px
+  );
+  background-size: 16px 16px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.mouse-art {
+  width: 84px;
+  height: 84px;
+  background: var(--paper);
+  border: 1px dashed var(--lovego-200);
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  z-index: 1;
+}
+.mouse-text {
+  position: relative;
+  z-index: 1;
+}
+.mouse-eyebrow {
+  font-family: var(--hand);
+  font-size: 22px;
+  color: var(--lovego-400);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.mouse-title {
+  font-family: var(--header);
+  font-size: 24px;
+  color: var(--lovego-800);
+  line-height: 1.2;
+}
+.mouse-note {
+  font-size: 14px;
+  color: var(--ink-2);
+  margin-top: 6px;
+  font-style: italic;
+}
+.mouse-stamp {
+  font-family: var(--hand);
+  font-size: 16px;
+  color: var(--lovego-400);
+  text-align: center;
+  border: 2px dashed var(--lovego-200);
+  border-radius: 50%;
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  transform: rotate(-12deg);
+  position: relative;
+  z-index: 1;
+  padding: 4px;
+}
+
+/* Practice list */
+.practice-list {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 8px 22px;
+}
+.practice-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--line-soft);
+  cursor: pointer;
+  transition: padding-left 0.15s;
+}
+.practice-row:last-child {
+  border-bottom: none;
+}
+.practice-row:hover {
+  padding-left: 6px;
+}
+.practice-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  border: 1.5px solid var(--lovego-200);
+  display: grid;
+  place-items: center;
+  background: var(--paper);
+  transition: all 0.15s;
+}
+.practice-row.done .practice-check {
+  background: var(--lovego-400);
+  border-color: var(--lovego-400);
+}
+.practice-row.done .practice-check::after {
+  content: "";
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(-45deg) translateY(-1px);
+}
+.practice-title {
+  font-family: var(--header);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--lovego-800);
+  line-height: 1.25;
+}
+.practice-row.done .practice-title {
+  color: var(--ink-3);
+  text-decoration: line-through;
+  text-decoration-color: var(--lovego-200);
+}
+.practice-desc {
+  font-size: 13px;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+.practice-pill {
+  font-family: var(--hand);
+  font-size: 16px;
+  color: var(--lovego-400);
+  padding: 2px 10px;
+  background: var(--lovego-50);
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+/* Footer note from Adam — handwritten */
+.footer-note {
+  margin-top: 80px;
+  padding: 32px 0 0;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-note .line1 {
+  font-family: var(--hand);
+  font-size: 30px;
+  color: var(--lovego-600);
+  line-height: 1.2;
+}
+.footer-note .line2 {
+  font-family: var(--hand);
+  font-size: 22px;
+  color: var(--lovego-400);
+  line-height: 1.2;
+}
+.footer-meta {
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-4);
+  letter-spacing: 0.04em;
+}
+
+/* Bingus — chat bubble bottom right */
+.bingus-wrap {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  max-width: 360px;
+}
+.bingus-bubble {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  border-bottom-right-radius: 6px;
+  padding: 14px 16px;
+  font-size: 14.5px;
+  color: var(--ink);
+  line-height: 1.45;
+  box-shadow: 0 12px 32px -18px oklch(0.4 0.14 285 / 0.3);
+  position: relative;
+  transform-origin: bottom right;
+  animation: bubblePop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes bubblePop {
+  from {
+    transform: scale(0.85) translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+.bingus-bubble.minimized {
+  padding: 8px 12px;
+  font-size: 13px;
+}
+.bingus-name {
+  font-family: var(--hand);
+  font-size: 18px;
+  color: var(--lovego-400);
+  line-height: 1;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.bingus-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sage);
+}
+.bingus-msg {
+  color: var(--ink);
+}
+.bingus-msg em {
+  color: var(--lovego-400);
+  font-style: italic;
+}
+.bingus-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.bingus-action {
+  font-family: var(--sans);
+  font-size: 12.5px;
+  padding: 5px 11px;
+  background: var(--lovego-50);
+  border: 1px solid var(--lovego-100);
+  border-radius: 99px;
+  color: var(--lovego-600);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.bingus-action:hover {
+  background: var(--lovego-100);
+  border-color: var(--lovego-200);
+}
+
+.bingus-cat {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.2s;
+  position: relative;
+}
+.bingus-cat:hover {
+  transform: rotate(-4deg) scale(1.04);
+}
+.bingus-cat svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Cat tail wag animation */
+@keyframes wag {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+.bingus-cat .tail {
+  transform-origin: 50px 60px;
+  animation: wag 2.4s ease-in-out infinite;
+}
+
+/* Floating heart sparkles around cat occasionally */
+.bingus-cat .sparkle {
+  opacity: 0;
+  animation: sparkle 4s ease-in-out infinite;
+}
+.bingus-cat .sparkle.s2 {
+  animation-delay: 1.3s;
+}
+.bingus-cat .sparkle.s3 {
+  animation-delay: 2.6s;
+}
+@keyframes sparkle {
+  0%,
+  80%,
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  20%,
+  60% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Type / palette card */
+.system {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 18px;
+  margin-top: 28px;
+}
+.type-card,
+.palette-card {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 24px 26px;
+}
+.type-sample {
+  margin: 8px 0 10px;
+}
+.type-sample .label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.type-sample .glyph-display {
+  font-family: var(--display);
+  font-size: 38px;
+  color: var(--lovego-800);
+  line-height: 1.05;
+}
+.type-sample .glyph-header {
+  font-family: var(--header);
+  font-size: 30px;
+  color: var(--lovego-800);
+  line-height: 1.1;
+}
+.type-sample .glyph-hand {
+  font-family: var(--hand);
+  font-size: 32px;
+  color: var(--lovego-400);
+  line-height: 1.1;
+}
+.type-sample .glyph-sans {
+  font-family: var(--sans);
+  font-size: 18px;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.swatch-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.swatch {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  border: 1px solid oklch(0 0 0 / 0.08);
+  display: flex;
+  align-items: flex-end;
+  padding: 6px;
+}
+.swatch-name {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: oklch(0 0 0 / 0.6);
+  line-height: 1;
+}
+.swatch.dark .swatch-name {
+  color: oklch(1 0 0 / 0.85);
+}
+
+/* Tweaks-friendly responsive */
+@media (max-width: 760px) {
+  .head {
+    grid-template-columns: 1fr;
+  }
+  .today-card {
+    transform: none;
+    align-self: start;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .system {
+    grid-template-columns: 1fr;
+  }
+  .mouse-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .mouse-stamp {
+    margin: 0 auto;
+  }
+  .bingus-wrap {
+    max-width: calc(100vw - 32px);
+  }
+}
